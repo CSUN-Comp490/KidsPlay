@@ -1,0 +1,103 @@
+<!--
+  Generated template for the MyEventsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  
+    <ion-navbar>
+  
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+  
+      <ion-title>My Events</ion-title>
+  
+      <ion-buttons end>
+        <button ion-button clear>
+          <ion-icon name="search" large></ion-icon>
+        </button>
+      </ion-buttons>
+  
+    </ion-navbar>
+  
+  </ion-header>
+  
+  <ion-content class="cards-bg social-cards">
+  
+    <ion-card>
+      <button ion-button color="secondary" icon-start block class="addButton" (click)="openAddEventPage()">
+        <ion-icon name='add'></ion-icon>
+        Create New Event
+      </button>
+    </ion-card>
+  
+    <ion-card>
+  
+      <div style="position: relative">
+        <img src="../assets/images/event/magicshow.jpg">
+        <ion-fab right top>
+          <button ion-fab>
+          <ion-icon name="pin"></ion-icon>
+        </button>
+        </ion-fab>
+      </div>
+  
+      <ion-card-content class="no-bottom-padding">
+        <h1>Magic Bonanza</h1>
+      </ion-card-content>
+  
+      <ion-item>
+        <ion-icon name="color-wand" item-start large></ion-icon>
+        <h2>The Magic Castle</h2>
+        <p>7001 Franklin Ave, Hollywood, CA 90028</p>
+      </ion-item>
+  
+      <ion-card-content class="no-bottom-padding">
+        <p>Come one, come all! Attend the greatest magic show every known to man!</p>
+      </ion-card-content>
+  
+      <ion-item>
+        <ion-avatar item-start>
+          <img src="../assets/images/profile/weigley.png">
+        </ion-avatar>
+        <h2>Hosted by: Jeff Weigley</h2>
+        <p>Event Date: October 20, 2017</p>
+      </ion-item>
+  
+      <ion-row>
+        <ion-col>
+          <button ion-button icon-left clear small>
+            <ion-icon name="bookmark"></ion-icon>
+            <div>69 Attending</div>
+          </button>
+        </ion-col>
+        <ion-col>
+          <button ion-button icon-left clear small>
+            <ion-icon name="text"></ion-icon>
+            <div>32 Comments</div>
+          </button>
+        </ion-col>
+        <ion-col center text-center>
+          <ion-note>
+            42h ago
+          </ion-note>
+        </ion-col>
+      </ion-row>
+  
+    </ion-card>
+  </ion-content>
+  
+  <style>
+    .social-cards ion-col {
+      padding: 0;
+    }
+    .no-bottom-padding {
+      padding-bottom: 0;
+    }
+    .addButton {
+      margin: 0 auto;
+    }
+  </style>
+  
