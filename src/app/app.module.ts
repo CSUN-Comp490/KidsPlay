@@ -21,6 +21,8 @@ import { MyEventsPageModule } from '../pages/my-events/my-events.module';
 import { AddEventPageModule } from '../pages/add-event/add-event.module';
 import { MyProfilePageModule } from '../pages/my-profile/my-profile.module';
 
+import { GoogleMaps } from '@ionic-native/google-maps';
+
 
 @NgModule({
   declarations: [
@@ -45,6 +47,7 @@ import { MyProfilePageModule } from '../pages/my-profile/my-profile.module';
   providers: [
     StatusBar,
     SplashScreen,
+    GoogleMaps,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthProvider,
     
