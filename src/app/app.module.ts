@@ -21,10 +21,16 @@ import { MyEventsPageModule } from '../pages/my-events/my-events.module';
 import { AddEventPageModule } from '../pages/add-event/add-event.module';
 import { MyProfilePageModule } from '../pages/my-profile/my-profile.module';
 
+import { GoogleMaps } from '@ionic-native/google-maps';
+
+import { TrackerPageModule } from "../pages/tracker/tracker.module";
+import { TrackmapPageModule } from "../pages/trackmap/trackmap.module";
+
 
 @NgModule({
   declarations: [
     MyApp,
+  
     
     
   ],
@@ -34,17 +40,21 @@ import { MyProfilePageModule } from '../pages/my-profile/my-profile.module';
     AngularFireAuthModule,
     LoginPageModule,
     MyProfilePageModule,
-    AngularFireModule.initializeApp(crank)
+    AngularFireModule.initializeApp(crank),
+    TrackmapPageModule,
+    TrackerPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
+   
     
     
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    GoogleMaps,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthProvider,
     
