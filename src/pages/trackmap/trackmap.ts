@@ -10,6 +10,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
  */
 
 declare var google: any;
+var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
 
 
 @IonicPage()
@@ -51,7 +52,8 @@ export class TrackmapPage {
     let marker = new google.maps.Marker({
       position: location,
       map: this.map,
-      title: z
+      title: z,
+      icon: '../../assets/TrackerTiny.png'
     });
 
     /*
