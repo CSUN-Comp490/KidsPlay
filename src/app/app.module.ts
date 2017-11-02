@@ -22,6 +22,7 @@ import { AddEventPageModule } from '../pages/add-event/add-event.module';
 import { MyProfilePageModule } from '../pages/my-profile/my-profile.module';
 
 import { GoogleMaps } from '@ionic-native/google-maps';
+import { Geolocation } from '@ionic-native/geolocation';
 
 import { TrackerPageModule } from "../pages/tracker/tracker.module";
 import { TrackmapPageModule } from "../pages/trackmap/trackmap.module";
@@ -55,6 +56,7 @@ import { TrackmapPageModule } from "../pages/trackmap/trackmap.module";
     StatusBar,
     SplashScreen,
     GoogleMaps,
+    Geolocation,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthProvider,
     
