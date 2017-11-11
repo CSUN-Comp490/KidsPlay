@@ -34,6 +34,8 @@ export class TrackerPage {
     this.lat = pos.coords.latitude;
     this.lng = pos.coords.longitude;
     }).catch( err => console.log(err));
+
+    
     
   }
 
@@ -77,7 +79,7 @@ find1(){
     let data ={
       latitude: this.lat,
       longitude: this.lng,
-      name: 'Frederick'
+      name: 'Jeffrey'
 
     };
     this.navCtrl.push(TrackmapPage, data);
@@ -88,7 +90,7 @@ find2(){
       let data ={
         latitude: 34.1556,
         longitude: -118.4676,
-        name: 'George'
+        name: 'Steven'
   
       };
       this.navCtrl.push(TrackmapPage, data);
@@ -96,8 +98,8 @@ find2(){
 find3(){
   
       let data ={
-        latitude: 25.7617,
-        longitude: -80.1918,
+        latitude: 34.1425,
+        longitude: -118.2551,
         name: 'Jonathan'
       };
       this.navCtrl.push(TrackmapPage, data);
@@ -112,5 +114,29 @@ find4(){
       };
       this.navCtrl.push(TrackmapPage, data);
    }
+
+  findALL(){
+      let data ={
+        lat1: this.lat,
+        lat2: 34.1556,
+        lat3: 34.1425,
+        lat4: 34.2426,
+        lng1: this.lng,
+        lng2: -118.4676,
+        lng3: -118.2551,
+        lng4: -118.5281,
+        name1: 'Jeffrey',
+        name2: 'Steven',
+        name3: 'Jonathan',
+        name4: 'Samantha',
+        setting: 'All'
+      }
+      this.navCtrl.push(TrackmapPage, data);
+
+
+  }
+
+
+ 
 
 }
