@@ -23,6 +23,8 @@ import {GroupChatPage} from '../pages/group-chat/group-chat';
 import { MyProfilePageModule } from '../pages/my-profile/my-profile.module';
 import {HttpModule} from '@angular/http';
 
+import { GoogleMaps } from '@ionic-native/google-maps';
+import { Geolocation } from '@ionic-native/geolocation';
 
 @NgModule({
   declarations: [
@@ -49,6 +51,8 @@ import {HttpModule} from '@angular/http';
   providers: [
     StatusBar,
     SplashScreen,
+    GoogleMaps,
+    Geolocation,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthProvider,
     UserServiceProvider
