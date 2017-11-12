@@ -18,25 +18,32 @@
         <div class = "space style height: 10px;"></div>
         <ion-item>
 <ion-label color = "light2"> <ion-icon name="people"></ion-icon> </ion-label>          
-<ion-input clearInput type="text" placeholder = "Family's Name"></ion-input>
+<ion-input clearInput type="text" [(ngModel)]="famName" name="famName" placeholder = "Family's Name"></ion-input>
         </ion-item>
       
       <!-- <div class = "space style height: 2px;"></div> -->
       <ion-item>
         <ion-label color = "light2"> <ion-icon name="mail"></ion-icon></ion-label>          
-        <ion-input type="email" placeholder="Email"></ion-input>
+        <ion-input type="email" [(ngModel)]="email" name="email" placeholder="Email"></ion-input>
       </ion-item>
     
     <div class = "space style height: 5px;"></div>
     <ion-item>
       <ion-label color = "light2"> <ion-icon name="lock"></ion-icon> </ion-label>          
-      <ion-input type="password" placeholder="Password"></ion-input>
+      <ion-input type="password" [(ngModel)]="password" name="password" placeholder="Password"></ion-input>
     </ion-item>
     
     <div class = "space style height: 5px;"></div>
     <ion-item>
       <ion-label color = "light2"> <ion-icon name="person"></ion-icon> </ion-label>          
-      <ion-input type="text" placeholder="Full Name">Full Name</ion-input>
+      <ion-input type="text" [(ngModel)]="fullName" name="fullName" placeholder="Full Name">Full Name</ion-input>
+    </ion-item>
+    <div class = "space style height: 5px;"></div>
+
+    <div class = "space style height: 5px;"></div>
+    <ion-item>
+      <ion-label color = "light2"> <ion-icon name="map"></ion-icon> </ion-label>          
+      <ion-input type="text" [(ngModel)]="address" name="address" placeholder="Address">Address</ion-input>
     </ion-item>
     <div class = "space style height: 5px;"></div>
     

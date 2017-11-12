@@ -6,6 +6,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import {HomePage} from './../pages/home/home';
+import { ChatsPage } from '../pages/chats/chats';
+import {GroupChatPage} from '../pages/group-chat/group-chat';
 import { ListPage } from '../pages/list/list';
 import { NewsfeedPage } from '../pages/newsfeed/newsfeed';
 import { EventsAttendingPage } from '../pages/events-attending/events-attending';
@@ -13,10 +15,6 @@ import { MessagingPage } from '../pages/messaging/messaging';
 import { FriendsPage } from './../pages/friends/friends';
 import { MyEventsPage } from '../pages/my-events/my-events';
 import { MyProfilePage } from '../pages/my-profile/my-profile';
-
-//import { TrackerPage } from "../pages/tracker/tracker";
-//import { TrackmapPage } from "../pages/trackmap/trackmap";
-
 
 @Component({
   templateUrl: 'app.html'
@@ -38,10 +36,7 @@ export class MyApp {
         { title: 'Messaging', component: MessagingPage, icon: 'chatbubbles' },
         { title: 'Friends', component: FriendsPage, icon: 'contacts' },
         { title: 'My Events', component: MyEventsPage, icon: 'calendar' },
-        { title: 'My Profile', component: MyProfilePage, icon: 'contact' },
-       // { title: 'KidTracker', component: TrackerPage, icon: 'contact' },
-       // { title: 'KidMap', component: TrackmapPage, icon: 'contact' },
-                
+        { title: 'My Profile', component: MyProfilePage, icon: 'contact' }
       ];
   
     }

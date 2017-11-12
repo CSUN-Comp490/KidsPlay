@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { TrackmapPage } from './trackmap';
+import { GroupChatPage } from './group-chat';
 
 @NgModule({
   declarations: [
-    TrackmapPage,
+    GroupChatPage,
   ],
   imports: [
-    IonicPageModule.forChild(TrackmapPage),
+    IonicPageModule.forChild(GroupChatPage),
   ],
 })
-export class TrackmapPageModule {}
+export class GroupChatPageModule {}

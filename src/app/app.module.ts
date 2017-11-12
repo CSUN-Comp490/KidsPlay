@@ -1,3 +1,4 @@
+import { UserServiceProvider } from './../providers/user-service/user-service';
 import { RegistrationPage } from './../pages/registration/registration';
 import { LoginPageModule } from './../pages/login/login.module';
 import { BrowserModule } from '@angular/platform-browser';
@@ -16,39 +17,34 @@ import { NewsfeedPageModule } from '../pages/newsfeed/newsfeed.module';
 import { EventsAttendingPageModule } from '../pages/events-attending/events-attending.module';
 import { MessagingPageModule } from '../pages/messaging/messaging.module';
 import { FriendsPageModule } from '../pages/friends/friends.module';
-import { MyEventsPageModule } from '../pages/my-events/my-events.module';
-
-import { AddEventPageModule } from '../pages/add-event/add-event.module';
+// import { MyEventsPageModule } from '../pages/my-events/my-events.module';
+import {GroupChatPage} from '../pages/group-chat/group-chat';
+// import { AddEventPageModule } from '../pages/add-event/add-event.module';
 import { MyProfilePageModule } from '../pages/my-profile/my-profile.module';
+import {HttpModule} from '@angular/http';
 
 import { GoogleMaps } from '@ionic-native/google-maps';
 import { Geolocation } from '@ionic-native/geolocation';
 
-import { TrackerPageModule } from "../pages/tracker/tracker.module";
-import { TrackmapPageModule } from "../pages/trackmap/trackmap.module";
-
-
 @NgModule({
   declarations: [
     MyApp,
-  
-    
+    GroupChatPage,
     
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
+    HttpModule,
+    IonicModule.forRoot(MyApp,{tabsPlacement: 'top'}),
     AngularFireAuthModule,
     LoginPageModule,
     MyProfilePageModule,
-    AngularFireModule.initializeApp(crank),
-    TrackmapPageModule,
-    TrackerPageModule
+    AngularFireModule.initializeApp(crank)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-   
+    GroupChatPage
     
     
   ],
@@ -59,6 +55,7 @@ import { TrackmapPageModule } from "../pages/trackmap/trackmap.module";
     Geolocation,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthProvider,
+    UserServiceProvider
     
   ]
 })
