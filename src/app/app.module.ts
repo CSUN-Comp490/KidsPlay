@@ -26,6 +26,10 @@ import {HttpModule} from '@angular/http';
 import { GoogleMaps } from '@ionic-native/google-maps';
 import { Geolocation } from '@ionic-native/geolocation';
 
+
+import { TrackerPageModule } from "../pages/tracker/tracker.module";
+import { TrackmapPageModule } from "../pages/trackmap/trackmap.module";
+
 @NgModule({
   declarations: [
     MyApp,
@@ -39,7 +43,9 @@ import { Geolocation } from '@ionic-native/geolocation';
     AngularFireAuthModule,
     LoginPageModule,
     MyProfilePageModule,
-    AngularFireModule.initializeApp(crank)
+    AngularFireModule.initializeApp(crank),
+    TrackmapPageModule,
+    TrackerPageModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
