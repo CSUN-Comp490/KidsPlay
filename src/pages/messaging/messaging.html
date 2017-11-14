@@ -1,20 +1,45 @@
-<ion-header>
+<!--<ion-header>
     
     <ion-navbar color = "primary">
         <button ion-button menuToggle>
           <ion-icon name="menu"></ion-icon>
         </button>
         <ion-title>Messaging</ion-title>
+        <ion-buttons end>
+          <button ion-button icon-only (click)= "addbuddy()">
+            <ion-icon name="person-add"></ion-icon>
+          </button>
+        </ion-buttons>
       </ion-navbar>
     
     </ion-header>
 
-
-
-
+  -->
+  <!--
+  <ion-header>
+      
+      <ion-navbar color = "primary">
+          <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+          </button>
+          <ion-buttons end>
+            <button ion-button icon-only (click)= "addbuddy()">
+              <ion-icon name="person-add"></ion-icon>
+            </button>
+          </ion-buttons>
+        </ion-navbar>
+      
+        </ion-header>
+      -->
 <ion-tabs color="primary">
-  <ion-tab [root]="tab1" tabTitle="Chats" tabIcon="chatbubbles" tabsHideOnSubPages="true" (click) = "goTO2()"></ion-tab>
+
+    <ion-tabs color="hcolor">
+        <ion-tab [root]="tab1" tabTitle="Chats" tabIcon="chatbubbles" tabsHideOnSubPages="true"></ion-tab>
+        <ion-tab [root]="tab2" tabTitle="Groups" tabIcon="contacts" tabsHideOnSubPages="true"></ion-tab>
+      
+  <!--<ion-tab [root]="tab1" tabTitle="Chats" tabIcon="chatbubbles" tabsHideOnSubPages="true" (click) = "goTO2()"></ion-tab>
   <ion-tab [root]="tab2" tabTitle="group-chat" tabIcon="contacts" tabsHideOnSubPages="true" (click) = "goTO1()"></ion-tab>
+  -->
 </ion-tabs>
 
    

@@ -18,7 +18,7 @@ import { EventsAttendingPageModule } from '../pages/events-attending/events-atte
 import { MessagingPageModule } from '../pages/messaging/messaging.module';
 import { FriendsPageModule } from '../pages/friends/friends.module';
 // import { MyEventsPageModule } from '../pages/my-events/my-events.module';
-import {GroupChatPage} from '../pages/group-chat/group-chat';
+//import {GroupChatPage} from '../pages/group-chat/group-chat';
 // import { AddEventPageModule } from '../pages/add-event/add-event.module';
 import { MyProfilePageModule } from '../pages/my-profile/my-profile.module';
 import {HttpModule} from '@angular/http';
@@ -27,8 +27,7 @@ import {HttpModule} from '@angular/http';
 @NgModule({
   declarations: [
     MyApp,
-    GroupChatPage,
-    
+   
   ],
   imports: [
     BrowserModule,
@@ -42,7 +41,7 @@ import {HttpModule} from '@angular/http';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    GroupChatPage
+   
     
     
   ],
