@@ -23,6 +23,21 @@ export class RegistrationPage {
   famName='';
   address = '';
 
+
+ 
+
+  // Variables Used by Child Registration
+  childName='';
+  parentEmail='';
+  parentName='';
+  parentPassword='';
+
+  
+
+
+
+  
+
 userProfile:any = firebase.database().ref('users');
   constructor(public navCtrl: NavController, public navParams: NavParams, public userService:UserServiceProvider,
   public fireAuth:AngularFireAuth) {
@@ -30,6 +45,7 @@ userProfile:any = firebase.database().ref('users');
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegistrationPage');
+    let account = "parent";
   }
 registerUser(){
   this.userService.signUpUser(this.email, this.password)
@@ -47,6 +63,12 @@ registerUser(){
                 })
                 this.navCtrl.setRoot('HomePage');
 }
+
+// Adds a child to an existing parent
+createChild(){
+
+}
+
 
   
 }

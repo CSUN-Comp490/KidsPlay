@@ -13,16 +13,16 @@ page-registration {
             background: -ms-linear-gradient( to left top, #F9F9F9, #FFFFFF);
             background: -o-linear-gradient( to left top, #CBCBCB, #D5D5D5);
             background: linear-gradient( to left top, #EEEDED, #2C2D2D);
-            position: fixed;
-                     
-              
+            position: fixed;          
            }
+
            .scroll-content {
                align-content: center;
                display: flex;
                flex-direction: column;
                justify-content: center;
                text-align: center;
+               overflow: hidden;
            }
            ion-card.card {
                box-shadow: none;
