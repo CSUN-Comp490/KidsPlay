@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { MyEventsPage } from '../my-events/my-events'
-
+import { MyEventsPage } from '../my-events/my-events';
+import { MyProfilePage } from '../my-profile/my-profile';
+import { EventmadePage } from '../event-made/event-made';
 /**
  * Generated class for the AddEventPage page.
  *
@@ -19,6 +20,13 @@ export class AddEventPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     
   }
+  openProfilePage(){
+     this.navCtrl.push( MyProfilePage );
+  }
+  eventmade() {
+     this.navCtrl.push(EventmadePage);
+
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AddEventPage');
@@ -29,3 +37,4 @@ export class AddEventPage {
   }
 
 }
+
