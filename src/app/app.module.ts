@@ -20,6 +20,7 @@ import { FriendsPageModule } from '../pages/friends/friends.module';
 import { MyEventsPageModule } from '../pages/my-events/my-events.module';
 import {GroupChatPage} from '../pages/group-chat/group-chat';
 import { AddEventPageModule } from '../pages/add-event/add-event.module';
+import { EventmadePageModule } from '../pages/event-made/event-made.module';
 import { MyProfilePageModule } from '../pages/my-profile/my-profile.module';
 import { ViewcurrentEventPageModule } from '../pages/viewcurrent-event/viewcurrent-event.module'
 import {HttpModule} from '@angular/http';
@@ -47,7 +48,17 @@ import { TrackmapPageModule } from "../pages/trackmap/trackmap.module";
     AngularFireModule.initializeApp(crank),
     TrackmapPageModule,
     TrackerPageModule,
-    ViewcurrentEventPageModule
+    ViewcurrentEventPageModule,
+    AddEventPageModule,
+    EventmadePageModule,
+    MessagingPageModule,
+    EventsAttendingPageModule,
+    NewsfeedPageModule,
+    ListPageModule,
+    HomePageModule,
+    RegistrationPage,
+    MyEventsPageModule,
+    FriendsPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

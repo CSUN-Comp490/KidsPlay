@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ViewcurrentEventPage } from '../viewcurrent-event/viewcurrent-event';
-import { VieweventPage } from '../viewevent/viewevent';
 import { MyEventsPage } from '../my-events/my-events';
 
 @IonicPage()
