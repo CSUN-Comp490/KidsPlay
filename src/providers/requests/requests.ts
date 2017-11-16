@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
-import 'rxjs/add/operator/map';
+import {connreq} from '../../models/interfaces/request';
+import firebase from 'firebase';
 
 /*
   Generated class for the RequestsProvider provider.
@@ -10,9 +10,23 @@ import 'rxjs/add/operator/map';
 */
 @Injectable()
 export class RequestsProvider {
+  firereq = firebase.database().ref('/requests');
 
-  constructor(public http: Http) {
-    console.log('Hello RequestsProvider Provider');
+  constructor() {
+ 
+  }
+
+  sendrequest(req: connreq) {
+    var promise = new Promise((resolve, reject) => {
+      this.firereq.child(req.recipient).push({
+      sender: req.sender
+      }).then(() => {
+        resolve({ success: true });
+        }).catch((err) => {
+          resolve(err);
+    })
+    })
+    return promise;  
   }
 
 }
