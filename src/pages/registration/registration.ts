@@ -17,58 +17,63 @@ import * as firebase from 'firebase';
   templateUrl: 'registration.html',
 })
 export class RegistrationPage {
-  email='';
-  password='';
+  email = '';
+  password = '';
   fullName = '';
-  famName='';
+  famName = '';
   address = '';
 
 
- 
+
 
   // Variables Used by Child Registration
-  childName='';
-  parentEmail='';
-  parentName='';
-  parentPassword='';
+  childfirstName = '';
+  parentEmail = '';
+  childPassword = '';
+  parentPassword = '';
 
-  
+  // Variables Used by Teen Registration
+  teenfirstName = '';
+  tparentEmail = '';
+  tparentName = '';
+  teenPassword = '';
 
 
 
-  
 
-userProfile:any = firebase.database().ref('users');
-  constructor(public navCtrl: NavController, public navParams: NavParams, public userService:UserServiceProvider,
-  public fireAuth:AngularFireAuth) {
+
+
+
+  userProfile: any = firebase.database().ref('users');
+  constructor(public navCtrl: NavController, public navParams: NavParams, public userService: UserServiceProvider,
+    public fireAuth: AngularFireAuth) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegistrationPage');
-    let account = "parent";
   }
-registerUser(){
-  this.userService.signUpUser(this.email, this.password)
-  .then((newUserCreated)=>{  
-    
-            this.fireAuth.auth.signInWithEmailAndPassword(this.email,this.password).then((authenticatedUser) => {
-    
-                        this.userProfile.child(authenticatedUser.uid).set({
-                            email: this.email,
-                            fullName: this.fullName,
-                            familyName: this.famName,
-                            address: this.address
-                        })
-                    })
-                })
-                this.navCtrl.setRoot('HomePage');
-}
+  registerUser() {
+    this.userService.signUpUser(this.email, this.password)
+      .then((newUserCreated) => {
 
-// Adds a child to an existing parent
-createChild(){
+        this.fireAuth.auth.signInWithEmailAndPassword(this.email, this.password).then((authenticatedUser) => {
 
-}
+          this.userProfile.child(authenticatedUser.uid).set({
+            email: this.email,
+            fullName: this.fullName,
+            familyName: this.famName,
+            address: this.address
+          })
+        })
+      })
+    this.navCtrl.setRoot('HomePage');
+  }
+
+  // Adds a child to an existing parent
+  createChild() {
+
+  }
 
 
-  
+
 }
