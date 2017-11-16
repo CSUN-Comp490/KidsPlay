@@ -24,6 +24,12 @@ import { MyProfilePageModule } from '../pages/my-profile/my-profile.module';
 import {HttpModule} from '@angular/http';
 import { RequestsProvider } from '../providers/requests/requests';
 
+import { GoogleMaps } from '@ionic-native/google-maps';
+import { Geolocation } from '@ionic-native/geolocation';
+
+
+import { TrackerPageModule } from "../pages/tracker/tracker.module";
+import { TrackmapPageModule } from "../pages/trackmap/trackmap.module";
 
 @NgModule({
   declarations: [
@@ -37,7 +43,9 @@ import { RequestsProvider } from '../providers/requests/requests';
     AngularFireAuthModule,
     LoginPageModule,
     MyProfilePageModule,
-    AngularFireModule.initializeApp(crank)
+    AngularFireModule.initializeApp(crank),
+    TrackmapPageModule,
+    TrackerPageModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -49,6 +57,8 @@ import { RequestsProvider } from '../providers/requests/requests';
   providers: [
     StatusBar,
     SplashScreen,
+    GoogleMaps,
+    Geolocation,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthProvider,
     UserServiceProvider,
