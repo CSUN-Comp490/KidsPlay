@@ -22,8 +22,8 @@ export class RequestsProvider {
       sender: req.sender
       }).then(() => {
         resolve({ success: true });
-        }).catch((err) => {
-          resolve(err);
+        // }).catch((err) => {
+        //   resolve(err);
     })
     })
     return promise;  
