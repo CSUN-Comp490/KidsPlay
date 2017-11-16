@@ -17,6 +17,7 @@ import { NewsfeedPageModule } from '../pages/newsfeed/newsfeed.module';
 import { EventsAttendingPageModule } from '../pages/events-attending/events-attending.module';
 import { MessagingPageModule } from '../pages/messaging/messaging.module';
 import { FriendsPageModule } from '../pages/friends/friends.module';
+import { EventDetailsPageModule } from '../pages/event-details/event-details.module';
 // import { MyEventsPageModule } from '../pages/my-events/my-events.module';
 //import {GroupChatPage} from '../pages/group-chat/group-chat';
 // import { AddEventPageModule } from '../pages/add-event/add-event.module';
@@ -26,10 +27,6 @@ import { RequestsProvider } from '../providers/requests/requests';
 
 import { GoogleMaps } from '@ionic-native/google-maps';
 import { Geolocation } from '@ionic-native/geolocation';
-
-
-import { TrackerPageModule } from "../pages/tracker/tracker.module";
-import { TrackmapPageModule } from "../pages/trackmap/trackmap.module";
 
 @NgModule({
   declarations: [
@@ -43,9 +40,8 @@ import { TrackmapPageModule } from "../pages/trackmap/trackmap.module";
     AngularFireAuthModule,
     LoginPageModule,
     MyProfilePageModule,
-    AngularFireModule.initializeApp(crank),
-    TrackmapPageModule,
-    TrackerPageModule,
+    EventDetailsPageModule,
+    AngularFireModule.initializeApp(crank)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
