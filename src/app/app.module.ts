@@ -22,7 +22,14 @@ import { FriendsPageModule } from '../pages/friends/friends.module';
 // import { AddEventPageModule } from '../pages/add-event/add-event.module';
 import { MyProfilePageModule } from '../pages/my-profile/my-profile.module';
 import {HttpModule} from '@angular/http';
+import { RequestsProvider } from '../providers/requests/requests';
 
+import { GoogleMaps } from '@ionic-native/google-maps';
+import { Geolocation } from '@ionic-native/geolocation';
+
+
+import { TrackerPageModule } from "../pages/tracker/tracker.module";
+import { TrackmapPageModule } from "../pages/trackmap/trackmap.module";
 
 @NgModule({
   declarations: [
@@ -36,7 +43,9 @@ import {HttpModule} from '@angular/http';
     AngularFireAuthModule,
     LoginPageModule,
     MyProfilePageModule,
-    AngularFireModule.initializeApp(crank)
+    AngularFireModule.initializeApp(crank),
+    TrackmapPageModule,
+    TrackerPageModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -48,9 +57,12 @@ import {HttpModule} from '@angular/http';
   providers: [
     StatusBar,
     SplashScreen,
+    GoogleMaps,
+    Geolocation,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthProvider,
-    UserServiceProvider
+    UserServiceProvider,
+    RequestsProvider
     
   ]
 })

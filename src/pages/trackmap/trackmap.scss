@@ -1,0 +1,16 @@
+page-trackmap {
+    #map {
+        height: 100%;
+        
+    }
+
+    .header{
+        font-family: 'Baloo', cursive;
+        text-align: center;
+        text-shadow: 1px 1px #000000;
+    }
+
+    .no-scroll .scroll-content{
+        overflow: hidden;
+   }
+}
