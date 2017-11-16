@@ -14,10 +14,9 @@ import { FriendsPage } from './../pages/friends/friends';
 import { MyEventsPage } from '../pages/my-events/my-events';
 import { MyProfilePage } from '../pages/my-profile/my-profile';
 import { AddEventPage } from '../pages/add-event/add-event';
-import { EventmadePage } from '../pages/event-made/event-made';
-import { ViewcurrentEventPage } from '../pages/viewcurrent-event/viewcurrent-event';
-//import { TrackerPage } from "../pages/tracker/tracker";
-//import { TrackmapPage } from "../pages/trackmap/trackmap";
+
+import { TrackerPage } from "../pages/tracker/tracker";
+import { TrackmapPage } from "../pages/trackmap/trackmap";
 
 
 @Component({
@@ -41,7 +40,8 @@ export class MyApp {
         { title: 'Friends', component: FriendsPage, icon: 'contacts' },
         { title: 'My Events', component: MyEventsPage, icon: 'calendar' },
         { title: 'My Profile', component: MyProfilePage, icon: 'contact' },
-        { title: 'Add A Event', component: AddEventPage, icon: 'add-circle' }
+        { title: 'Add A Event', component: AddEventPage, icon: 'add-circle' },
+        { title: 'Registration', component: RegistrationPage, icon: 'heart' }
        // { title: 'KidTracker', component: TrackerPage, icon: 'contact' },
        // { title: 'KidMap', component: TrackmapPage, icon: 'contact' },
                 

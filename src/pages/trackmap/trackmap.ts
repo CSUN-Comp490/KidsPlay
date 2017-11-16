@@ -1,7 +1,7 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-//import {GoogleMaps, GoogleMap } from '@ionic-native/google-maps';
+import {GoogleMaps, GoogleMap } from '@ionic-native/google-maps';
 /**
  * Generated class for the TrackmapPage page.
  *
@@ -39,12 +39,12 @@ export class TrackmapPage {
 
     })*/
     
-    // Map options
+    //Map options
 
     const options = {
       center: location,
       zoom: 15,
-      //mapTypeId: google.maps.MapTypeId.ROADMAP,
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
     }
     this.map = new google.maps.Map(this.mapRef.nativeElement, options)
     

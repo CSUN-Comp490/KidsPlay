@@ -53,7 +53,8 @@ import { TrackmapPageModule } from "../pages/trackmap/trackmap.module";
     NewsfeedPageModule,
     MessagingPageModule,
     FriendsPageModule,
-    MyEventsPageModule
+    MyEventsPageModule, 
+  
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -72,3 +73,7 @@ import { TrackmapPageModule } from "../pages/trackmap/trackmap.module";
   ]
 })
 export class AppModule {}
+function newFunction() {
+    '../';
+}
+
