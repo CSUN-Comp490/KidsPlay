@@ -17,8 +17,11 @@ import { EventsAttendingPageModule } from '../pages/events-attending/events-atte
 import { MessagingPageModule } from '../pages/messaging/messaging.module';
 import { FriendsPageModule } from '../pages/friends/friends.module';
 import { MyEventsPageModule } from '../pages/my-events/my-events.module';
-
+import { VieweventPageModule } from '../pages/viewevent/viewevent.module';
 import { AddEventPageModule } from '../pages/add-event/add-event.module';
+import { TabsPageModule } from '../pages/tabs/tabs.module';
+import { EventmadePageModule } from '../pages/event-made/event-made.module';
+import { ViewcurrentEventPageModule } from '../pages/viewcurrent-event/viewcurrent-event.module'
 import { MyProfilePageModule } from '../pages/my-profile/my-profile.module';
 
 import { GoogleMaps } from '@ionic-native/google-maps';
@@ -30,7 +33,6 @@ import { TrackmapPageModule } from "../pages/trackmap/trackmap.module";
 @NgModule({
   declarations: [
     MyApp,
-  
     
     
   ],
@@ -42,7 +44,16 @@ import { TrackmapPageModule } from "../pages/trackmap/trackmap.module";
     MyProfilePageModule,
     AngularFireModule.initializeApp(crank),
     TrackmapPageModule,
-    TrackerPageModule
+    TrackerPageModule,
+    AddEventPageModule,
+    TabsPageModule,
+    EventmadePageModule,
+    ViewcurrentEventPageModule,
+    VieweventPageModule,
+    NewsfeedPageModule,
+    MessagingPageModule,
+    FriendsPageModule,
+    MyEventsPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
