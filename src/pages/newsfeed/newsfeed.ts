@@ -27,7 +27,7 @@ export class NewsfeedPage {
     
     this.people.push({ name: "Smith " + "Family", id: 1 });
 
-    this.events = new Array(3);
+    this.events = new Array(1);
     // this.people.push({name:"Waller " + "Family", id:2});
     // this.people.push({name:"3", id:3});
   }
