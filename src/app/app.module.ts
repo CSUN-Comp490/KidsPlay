@@ -22,6 +22,7 @@ import { FriendsPageModule } from '../pages/friends/friends.module';
 // import { AddEventPageModule } from '../pages/add-event/add-event.module';
 import { MyProfilePageModule } from '../pages/my-profile/my-profile.module';
 import {HttpModule} from '@angular/http';
+import { RequestsProvider } from '../providers/requests/requests';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import {HttpModule} from '@angular/http';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthProvider,
-    UserServiceProvider
+    UserServiceProvider,
+    RequestsProvider
     
   ]
 })
