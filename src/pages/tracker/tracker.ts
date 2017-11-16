@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { TrackmapPage } from "../trackmap/trackmap";
-//import { Geolocation } from '@ionic-native/geolocation';
+import { Geolocation } from '@ionic-native/geolocation';
 //import { Geolocation } from '@ionic-native';
 /**
  * Generated class for the TrackerPage page.
@@ -30,10 +30,10 @@ export class TrackerPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad TrackerPage');
-   // this.geo.getCurrentPosition().then( pos => {
-   // this.lat = pos.coords.latitude;
-   // this.lng = pos.coords.longitude;
-   // }).catch( err => console.log(err));
+    this.geo.getCurrentPosition().then( pos => {
+    this.lat = pos.coords.latitude;
+    this.lng = pos.coords.longitude;
+    }).catch( err => console.log(err));
 
     
     

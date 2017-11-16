@@ -1,84 +1,45 @@
+<!--
+  Generated template for the AddEventPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
 <ion-header>
-  <ion-navbar color = "primary">
-      
-    <ion-buttons start>
-          <button ion-button menuToggle>
-            <ion-icon name="menu"></ion-icon>
-          </button>
-        </ion-buttons>
-
-    <ion-title align = "center">
-      AddEvent
-    </ion-title>
-    
-
-  </ion-navbar> 
-</ion-header>
- 
-<ion-content  class="background">
-   
-    <ion-item class = "info_collect" >
-     <ion-fab>
-       <button ion-fab class = "b_background" (click)= "openProfilePage()">
-       </button>
-     </ion-fab>
-     <br>
-     <h4 style = "margin-left: 62px"> Event type (among) &nbsp;
-      
-      <select> 
-        <option> Friend </option>
-        <option> Community </option>
-        <option> Public </option>
-     </select>
-       
-     </h4>
-     <ion-col width-30>  </ion-col>
-     </ion-item> 
-     
-     <ion-card style = "margin-top: 5ch">
-        
-              <ion-item color = "listcolor">
-                <ion-label floating color = "primary" ><h5><i>Event Name</i></h5></ion-label>
-                <ion-input type="text" autocorrect="off" value="" spellcheck="true" maxlength="30"></ion-input>
-              </ion-item>
-              
-              <ion-item>
-                  <ion-label>Date</ion-label>
-                  <ion-datetime displayFormat="YYYY-MM-DDTHH:mm" min="2017" max="2020-10-31" [(ngModel)]="myDate">
-                  </ion-datetime>
-              </ion-item>
-
-              <ion-item color = "listcolor">
-                  <ion-label floating color = "primary"><h5><i>Location</i></h5></ion-label>
-                  <ion-input type="location" value=""></ion-input>
-                </ion-item>
-                
-                <ion-item color = "">
-                    <ion-label floating color = "">Short Description</ion-label>
-                    <ion-input type="text" value=""></ion-input>
-                </ion-item>
-
-                <ion-item color = "listcolor">
-                    <ion-label floating color = "primary" ><i><h6>Capacity</h6></i></ion-label>
-                    <ion-input type="number" value=""></ion-input>
-                </ion-item>
-
-                <ion-item>
-                   
-                  </ion-item>
-
-     <div>
-        
-        <button ion-button color="light3" >Reset</button>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <button ion-button color="primary" (click)= "eventmade()">Submit</button>
-      </div>
-
-    </ion-card>
-    </ion-content>
-
-
- 
+  
+    <ion-navbar>
+      <ion-title>Create An Event</ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+  
+  
+  <ion-content padding>
+    <ion-list>
+  
+      <ion-item>
+        <ion-label floating>Title</ion-label>
+        <ion-input type="text"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label floating>Location</ion-label>
+        <ion-input type="text"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label floating>Information</ion-label>
+        <ion-input type="text"></ion-input>
+      </ion-item>
+  
+  
+      <ion-item>
+        <ion-label floating>Date and Time</ion-label>
+        <ion-datetime displayFormat="MMM DD, YYYY hh:mm a" min="2016" max="2025-10-31" [(ngModel)]="myDate"></ion-datetime>
+      </ion-item>
+  
+      <button ion-button full>Confirm</button>
+  
+      <button ion-button full color="danger" (click)="openMyEventsPage()">Cancel</button>
+  
+    </ion-list>
+  </ion-content>
