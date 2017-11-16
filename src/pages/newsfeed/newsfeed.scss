@@ -1,25 +1,36 @@
 page-newsfeed {
-
-    page-newsfeed {
-        .background {
-          background-image: url('../../assets/newsFeedAssets/Background_image/flyingchild.jpg');
-          background-repeat: no-repeat;
-          position: contain;
-          background-position: center;
-          background-size: cover;
-          background-position: 70% 10%;
+  
+      page-newsfeed {
+        
+        
+          .background {
+            background-image: url('../../assets/newsFeedAssets/Background_image/flyingchild.jpg');
+            background-repeat: no-repeat;
+            position: contain;
+            background-position: center;
+            background-size: cover;
+            background-position: 70% 10%;
+          }
+          .item-avatar {
+            width: 90% !important;
+            height: 90% !important;
+            max-width: 50px !important; //any size
+            max-height: 50px !important; //any size
+            box-shadow: 0 0 5px gray;
+          }
+          .custom-icon {
+            font-size: 64px;
+            color: rgb(45, 122, 211);
+          }
+  
         }
-        .item-avatar {
-          width: 90% !important;
-          height: 90% !important;
-          max-width: 50px !important; //any size
-          max-height: 50px !important; //any size
-          box-shadow: 0 0 5px gray;
+        .button{
+          background-color: #ff6f6f;
         }
-        .custom-icon {
-          font-size: 64px;
-          color: red;
+        .button:hover{
+          background-color: #8f8f8f;
         }
-      }
-
-}
+        
+  
+  }
+  

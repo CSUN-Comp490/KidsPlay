@@ -15,9 +15,7 @@ import { MessagingPage } from '../pages/messaging/messaging';
 import { FriendsPage } from './../pages/friends/friends';
 import { MyEventsPage } from '../pages/my-events/my-events';
 import { MyProfilePage } from '../pages/my-profile/my-profile';
-
-import { TrackerPageModule } from "../pages/tracker/tracker.module";
-import { TrackmapPageModule } from "../pages/trackmap/trackmap.module";
+import { EventDetailsPage } from '../pages/event-details/event-details';
 
 @Component({
   templateUrl: 'app.html'

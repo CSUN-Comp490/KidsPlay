@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { UserServiceProvider } from './../../providers/user-service/user-service';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { MyEventsPage } from '../my-events/my-events'
+import * as firebase from 'firebase';
 
 /**
  * Generated class for the AddEventPage page.
@@ -16,7 +19,14 @@ import { MyEventsPage } from '../my-events/my-events'
 })
 export class AddEventPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  eventTitle = '';
+  location = '';
+  date = '';
+  time = '';
+
+  userProfile:any = firebase.database().ref('events');
+  constructor(public navCtrl: NavController, public navParams: NavParams, public userService:UserServiceProvider,
+    public fireAuth:AngularFireAuth) {
     
   }
 
@@ -26,6 +36,17 @@ export class AddEventPage {
 
   openMyEventsPage() {
     this.navCtrl.setRoot(MyEventsPage, {}, {animate: true, direction: 'forward'});
+  }
+  addNewEvent(){
+    /*
+    this.userProfile.child().set({
+    eventTitle: this.eventTitle,
+    location: this.location,
+    date: this.date,
+    time: this.time});
+                          
+                  this.navCtrl.setRoot('HomePage');
+                  */
   }
 
 }
