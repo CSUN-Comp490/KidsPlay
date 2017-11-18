@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { BuddiesPage} from '../buddies/buddies';
 
 /**
- * Generated class for the GroupChatPage page.
+ * Generated class for the TabsPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -11,20 +10,16 @@ import { BuddiesPage} from '../buddies/buddies';
 
 @IonicPage()
 @Component({
-  selector: 'page-group-chat',
-  templateUrl: 'group-chat.html',
+  selector: 'page-tabs',
+  templateUrl: 'tabs.html',
 })
-export class GroupChatPage {
+export class TabsPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad GroupChatPage');
-  }
-
-  addbuddy(){
-    this.navCtrl.push('BuddiesPage');
+    console.log('ionViewDidLoad TabsPage');
   }
 
 }

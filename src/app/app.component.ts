@@ -7,7 +7,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import {HomePage} from './../pages/home/home';
 import { ChatsPage } from '../pages/chats/chats';
-import {GroupChatPage} from '../pages/group-chat/group-chat';
+import { BuddiesPage } from '../pages/buddies/buddies';
+import { GroupChatPage } from '../pages/group-chat/group-chat';
 import { ListPage } from '../pages/list/list';
 import { NewsfeedPage } from '../pages/newsfeed/newsfeed';
 import { EventsAttendingPage } from '../pages/events-attending/events-attending';
