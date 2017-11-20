@@ -1,17 +1,96 @@
 page-tracker {
-    .background {
-        background-image: url('../../assets/TrackPage.png');
-        background-repeat: no-repeat;
-        position: contain;
-        background-position: center;
-        background-size: cover;
-        background-position: 70% 10%;
+    // .background {
+    //     background-image: url('../../assets/Front.png');
+    //     background-repeat: repeat;
+    //     position: contain;
+    //     background-position: top;
+    //     background-size: cover;
+    //     background-position: 70% 10%;
+    //     z-index: 1;
+    // }
+
+
+
+    // ion-card.card{
+    //     background-image: url('../../assets/Front.png');
+    //     background-repeat: no-repeat;
+    //     position: contain;
+    //     background-position: top;
+    //     background-size: cover;
+    //     background-position: 70% 10%;
+    //     z-index: -11;
+
+    // }
+
+    .header{
+        font-family: 'Baloo', cursive;
+        text-align: center;
+        text-shadow: 1px 1px #000000;
     }
+
+    .no-scroll .scroll-content{
+        overflow: hidden;
+   }
+
     .button {
+
+        font-family: 'Baloo', cursive;
+        text-align: center;
+        text-shadow: 1px 1px #000000;
+
         opacity: .75;
         display: block;
         margin: auto;
         width: 60%;
+        box-shadow: none;
+        background: #137C69;
+        border-radius: 5px;
+        color: rgb(255, 255, 255);
     }
+    // .button {
+        
+    //     //font-family: 'Baloo', cursive;
+    //     text-align: center;
+    //     text-shadow: 1px 1px #000000;
+    //     //opacity: .75;
+    //     display: block;
+    //     opacity: .75;
+    //     margin: auto;
+    //     width: 60%;
+    //     box-shadow: none;
+    //     background: rgba(0, 0, 0, 0.8);
+    //     border-radius: 50px;
+    //     color: #137C69;
+    // }
 
+
+
+    @keyframes animatedBackground {
+        from { background-position: 0 0; }
+        to { background-position: 100% 0; }
+    }
+    
+    @-webkit-keyframes animatedBackground {
+        from { background-position: 0 0; }
+        to { background-position: 100% 0; }
+    }
+    
+    
+    .scroll-content{
+    //z-index: -1;
+    background-image: url(../../assets/Front.png), url(../../assets/scroll.png) ;
+    //background-position: 0px 0px;
+    background-repeat: repeat-x;
+    background-size:cover;
+
+    background-position: 50% 0;    
+    transition: 0s linear;
+    transition-property: background-position;
+
+    -webkit-animation:animatedBackground 80s linear infinite;
+    -moz-animation:animatedBackground 80s linear infinite;
+    -ms-animation:animatedBackground 80s linear infinite;
+    -o-animation:animatedBackground 80s linear infinite;
+    animation:animatedBackground 80s linear infinite;
+    }
 }

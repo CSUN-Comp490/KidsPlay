@@ -1,49 +1,211 @@
 <ion-header>
-  <ion-navbar color = "primary">
-    <ion-title >
-    <a>Registration</a> 
+  <ion-navbar color="primary">
+    <ion-title>
+      <a>Registration</a>
     </ion-title>
   </ion-navbar>
+
+
+
 </ion-header>
 <!-- <ion-card> <ion-icon name="person-add"></ion-icon> </ion-card> -->
 
 
 <ion-content class="background">
+
+
+
+
   <ion-card>
     <ion-card-header>
-      
+      <ion-segment [(ngModel)]="account">
+        <ion-segment-button value="parent">
+          Parent
+        </ion-segment-button>
+        <ion-segment-button value="teen">
+          Teen
+        </ion-segment-button>
+        <ion-segment-button value="child">
+          Child
+        </ion-segment-button>
+      </ion-segment>
     </ion-card-header>
-    <ion-card-content>
-      <ion-list no-lines>
-        <div class = "space style height: 10px;"></div>
+    <ion-card-content [ngSwitch]="account">
+
+      <!-- Parent Registration -->
+      <ion-list no-lines *ngSwitchCase="'parent'">
+        <div class="space style height: 10px;"></div>
         <ion-item>
-<ion-label color = "light2"> <ion-icon name="people"></ion-icon> </ion-label>          
-<ion-input clearInput type="text" placeholder = "Family's Name"></ion-input>
+          <ion-label color="light2">
+            <ion-icon name="people"></ion-icon>
+          </ion-label>
+          <ion-input clearInput type="text" [(ngModel)]="famName" name="famName" placeholder="Family's Name"></ion-input>
         </ion-item>
-      
-      <!-- <div class = "space style height: 2px;"></div> -->
-      <ion-item>
-        <ion-label color = "light2"> <ion-icon name="mail"></ion-icon></ion-label>          
-        <ion-input type="email" placeholder="Email"></ion-input>
-      </ion-item>
-    
-    <div class = "space style height: 5px;"></div>
-    <ion-item>
-      <ion-label color = "light2"> <ion-icon name="lock"></ion-icon> </ion-label>          
-      <ion-input type="password" placeholder="Password"></ion-input>
-    </ion-item>
-    
-    <div class = "space style height: 5px;"></div>
-    <ion-item>
-      <ion-label color = "light2"> <ion-icon name="person"></ion-icon> </ion-label>          
-      <ion-input type="text" placeholder="Full Name">Full Name</ion-input>
-    </ion-item>
-    <div class = "space style height: 5px;"></div>
-    
-    <div class = "space style height: 5px;"></div>
-    <button ion-button round outline color ="primary"(click) = "registerUser()">Submit</button>
-     </ion-list>
-   </ion-card-content> 
+
+        <!-- <div class = "space style height: 2px;"></div> -->
+        <ion-item>
+          <ion-label color="light2">
+            <ion-icon name="mail"></ion-icon>
+          </ion-label>
+          <ion-input type="email" [(ngModel)]="email" name="email" placeholder="Email"></ion-input>
+        </ion-item>
+
+        <div class="space style height: 5px;"></div>
+        <ion-item>
+          <ion-label color="light2">
+            <ion-icon name="lock"></ion-icon>
+          </ion-label>
+          <ion-input type="password" [(ngModel)]="password" name="password" placeholder="Password"></ion-input>
+        </ion-item>
+
+        <div class="space style height: 5px;"></div>
+        <ion-item>
+          <ion-label color="light2">
+            <ion-icon name="person"></ion-icon>
+          </ion-label>
+          <ion-input type="text" [(ngModel)]="fullName" name="fullName" placeholder="Full Name">Full Name</ion-input>
+        </ion-item>
+        <div class="space style height: 5px;"></div>
+
+        <div class="space style height: 5px;"></div>
+        <ion-item>
+          <ion-label color="light2">
+            <ion-icon name="map"></ion-icon>
+          </ion-label>
+          <ion-input type="text" [(ngModel)]="address" name="address" placeholder="Address">Address</ion-input>
+        </ion-item>
+        <div class="space style height: 5px;"></div>
+
+        <div class="space style height: 5px;"></div>
+        <button ion-button round outline color="primary" (click)="registerUser()">Submit</button>
+      </ion-list>
+
+      <!-- Child Registration -->
+      <ion-list no-lines *ngSwitchCase="'child'">
+
+        <ion-item>
+          <ion-label color="light2">
+            <ion-icon name="mail"></ion-icon>
+          </ion-label>
+          <ion-input type="text" [(ngModel)]="parentEmail" name="parentEmail" placeholder="Parent's Email">Parent's Email</ion-input>
+        </ion-item>
+        <div class="space style height: 5px;"></div>
+
+        <div class="space style height: 5px;"></div>
+
+        <ion-item>
+          <ion-label color="light2">
+            <ion-icon name="lock"></ion-icon>
+          </ion-label>
+          <ion-input type="password" [(ngModel)]="parentPassword" name="parentPassword" placeholder="Parent's Password">Parent's Password</ion-input>
+        </ion-item>
+        <div class="space style height: 5px;"></div>
+
+        <div class="space style height: 5px;"></div>
+
+        <!-- Child First Name  -->
+        <ion-item>
+          <ion-label color="light2">
+            <ion-icon name="body"></ion-icon>
+          </ion-label>
+          <ion-input type="text" [(ngModel)]="childfirstName" name="childfirstName" placeholder="Child's First Name">Child's First Name</ion-input>
+        </ion-item>
+
+        <div class="space style height: 5px;"></div>
+
+        <div class="space style height: 5px;"></div>
+
+        <!-- Child Password -->
+        <ion-item>
+          <ion-label color="light2">
+            <ion-icon name="lock"></ion-icon>
+          </ion-label>
+          <ion-input type="text" [(ngModel)]="childPassword" name="childPassword" placeholder="Child's Password">Child's Password</ion-input>
+        </ion-item>
+
+        <div class="space style height: 5px;"></div>
+
+        <div class="space style height: 5px;"></div>
+        <button ion-button round outline color="primary" (click)="createChild()">Submit</button>
+      </ion-list>
+
+      <!-- Teen Registration -->
+      <ion-list no-lines *ngSwitchCase="'teen'">
+
+        <ion-item>
+          <ion-label color="light2">
+            <ion-icon name="mail"></ion-icon>
+          </ion-label>
+          <ion-input type="text" [(ngModel)]="tparentEmail" name="tparentEmail" placeholder="Parent's Email">Parent's Email</ion-input>
+        </ion-item>
+        <div class="space style height: 5px;"></div>
+
+        <div class="space style height: 5px;"></div>
+
+        <ion-item>
+          <ion-label color="light2">
+            <ion-icon name="lock"></ion-icon>
+          </ion-label>
+          <ion-input type="text" [(ngModel)]="tparentPassword" name="tparentPassword" placeholder="Parent's Password">Parent's Password</ion-input>
+        </ion-item>
+        <div class="space style height: 5px;"></div>
+
+        <div class="space style height: 5px;"></div>
+
+        <!-- Teen Name -->
+        <ion-item>
+          <ion-label color="light2">
+            <ion-icon name="person"></ion-icon>
+          </ion-label>
+          <ion-input type="text" [(ngModel)]="teenfirstName" name="teenfirstName" placeholder="Teen's First Name">Teen's First Name</ion-input>
+        </ion-item>
+
+        <div class="space style height: 5px;"></div>
+
+        <div class="space style height: 5px;"></div>
+
+        <!-- Teen Email -->
+        <ion-item>
+        <ion-label color="light2">
+          <ion-icon name="mail"></ion-icon>
+        </ion-label>
+        <ion-input type="text" [(ngModel)]="teenEmail" name="teenEmail" placeholder="Teen's Email">Teen's Email</ion-input>
+        </ion-item>
+
+        <div class="space style height: 5px;"></div>
+
+        <div class="space style height: 5px;"></div>
+
+        <!-- Teen Password -->
+        <ion-item>
+          <ion-label color="light2">
+            <ion-icon name="lock"></ion-icon>
+          </ion-label>
+          <ion-input type="text" [(ngModel)]="teenPassword" name="teenPassword" placeholder="Teen's Password">Teen's Password</ion-input>
+        </ion-item>
+
+        <div class="space style height: 5px;"></div>
+
+        <div class="space style height: 5px;"></div>
+
+        <button ion-button round outline color="primary" (click)="createTeen()">Submit</button>
+      </ion-list>
+
+
+
+
+
+
+
+
+      <ion-list no-lines *ngSwitchDefault>
+      </ion-list>
+
+
+
+
+
+    </ion-card-content>
   </ion-card>
 
 </ion-content>

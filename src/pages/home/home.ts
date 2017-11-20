@@ -1,6 +1,7 @@
+import { UserServiceProvider } from './../../providers/user-service/user-service';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import {AngularFireAuth} from 'angularfire2/auth'
 /**
  * Generated class for the HomePage page.
  *
@@ -15,11 +16,45 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private afAuth: AngularFireAuth,private toast: ToastController,
+    public navCtrl: NavController, public navParams: NavParams, public userService:UserServiceProvider) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad HomePage');
+  ionViewWillLoad() {
+    this.afAuth.authState.subscribe(data => {
+
+      if (data && data.email && data.uid){
+      this.toast.create({
+
+        message: `Welcome to KidsPlay, ${data.email}`,
+        duration: 3000
+      }).present();
+      }
+      else {//determin log in
+          this.toast.create({
+            message: `Could not find authentication details`,
+            duration: 3000
+          }).present();
+      }
+    });
   }
+    // signin(){
+    //   this.authservice.login(this.credentials).then((res:any) =>{
+    //      if(!res.code)
+    //        this.navCtrl.setRoot('HomePage');
+    //      else 
+    //      alert(res);
+
+    //   })
+
+    // }
+
+   load(){
+      this.userService.loadUser(5).then((res)=>{
+        console.log(res);
+      }).catch((err)=>{
+        console.log(err);
+      })
+    }
 
 }

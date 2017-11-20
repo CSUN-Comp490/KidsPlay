@@ -1,8 +1,11 @@
+import { AngularFireAuth } from 'angularfire2/auth';
+import { RegistrationPage } from './../registration/registration';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,ToastController } from 'ionic-angular';
 import {AuthProvider} from '../../providers/auth/auth';
 import {usercreds} from '../../models/interfaces/usercreds';
 import { MyProfilePage } from '../my-profile/my-profile';
+
 
 /**
  * Generated class for the LoginPage page.
@@ -19,6 +22,8 @@ import { MyProfilePage } from '../my-profile/my-profile';
 
 
 export class LoginPage {
+
+
  credentials={} as usercreds;
 
 
@@ -26,9 +31,24 @@ export class LoginPage {
 
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
-  }
+  // ionViewWillLoad() {
+  //   this.afAuth.authState.subscribe(data => {
+
+  //     if (data.email && data.uid){
+  //     this.toast.create({
+
+  //       message: `Welcome to APP_NAME, ${data.email}`,
+  //       duration: 3000
+  //     }).present();
+  //     }
+  //     else {
+  //         this.toast.create({
+  //           message: `Could not find authentication details`,
+  //           duration: 3000
+  //         }).present();
+  //     }
+  //   });
+  // }
     signin(){
       this.authservice.login(this.credentials).then((res:any) =>{
          if(!res.code)
@@ -38,7 +58,10 @@ export class LoginPage {
 
       })
 
-
+    }
+        register() {
+          this.navCtrl.push('RegistrationPage');
+      
     }
 
 
