@@ -33,6 +33,7 @@ import { Geolocation } from '@ionic-native/geolocation';
 
 import { TrackerPageModule } from "../pages/tracker/tracker.module";
 import { TrackmapPageModule } from "../pages/trackmap/trackmap.module";
+import { AngularFireDatabaseModule } from "angularfire2/database";
 
 @NgModule({
   declarations: [
@@ -58,8 +59,8 @@ import { TrackmapPageModule } from "../pages/trackmap/trackmap.module";
     NewsfeedPageModule,
     MessagingPageModule,
     FriendsPageModule,
-    MyEventsPageModule, 
-  
+    MyEventsPageModule,
+    AngularFireDatabaseModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

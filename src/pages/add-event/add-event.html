@@ -40,28 +40,28 @@
         
               <ion-item color = "listcolor">
                 <ion-label floating color = "primary" ><h5><i>Event Name</i></h5></ion-label>
-                <ion-input type="text" autocorrect="off" value="" spellcheck="true" maxlength="30"></ion-input>
+                <ion-input type="text" [(ngModel)]="eventName" name="eventName" autocorrect="off" value="" spellcheck="true" maxlength="30"></ion-input>
               </ion-item>
               
               <ion-item>
                   <ion-label>Date</ion-label>
-                  <ion-datetime displayFormat="YYYY-MM-DDTHH:mm" min="2017" max="2020-10-31" [(ngModel)]="myDate">
+                  <ion-datetime displayFormat="YYYY-MM-DDTHH:mm" min="2017" max="2020-10-31" [(ngModel)]="myDate" name="myDate">
                   </ion-datetime>
               </ion-item>
 
               <ion-item color = "listcolor">
                   <ion-label floating color = "primary"><h5><i>Location</i></h5></ion-label>
-                  <ion-input type="location" value=""></ion-input>
+                  <ion-input type="location" [(ngModel)]="location" name="location" value=""></ion-input>
                 </ion-item>
                 
                 <ion-item color = "">
                     <ion-label floating color = "">Short Description</ion-label>
-                    <ion-input type="text" value=""></ion-input>
+                    <ion-input type="text" [(ngModel)]="description" name="description" value=""></ion-input>
                 </ion-item>
 
                 <ion-item color = "listcolor">
                     <ion-label floating color = "primary" ><i><h6>Capacity</h6></i></ion-label>
-                    <ion-input type="number" value=""></ion-input>
+                    <ion-input type="number" [(ngModel)]="capacity" name="capacity" value=""></ion-input>
                 </ion-item>
 
                 <ion-item>
@@ -70,12 +70,12 @@
       
 
      <div>
-        
+      &nbsp;&nbsp;
         <button ion-button color="light3" >Reset</button>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <button ion-button color="primary" (click)= "eventmade()">Submit</button>
       </div>
 
