@@ -1,6 +1,23 @@
-page-contact {
+page-add-event {
 
-    ion-card.background {
+ng-pristine: {
+        background-color: #ffffff;
+
+}
+ng-valid: {
+    border: solid 3px green;
+    
+    }
+
+
+    ion-card.card {
+        box-shadow: none;
+        background: rgba(0, 0, 0, 0.8);
+        border-radius: 5px;
+        position: fixed;
+    }
+
+    .background {
         height: 100%;
         -webkit-background-size: cover;
         -moz-background-size: cover;
@@ -25,6 +42,11 @@ page-contact {
 .datefront{
     font-style: italic;
     
+
+}
+
+.color{
+  background-color: black;
 
 }
 
