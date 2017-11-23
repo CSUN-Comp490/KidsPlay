@@ -15,6 +15,8 @@
 </ion-header>
  
 <ion-content  class="background">
+
+  <form>
    
     <div class = "info_collect" >
      
@@ -32,92 +34,81 @@
         <option> Public </option>
      </select>
     </a>
-    
      <ion-col width-30>  </ion-col>
     </div> 
   
   
- <ion-card style = "margin-top: 12ch">
+ <ion-card style = "margin-top: 5ch">
 
-    <!-- <ion-card-content>
-       
-        <ion-item>
-            <ion-input type="text" placeholder="Text" [(ngModel)]="inputValue"></ion-input>
-        </ion-item>
-        <div class = "space style height: 5px;"></div>
-      <ion-item>
-          <ion-input type="password" placeholder="Password" [(ngModel)]="credentials.password"></ion-input>
-      </ion-item>
-      <div class = "space style height: 10px;"></div>
-      <a (click)= "passwordreset()"> Forgot login details? <b> Click Here</b></a>
-      <div class = "space style height: 10px;"></div>
-      <button ion-button round outline color ="primary" (click) = "signin()"> Login</button>
-      <div class = "space style height: 10px;"></div>
-      <p>OR</p>
-      <div class = "space style height: 10px;"></div>
-      <button ion-button clear full color ="primary"(click) = "register()">Don't have an account?</button>
-       </ion-list>
-     </ion-card-content>  -->
-
-        <ion-card-content>
-            
+        <ion-card-content >
+              <!-- //descriptiopn of EventName -->
                 <div class = "space style height: 10px;"></div>
               <ion-item color = "listcolor" ng-init>
-                <ion-label floating color = "primary" ><h5><i>Event Name</i></h5></ion-label>
-<<<<<<< HEAD
-                <ion-input type="text" [(ngModel)]="eventName" name="eventName" autocorrect="off" value="" spellcheck="true" maxlength="30"></ion-input>
-=======
-                <ion-input type="text" ng-minlength= "4"  ng-maxlength = "30" [(ngModel)]= "inputValue" autocorrect="off" value="" spellcheck="true" ></ion-input>
->>>>>>> eb7777b23494d626a2f07b76a05d8ff6cf823965
+                <ion-label floating color = "primary" >
+                  <h5><i> 
+                    <ion-icon name="finger-print"></ion-icon>&nbsp;&nbsp;
+                    Event Name 
+                  </i></h5>
+                </ion-label>
+                <ion-input type="text" ng-minlength= "4" ng-maxlength = "30" [(ngModel)]="eventName" name="eventName" autocorrect="off" value="" spellcheck="true" maxlength="30"></ion-input>
               </ion-item>
               <div class = "space style height: 5px;"></div>
               
+              <!-- //descriptiopn of EventDate -->
               <ion-item>
-                  <ion-label>Date</ion-label>
+                  <ion-label><h5><i><ion-icon name="calendar"></ion-icon>&nbsp;&nbsp;
+                    Date </i></h5>
+                  </ion-label>
                   <ion-datetime displayFormat="YYYY-MM-DDTHH:mm" min="2017" max="2020-10-31" [(ngModel)]="myDate" name="myDate">
                   </ion-datetime>
               </ion-item>
 
+              <!-- //descriptiopn of the EventLocation -->
               <ion-item color = "listcolor">
-                  <ion-label floating color = "primary"><h5><i>Location</i></h5></ion-label>
+                  <ion-label floating color = "primary">
+                    <h5><i><ion-icon name="pin"></ion-icon> &nbsp;&nbsp;
+                      Location
+                    </i></h5>
+                  </ion-label>
                   <ion-input type="location" [(ngModel)]="location" name="location" value=""></ion-input>
                 </ion-item>
                 
+                <!-- //descriptiopn of the EventDescription -->
                 <ion-item color = "">
-                    <ion-label floating color = "">Short Description</ion-label>
+                    <ion-label floating color = "">
+                      <h5><i>
+                        <ion-icon name="clipboard"></ion-icon>&nbsp;&nbsp;
+                        Short Description
+                      </i></h5>
+                    </ion-label>
                     <ion-input type="text" [(ngModel)]="description" name="description" value=""></ion-input>
                 </ion-item>
 
+                  <!-- //descriptiopn of the EventCapacity -->
                 <ion-item color = "listcolor">
-                    <ion-label floating color = "primary" ><i><h6>Capacity</h6></i></ion-label>
+                    <ion-label floating color = "primary" ><i><h5> <ion-icon name="people"></ion-icon>&nbsp;&nbsp;
+                      Capacity
+                    </h5></i>
+                  </ion-label>
                     <ion-input type="number" [(ngModel)]="capacity" name="capacity" value=""></ion-input>
                 </ion-item>
 
-                <ion-item>
-                   
-                  </ion-item>
-      </ion-card-content>
+          </ion-card-content>
 
-     <div>
-<<<<<<< HEAD
-      &nbsp;&nbsp;
-        <button ion-button color="light3" >Reset</button>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-=======
-      
-        <button data-clear-btn="true" ion-button color="light3" >Reset</button>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
->>>>>>> eb7777b23494d626a2f07b76a05d8ff6cf823965
-        <button ion-button color="primary" (click)= "eventmade()">Submit</button>
+     <!-- Reset and Submit button -->
+      <div>
+        &nbsp;&nbsp;&nbsp;
+        <button class= "btn_size"> <ion-input type= "reset" data-clear-btn="true" ></ion-input></button>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button  class= "btn_size" (click)= "eventmade()"> <ion-input type= "submit" data-clear-btn="true"></ion-input></button>
       </div>
 
+      <br>
+
     </ion-card>
+    </form>
     </ion-content>
 
 
