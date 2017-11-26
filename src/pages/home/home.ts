@@ -1,7 +1,9 @@
+import { RegistrationPage } from './../registration/registration';
 import { UserServiceProvider } from './../../providers/user-service/user-service';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import {AngularFireAuth} from 'angularfire2/auth'
+
 /**
  * Generated class for the HomePage page.
  *
@@ -16,17 +18,30 @@ import {AngularFireAuth} from 'angularfire2/auth'
 })
 export class HomePage {
 
+  user: any;
+
   constructor(private afAuth: AngularFireAuth,private toast: ToastController,
     public navCtrl: NavController, public navParams: NavParams, public userService:UserServiceProvider) {
+
+     
+  }
+
+  getMessages() {
+    this.navCtrl.push('Messaging');
+  }
+
+  viewevents() {
+    this.navCtrl.push('My-Events');
   }
 
   ionViewWillLoad() {
     this.afAuth.authState.subscribe(data => {
-
+        console.log(data);
+        this.user = data.displayName;
       if (data && data.email && data.uid){
       this.toast.create({
 
-        message: `Welcome to KidsPlay, ${data.email}`,
+        message: `Welcome to KidsPlay, ${data.displayName}`,
         duration: 3000
       }).present();
       }
@@ -38,6 +53,8 @@ export class HomePage {
       }
     });
   }
+
+  
     // signin(){
     //   this.authservice.login(this.credentials).then((res:any) =>{
     //      if(!res.code)

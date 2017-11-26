@@ -1,3 +1,8 @@
+import { Camera } from '@ionic-native/camera';
+import { NavController } from 'ionic-angular';
+// import { PhotoProvider } from './../providers/photo/photo';
+import { TrackmapPageModule } from './../pages/trackmap/trackmap.module';
+import { TrackerPageModule } from './../pages/tracker/tracker.module';
 import { UserServiceProvider } from './../providers/user-service/user-service';
 import { RegistrationPage } from './../pages/registration/registration';
 import { LoginPageModule } from './../pages/login/login.module';
@@ -25,6 +30,12 @@ import {HttpModule} from '@angular/http';
 
 import { GoogleMaps } from '@ionic-native/google-maps';
 import { Geolocation } from '@ionic-native/geolocation';
+import { TrackerPage } from '../pages/tracker/tracker';
+import { TrackmapPage } from '../pages/trackmap/trackmap';
+import { AddPicPageModule } from '../pages/add-pic/add-pic.module';
+import { CameraProvider } from '../providers/camera/camera';
+import { NameDataProvider } from '../providers/name-data/name-data';
+
 
 @NgModule({
   declarations: [
@@ -39,12 +50,17 @@ import { Geolocation } from '@ionic-native/geolocation';
     AngularFireAuthModule,
     LoginPageModule,
     MyProfilePageModule,
+    TrackerPageModule,
+    TrackmapPageModule,
+    AddPicPageModule,
     AngularFireModule.initializeApp(crank)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    GroupChatPage
+    GroupChatPage,
+    TrackerPage,
+    TrackmapPage
     
     
   ],
@@ -55,7 +71,11 @@ import { Geolocation } from '@ionic-native/geolocation';
     Geolocation,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthProvider,
-    UserServiceProvider
+    UserServiceProvider,
+    CameraProvider,
+    Camera,
+    NameDataProvider
+    // PhotoProvider
     
   ]
 })

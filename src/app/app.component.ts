@@ -1,10 +1,11 @@
+import { Camera } from '@ionic-native/camera';
+import { CameraProvider } from './../providers/camera/camera';
 import { LoginPage } from './../pages/login/login';
 import { RegistrationPage } from './../pages/registration/registration';
-import { Component } from '@angular/core';
-import { Platform } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { Platform, NavController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
 import {HomePage} from './../pages/home/home';
 import { ChatsPage } from '../pages/chats/chats';
 import {GroupChatPage} from '../pages/group-chat/group-chat';
@@ -15,17 +16,22 @@ import { MessagingPage } from '../pages/messaging/messaging';
 import { FriendsPage } from './../pages/friends/friends';
 import { MyEventsPage } from '../pages/my-events/my-events';
 import { MyProfilePage } from '../pages/my-profile/my-profile';
+import { AddPicPage } from '../pages/add-pic/add-pic';
+
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  nav: any;
+  @ViewChild('content') navCtrl: NavController
+  //nav: any;
   rootPage:any = 'LoginPage';
 
   pages: Array<{title: string, component: any, icon: string}>;
   
-    constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+    constructor(public platform: Platform, 
+      public statusBar: StatusBar, 
+      public splashScreen: SplashScreen) {
       this.initializeApp();
   
       // used for an example of ngFor and navigation
@@ -36,7 +42,8 @@ export class MyApp {
         { title: 'Messaging', component: MessagingPage, icon: 'chatbubbles' },
         { title: 'Friends', component: FriendsPage, icon: 'contacts' },
         { title: 'My Events', component: MyEventsPage, icon: 'calendar' },
-        { title: 'My Profile', component: MyProfilePage, icon: 'contact' }
+        { title: 'My Profile', component: MyProfilePage, icon: 'contact' },
+        { title: 'Picture', component: AddPicPage, icon: 'ios-camera' }
       ];
   
     }
@@ -53,6 +60,6 @@ export class MyApp {
     openPage(page) {
       // Reset the content nav to have just this page
       // we wouldn't want the back button to show in this scenario
-      this.nav.setRoot(page.component);
+      this.navCtrl.setRoot(page.component);
     }
   }
