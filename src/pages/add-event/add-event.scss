@@ -17,11 +17,26 @@ ng-valid: {
        
     }
 
-    .btn_size{
-        height:50px;
-        width:80px;
-
+    .btn_reset {
+        color: white;
+        background-color:#137C69 ;
+        font-size: 1.0em;
+        border: 1px solid rgb(21, 131, 67);
+        height: 30px;
+        width: 284px;
+       margin-left: 15px;
     }
+   
+    .btn_submit {
+        color: white;
+        background-color:#137C69 ;
+        font-size: 1.0em;
+        border: 1px solid rgb(21, 131, 67);
+        height: 30px;
+        width: 284px;
+        margin-left: 15px;
+        
+}
 
 
 

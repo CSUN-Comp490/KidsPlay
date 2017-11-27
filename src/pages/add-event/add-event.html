@@ -20,27 +20,31 @@
    
     <div class = "info_collect" >
      
-      <ion-fab>
-       <button style = "margin-left: 10px" ion-fab class = "b_background" (click)= "openProfilePage()">
+      <ion-fab >
+       <button style = "margin-left: 140px" ion-fab class = "b_background" (click)= "openProfilePage()">
        </button>
      </ion-fab>
 
      <br>
-     <a class= "color" style = "margin-left: 75px"> Event type (among) >>
-      
-      <select style = "margin-left: 5px"> 
-        <option> Friend </option>
-        <option> Community </option>
-        <option> Public </option>
-     </select>
-    </a>
-     <ion-col width-30>  </ion-col>
+   <br>
+   <br>
     </div> 
   
   
  <ion-card style = "margin-top: 5ch">
 
         <ion-card-content >
+
+            <div class = "space style height: 10px;"></div>
+            <ion-item color = "white" ng-init>
+              <ion-label><h5><i> <ion-icon name="ice-cream"></ion-icon> &nbsp;Event Type </i></h5></ion-label>
+            <ion-select (ngModel)= "type">
+              <ion-option value= "Friend"> Friend</ion-option>
+              <ion-option value= "Community"> Community</ion-option>
+              <ion-option value= "Public"> Public</ion-option>
+            </ion-select>
+            </ion-item>
+
               <!-- //descriptiopn of EventName -->
                 <div class = "space style height: 10px;"></div>
               <ion-item color = "listcolor" ng-init>
@@ -52,10 +56,11 @@
                 </ion-label>
                 <ion-input type="text" ng-minlength= "4" ng-maxlength = "30" [(ngModel)]="eventName" name="eventName" autocorrect="off" value="" spellcheck="true" maxlength="30"></ion-input>
               </ion-item>
-              <div class = "space style height: 5px;"></div>
+              
               
               <!-- //descriptiopn of EventDate -->
               <ion-item>
+                
                   <ion-label><h5><i><ion-icon name="calendar"></ion-icon>&nbsp;&nbsp;
                     Date </i></h5>
                   </ion-label>
@@ -97,12 +102,8 @@
 
      <!-- Reset and Submit button -->
       <div>
-        &nbsp;&nbsp;&nbsp;
-        <button class= "btn_size"> <ion-input type= "reset" data-clear-btn="true" ></ion-input></button>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <button  class= "btn_size" (click)= "eventmade()"> <ion-input type= "submit" data-clear-btn="true"></ion-input></button>
+        <ion-input  class="btn_reset" type= "reset" data-clear-btn="true" ></ion-input><br/>
+        <ion-input  class= "btn_submit" (click)= "eventmade()" type= "submit" data-clear-btn="true"></ion-input>
       </div>
 
       <br>
