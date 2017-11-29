@@ -1,55 +1,55 @@
 page-add-event {
-
-ng-pristine: {
-        background-color: #ffffff;
-
-}
-ng-valid: {
-    border: solid 3px green;
+    
+    ng-pristine: {
+            background-color: #ffffff;
     
     }
-
-
-    ion-card.card {
-        box-shadow: none;
-        background: rgba(0, 0, 0, 0.8);
-        border-radius: 5px;
-        position: fixed;
-    }
-
-    .background {
-        height: 100%;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-        background-size: cover;
-        background: red;
-        background-repeat:no-repeat;
-        background: -webkit-linear-gradient( to left top, rgb(247, 247, 247), red);
-        background: -moz-linear-gradient( to left top, #C7C6C6, #EEEDED);
-        background: -ms-linear-gradient( to left top, #F9F9F9, #FFFFFF);
-        background: -o-linear-gradient( to left top, #CBCBCB, #D5D5D5);
-        background: linear-gradient( to left top, #EEEDED, #2C2D2D);
-        position: fixed;
-                 
-          
-       }
-            
-.info_collect{
-   margin-top: 1ch;
-
-}
-.datefront{
-    font-style: italic;
+    ng-valid: {
+        border: solid 3px green;
+        
+        }
     
-
-}
-
-.color{
-  background-color: black;
-
-}
-
-
-
-}
+    
+        // ion-card.card {
+        //     box-shadow: none;
+        //     background: rgba(0, 0, 0, 0.8);
+        //     border-radius: 5px;
+        //     position: fixed;
+        // }
+    
+        .background {
+            height: 100%;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+            background: red;
+            background-repeat:no-repeat;
+            background: -webkit-linear-gradient( to left top, rgb(247, 247, 247), red);
+            background: -moz-linear-gradient( to left top, #C7C6C6, #EEEDED);
+            background: -ms-linear-gradient( to left top, #F9F9F9, #FFFFFF);
+            background: -o-linear-gradient( to left top, #CBCBCB, #D5D5D5);
+            background: linear-gradient( to left top, #EEEDED, #2C2D2D);
+            position: fixed;
+                     
+              
+           }
+                
+    .info_collect{
+       margin-top: 1ch;
+    
+    }
+    .datefront{
+        font-style: italic;
+        
+    
+    }
+    
+    .color{
+      background-color: black;
+    
+    }
+    
+    
+    
+    }

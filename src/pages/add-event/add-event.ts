@@ -3,95 +3,99 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { MyEventsPage } from '../my-events/my-events';
 import { MyProfilePage } from '../my-profile/my-profile';
 import { EventmadePage } from '../event-made/event-made';
-import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
+import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
+import * as firebase from 'firebase';
+import {AuthProvider} from '../../providers/auth/auth';
+import { UserServiceProvider } from './../../providers/user-service/user-service';
+import { LoginPage } from '../login/login';
 
 /**
- * Generated class for the AddEventPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+* Generated class for the AddEventPage page.
+*
+* See https://ionicframework.com/docs/components/#navigation for more info on
+* Ionic pages and navigation.
+*/
 
 @IonicPage()
 @Component({
-  selector: 'page-add-event',
-  templateUrl: 'add-event.html',
+ selector: 'page-add-event',
+ templateUrl: 'add-event.html',
 })
 
-/*export class item {
-  eventName: string;
-  myDate: string;
-  location: string;
-  description: string;
-  capacity: string;
-}*/
 
 @Injectable()
 export class AddEventPage {
 
   arrData = []
-  eventName = '';
-  myDate = '';
-  location = '';
-  description = '';
-  capacity = '';
+ type='';
+ eventName = '';
+ myDate = '';
+ location = '';
+ description = '';
+ capacity = '';
 
- /* NameOfEvent: string[][];
-  DateOfEvent: string[][];
-  LocationOfEvent: string[][];
-  DescriptionOfEvent: string[][];
-  CapacityOfEvent: string[][]; */
+ userID: String;
 
- // items: AngularFireObject<item[]>= null;
-  userID: string;
+ constructor(public navCtrl: NavController, public navParams: NavParams, private fdb: AngularFireDatabase, private afAuth: AngularFireAuth) {
+ this.afAuth.authState.subscribe(user => {
+   if(user) this.userID = user.uid
+ this.fdb.list("/events/").valueChanges().subscribe(data => {
+     this.arrData = data;
+       //if(users) this.userID = users.uid
+     console.log(this.arrData);
+   })
+ })
+}
 
-  /*constructor(public navCtrl: NavController, public navParams: NavParams, private fdb: AngularFireDatabase, private afAuth: AngularFireAuth){
-    this.afAuth.authState.subscribe(user => {
-      if(user) this.userID = user.uid
-    })
-  }*/
 
- constructor(public navCtrl: NavController, public navParams: NavParams, private fdb: AngularFireDatabase) {
-    this.fdb.list("/events/").valueChanges().subscribe(_data => {
-      this.arrData = _data;
+openProfilePage(){
+    this.navCtrl.push( MyProfilePage );
+ }
 
-      console.log(this.arrData);
-    })
-  }
+eventmade(){
+ if (!this.userID) {
+   console.log('user not logged in');
+   return;
+ }
+ //this.arrData = this.fdb.list('items/${this.userID}');
 
- openProfilePage(){
-     this.navCtrl.push( MyProfilePage );
-  }
+ let eventPath = "/events/" + this.userID;
+ // json object; or a typescript class/interface
+ this.fdb.list(eventPath).push({
+   'type': this.type,
+   'eventName': this.eventName,
+   'data': this.myDate,
+   'location': this.location,
+   'description': this.description,
+   'capacity': this.capacity,
+ });
+ // this.fdb.list(eventPath).push(this.type);
+ // this.fdb.list(eventPath).push(this.eventName);
+ // this.fdb.list(eventPath).push(this.myDate);
+ // this.fdb.list(eventPath).push(this.location);
+ // this.fdb.list(eventPath).push(this.description);
+ // this.fdb.list(eventPath).push(this.capacity);
+ // this.fdb.list(eventPath).push(this.userID);
+ this.navCtrl.push(EventmadePage);
 
- // eventmade(): AngularFireObject<item[]> {
-  eventmade(){
-   // if (!this.userID) return;
-    this.navCtrl.push(EventmadePage);
-    this.fdb.list("/events/").push(this.eventName);
-    this.fdb.list("/events/").push(this.myDate);
-    this.fdb.list("/events/").push(this.location);
-    this.fdb.list("/events/").push(this.description);
-    this.fdb.list("/events/").push(this.capacity);
-   // this.fdb.list('events/${this.userID}').push(this.items);
-    //return this.items
-    /* this.navCtrl.push(EventmadePage);
-     this.navCtrl.push(EventmadePage);
-     this.fdb.list("/events/").push(this.eventName);
-     this.fdb.list("/events/").push(this.myDate);
-     this.fdb.list("/events/").push(this.location);
-     this.fdb.list("/events/").push(this.description);
-     this.fdb.list("/events/").push(this.capacity);*/
+ //  if (!this.userID) return;
+ //  this.items = this.fdb.list('items/${this.userID}');
+ //  return this.items
 
-  }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad AddEventPage');
-  }
+ }
 
-  openMyEventsPage() {
-     this.navCtrl.setRoot(MyEventsPage, {}, {animate: true, direction: 'forward'});
-  }
+ ionViewDidLoad() {
+   console.log('ionViewDidLoad AddEventPage');
+ }
+
+ openMyEventsPage() {
+    this.navCtrl.setRoot(MyEventsPage, {}, {animate: true, direction: 'forward'});
+ }
 
 }
+
+
+
 
