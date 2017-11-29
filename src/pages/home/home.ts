@@ -63,4 +63,8 @@ export class HomePage {
       
     }
 
+    AddEventPageBitch(){
+      this.navCtrl.push(AddEventPage);
+    }
+
 }
