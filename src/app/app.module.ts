@@ -60,7 +60,8 @@ import { AngularFireDatabaseModule } from "angularfire2/database";
     MessagingPageModule,
     FriendsPageModule,
     MyEventsPageModule,
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    HomePageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

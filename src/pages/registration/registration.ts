@@ -17,7 +17,7 @@ import * as firebase from 'firebase';
   selector: 'page-registration',
   templateUrl: 'registration.html',
 })
-export class RegistrationPage {
+export class RegistrationPage{
   email = '';
   password = '';
   fullName = '';

@@ -61,7 +61,7 @@ export class AddEventPage {
   }
 
  openProfilePage(){
-     this.navCtrl.push( MyProfilePage );
+     this.navCtrl.setRoot( MyProfilePage );
   }
 
  // eventmade(): AngularFireObject<item[]> {
@@ -90,7 +90,7 @@ export class AddEventPage {
   }
 
   openMyEventsPage() {
-     this.navCtrl.setRoot(MyEventsPage, {}, {animate: true, direction: 'forward'});
+     this.navCtrl.setRoot(MyEventsPage);
   }
 
 }
