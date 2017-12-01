@@ -25,11 +25,57 @@ export class TrackerPage {
 
   latLng: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public geo: Geolocation) {
+  myName: any;
+  //newButton = document.createElement('button');
+  //@ViewChild('d1') d1:ElementRef;
+
+  htmlToAdd: any;
+
+  number: [1,2,3,4,5];
+
+  kids: [{
+    Name: 'Steve',
+    Password: 'John',
+    SubAccountType: 'Child',
+    Longitude: 12,
+    Latitide: 12,
+  },
+  {
+    Name: 'Jeff',
+    Password: 'John',
+    SubAccountType: 'Child',
+    Longitude: 12,
+    Latitide: 12,
+  }];
+  
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public geo: Geolocation, /*private element: ElementRef*/) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad TrackerPage');
+
+    // document.getElementById("demo").innerHTML = "Paragraph changed!";
+
+    
+    this.myName= 'Paul';
+
+    this.kids = [{
+      Name: 'Steve',
+      Password: 'John',
+      SubAccountType: 'Child',
+      Longitude: 12,
+      Latitide: 12,
+    },
+    {
+      Name: 'Jeff',
+      Password: 'John',
+      SubAccountType: 'Child',
+      Longitude: 12,
+      Latitide: 12,
+    }];
+   
+
     this.geo.getCurrentPosition().then( pos => {
     this.lat = pos.coords.latitude;
     this.lng = pos.coords.longitude;
@@ -73,6 +119,18 @@ export class TrackerPage {
   //   log("Retrieved user's location: [" + latitude + ", " + longitude + "]");
 
   // }
+
+find(x,y,z){
+
+  let data ={
+    latitude: x,
+    longitude: y,
+    name: z,
+
+  };
+  this.navCtrl.push(TrackmapPage, data);
+
+}
 
 find1(){
 

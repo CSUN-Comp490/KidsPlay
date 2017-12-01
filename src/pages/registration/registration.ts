@@ -27,6 +27,8 @@ export class RegistrationPage {
 
 
 
+
+
   // Variables Used by Child Registration
   childfirstName = '';
   parentEmail = '';
@@ -41,8 +43,9 @@ export class RegistrationPage {
   teenEmail = '';
 
 
-  kids: string[][];
+  kid: [string,number];
 
+  account: string = "parent";
   
 
 
@@ -53,6 +56,7 @@ export class RegistrationPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegistrationPage');
+    //let account: "parent";
   }
   registerUser() {
     this.userService.signUpUser(this.email, this.password)
@@ -64,7 +68,10 @@ export class RegistrationPage {
             email: this.email,
             fullName: this.fullName,
             familyName: this.famName,
-            address: this.address
+            address: this.address,   
+            password: this.password,
+            key: authenticatedUser.uid,
+            kids: [],    
           })
         })
       })
@@ -83,11 +90,49 @@ export class RegistrationPage {
     //this.checkCredentials(cred);
 
     this.fireAuth.auth.signInWithEmailAndPassword(this.parentEmail, this.parentPassword).then((authenticatedUser) => {
+
+
+
+        // if(this.userProfile.child((authenticatedUser.uid.kids).includes(this.childfirstName))){
+
+        // }
+        // else{
       
                 this.userProfile.child(authenticatedUser.uid).update({
 
-                  kids: this.childfirstName,
+
+
+
+                    kids: {
+                    [this.childfirstName]: {
+                      Name: this.childfirstName,
+                      Password: this.childPassword,
+                      SubAccountType: 'Child',
+                      Longitude: 12,
+                      Latitide: 12,
+                    },
+                  }
+
+
+                
+                  
+                  // this.userProfile.child(this.childfirstName).set({
+
+                  //   password: this.childPassword,
+                  //   longitude: 12,
+                  //   latitide: 12,
+                  // })
+
+                  //kids: this.userProfile.child(authenticatedUser.uid).push([this.childfirstName,this.childPassword]),
+                  //kids2: this.kids,
+                  //kids: authenticatedUser.kids.push("Kid"),
+
+                  //kids: this.userProfile.child(authenticatedUser.uid).kids.push(this.childfirstName),
+                  //kids: this.childfirstName,
+                  //this.kids.push(this.childfirstName),
                 })
+
+              //} //Else Bracket
               })
 
   }
