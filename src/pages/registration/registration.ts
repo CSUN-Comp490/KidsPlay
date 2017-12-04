@@ -53,7 +53,8 @@ export class RegistrationPage {
   
 
 
-  userProfile: any = firebase.database().ref('users');
+  userProfile: any = firebase.database().ref('parents');
+  childProfile: any = firebase.database().ref('kids');
   constructor(public navCtrl: NavController, public navParams: NavParams, public userService: UserServiceProvider,
     public fireAuth: AngularFireAuth, public authservice: AuthProvider) {
   }
@@ -84,6 +85,26 @@ export class RegistrationPage {
 
   // Adds a child to an existing parent
   createChild() {
+
+    var ref = firebase.database().ref();
+
+
+    ref.child('users').orderByChild('email').equalTo(this.parentEmail).on("value", function(snapshot) {
+      console.log(snapshot.val());
+      //var kidsSnapshot = snapshot.child('kids');
+      //console.log(kidsSnapshot);
+      // this.kids = kidsSnapshot.val();
+      // console.log(this.kids);
+
+  });
+    
+    // ref.on("value", function(snapshot) {
+    //    console.log(snapshot.val());
+    //    console.log(snapshot.val().email);
+    // }, function (error) {
+    //    console.log("Error: " + error.code);
+    // });
+    
     // let   cred={
     //   email: this.parentEmail,
     //   password: this.parentPassword,
@@ -93,23 +114,24 @@ export class RegistrationPage {
 
     //this.checkCredentials(cred);
 
-  
+   
 
     this.fireAuth.auth.signInWithEmailAndPassword(this.parentEmail, this.parentPassword).then((authenticatedUser) => {
 
      // console.log(authenticatedUser);
-     var userId = firebase.auth().currentUser.uid; //userid
-      var starCountRef = firebase.database().ref();
-      starCountRef.on('value', function(snapshot) {
-      //  console.log(snapshot.val());
-        // updateStarCount(postElement, snapshot.val());
+     
+    //  var userId = firebase.auth().currentUser.uid; //userid
+    //   var starCountRef = firebase.database().ref();
+    //   starCountRef.on('value', function(snapshot) {
+    //   //  console.log(snapshot.val());
+    //     // updateStarCount(postElement, snapshot.val());
 
-        if(userId === snapshot.val().uid){
-          console.log(snapshot.val().email);
-        }
-        console.log(snapshot.val().email);
+    //     if(userId === snapshot.val().uid){
+    //       console.log(snapshot.val().email);
+    //     }
+    //     console.log(snapshot.val().email);
 
-      });
+    //   });
 
       this.userService.getallusers().then((res: any)=>{
         // this.temparr = res;
@@ -146,7 +168,18 @@ export class RegistrationPage {
         // else{.
 
         // console.log(this.temparr);
-                this.userProfile.child(authenticatedUser.uid).update({
+                this.childProfile.push({
+                  
+                  Name: this.childfirstName,
+                  Password: this.childPassword,
+                  SubAccountType: 'Child',
+                  Longitude: 12,
+                  Latitide: 12,
+                  ParentID: authenticatedUser.uid,
+                  //ParentfullName: authenticatedUser.fullName,
+                  //familyName: authenticatedUser.familyName,
+                  //address: authenticatedUser.address,   
+                  
                   
                   
                   //   kids: {
@@ -183,6 +216,17 @@ export class RegistrationPage {
               })
 
   }
+
+  // gotData(data){
+
+  //   var kids = Object.keys(kids);
+  //   console.log(keys);
+  //   for  (var i = 0; i < keys.length; i++){
+  //     var k = keys[i];
+  //     var initials
+  //   }
+
+  // }
 
   // Adds a teenager to an existing parent
   createTeen() {
