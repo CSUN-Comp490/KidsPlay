@@ -25,10 +25,14 @@
     </ion-list> -->
     
     
+    
+    <div *ngFor= "let kid of this.kids">
     <p></p>
-    <button class="button" ion-button round outline color ="primary" *ngFor= "let kid of this.kids">{{kid.Name}}</button>
+    <button class="button" ion-button round outline color ="primary"(click) = "find(kid.Latitude,kid.Longitude,kid.Name)">{{kid.Name}}</button>
     <p></p>
-
+    </div>
+    
+  
 
 
     <p></p>

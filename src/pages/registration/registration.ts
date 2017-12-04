@@ -44,8 +44,12 @@ export class RegistrationPage {
 
 
   kid: [string,number];
-
+  i = 0;
   account: string = "parent";
+
+  temparr= [];
+
+
   
 
 
@@ -89,29 +93,72 @@ export class RegistrationPage {
 
     //this.checkCredentials(cred);
 
+  
+
     this.fireAuth.auth.signInWithEmailAndPassword(this.parentEmail, this.parentPassword).then((authenticatedUser) => {
 
+     // console.log(authenticatedUser);
+     var userId = firebase.auth().currentUser.uid; //userid
+      var starCountRef = firebase.database().ref();
+      starCountRef.on('value', function(snapshot) {
+      //  console.log(snapshot.val());
+        // updateStarCount(postElement, snapshot.val());
+
+        if(userId === snapshot.val().uid){
+          console.log(snapshot.val().email);
+        }
+        console.log(snapshot.val().email);
+
+      });
+
+      this.userService.getallusers().then((res: any)=>{
+        // this.temparr = res;
+        // for(this.i=0; this.i<res.length; this.i++){
+        //   this.temparr = res['key']['kids'];
+        //   //console.log(this.temparr);
+        // }
+        // return this.temparr;
+       
+        
+      })
+
+    
+
+    
 
 
+
+
+        // var userRef = this.userProfile.child(authenticatedUser.uid);
+        // let existingKids = userRef.once('value');
+        // console.log(userRef);
+        
+        //var ref = firebase.database().ref(authenticatedUser.uid);
+        //ref.once("value")
+        //   .then(function(snapshot){
+        //   this.existingKids = snapshot.child("email").val();
+          
+        //   });
+        
         // if(this.userProfile.child((authenticatedUser.uid.kids).includes(this.childfirstName))){
 
         // }
-        // else{
-      
+        // else{.
+
+        // console.log(this.temparr);
                 this.userProfile.child(authenticatedUser.uid).update({
-
-
-
-
-                    kids: {
-                    [this.childfirstName]: {
-                      Name: this.childfirstName,
-                      Password: this.childPassword,
-                      SubAccountType: 'Child',
-                      Longitude: 12,
-                      Latitide: 12,
-                    },
-                  }
+                  
+                  
+                  //   kids: {
+                  //   [this.childfirstName]: {
+                  //     Name: this.childfirstName,
+                  //     Password: this.childPassword,
+                  //     SubAccountType: 'Child',
+                  //     Longitude: 12,
+                  //     Latitide: 12,
+                  //   },
+                  // }
+                  
 
 
                 

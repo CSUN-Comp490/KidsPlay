@@ -34,18 +34,18 @@ export class TrackerPage {
   number: [1,2,3,4,5];
 
   kids: [{
-    Name: 'Steve',
-    Password: 'John',
-    SubAccountType: 'Child',
-    Longitude: 12,
-    Latitide: 12,
-  },
-  {
-    Name: 'Jeff',
-    Password: 'John',
-    SubAccountType: 'Child',
-    Longitude: 12,
-    Latitide: 12,
+  //   Name: 'Steve',
+  //   Password: 'John',
+  //   SubAccountType: 'Child',
+  //   Longitude: 12,
+  //   Latitude: 12,
+  // },
+  // {
+  //   Name: 'Jeff',
+  //   Password: 'John',
+  //   SubAccountType: 'Child',
+  //   Longitude: 12.1,
+  //   Latitude: 12.1,
   }];
   
 
@@ -64,15 +64,15 @@ export class TrackerPage {
       Name: 'Steve',
       Password: 'John',
       SubAccountType: 'Child',
-      Longitude: 12,
-      Latitide: 12,
+      Longitude: -118.2551,
+      Latitude: 35.1556,
     },
     {
       Name: 'Jeff',
       Password: 'John',
       SubAccountType: 'Child',
-      Longitude: 12,
-      Latitide: 12,
+      Longitude: -118.2551,
+      Latitude: 34.1556,
     }];
    
 
