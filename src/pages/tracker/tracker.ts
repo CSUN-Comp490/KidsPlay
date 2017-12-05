@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { TrackmapPage } from "../trackmap/trackmap";
 import { Geolocation } from '@ionic-native/geolocation';
+import * as firebase from 'firebase';
+import { UserServiceProvider } from './../../providers/user-service/user-service';
 //import { Geolocation } from '@ionic-native';
 /**
  * Generated class for the TrackerPage page.
@@ -20,6 +22,11 @@ declare var google: any;
   templateUrl: 'tracker.html',
 })
 export class TrackerPage {
+  childProfile: any = firebase.database().ref('kids');
+
+
+
+
   lat: any;
   lng: any;
 
@@ -49,32 +56,43 @@ export class TrackerPage {
   }];
   
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public geo: Geolocation, /*private element: ElementRef*/) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public geo: Geolocation, public userService: UserServiceProvider /*private element: ElementRef*/) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad TrackerPage');
 
     // document.getElementById("demo").innerHTML = "Paragraph changed!";
+    // var ref = firebase.database().ref();
+    
+    
+    // ref.child('kids').orderByChild('uid').equalTo('WzcDU9BLmdMQ5LcBePvUXZVxENl2').on("value", function(snapshot) {
+    // console.log(snapshot.val());
 
+    // });
     
     this.myName= 'Paul';
 
-    this.kids = [{
-      Name: 'Steve',
-      Password: 'John',
-      SubAccountType: 'Child',
-      Longitude: -118.2551,
-      Latitude: 35.1556,
-    },
-    {
-      Name: 'Jeff',
-      Password: 'John',
-      SubAccountType: 'Child',
-      Longitude: -118.2551,
-      Latitude: 34.1556,
-    }];
+    // this.kids = [{
+    //   Name: 'Steve',
+    //   Password: 'John',
+    //   SubAccountType: 'Child',
+    //   Longitude: -118.2551,
+    //   Latitude: 35.1556,
+    // },
+    // {
+    //   Name: 'Jeff',
+    //   Password: 'John',
+    //   SubAccountType: 'Child',
+    //   Longitude: -118.2551,
+    //   Latitude: 34.1556,
+    // }];
    
+
+    this.userService.getallKids().then((res: any)=>{
+      this.kids = res; 
+    })
+    console.log(this.kids);
 
     this.geo.getCurrentPosition().then( pos => {
     this.lat = pos.coords.latitude;

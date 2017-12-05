@@ -17,7 +17,9 @@ export class UserServiceProvider {
     private data: any;
     //private fireAuth: any;
    // private userProfile: any;
-   firedata = firebase.database().ref('/users');
+   firedata = firebase.database().ref('/users'); //parent
+   kidData = firebase.database().ref('/kids'); //kid
+
   constructor(public http: Http, public fireAuth: AngularFireAuth) {
 
     //this.fireAuth = firebase.auth();
@@ -76,4 +78,23 @@ getallusers() {
     })
     return promise;
   }
+
+  getallKids() {
+
+    var promise = new Promise((resolve, reject) => {
+      this.kidData.orderByChild('uid').once('value', (snapshot) => {
+        let kidvalues = snapshot.val();
+        let kidarr = [];
+        for (var k in kidvalues) {
+          kidarr.push(kidvalues[k]);
+        }
+        resolve(kidarr);
+      }).catch((err) => {
+        reject(err);
+      })
+    })
+    return promise;    
+  }
+
+
 } 

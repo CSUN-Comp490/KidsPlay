@@ -38,9 +38,10 @@ export class RegistrationPage {
   // Variables Used by Teen Registration
   teenfirstName = '';
   tparentEmail = '';
-  tparentName = '';
+  tparentPassword = '';
   teenPassword = '';
   teenEmail = '';
+  
 
 
   kid: [string,number];
@@ -53,8 +54,11 @@ export class RegistrationPage {
   
 
 
-  userProfile: any = firebase.database().ref('parents');
+  userProfile: any = firebase.database().ref('users');
   childProfile: any = firebase.database().ref('kids');
+  teenProfile: any = firebase.database().ref('teens');
+  parentProfile: any = firebase.database().ref('parent');
+  
   constructor(public navCtrl: NavController, public navParams: NavParams, public userService: UserServiceProvider,
     public fireAuth: AngularFireAuth, public authservice: AuthProvider) {
   }
@@ -168,7 +172,7 @@ export class RegistrationPage {
         // else{.
 
         // console.log(this.temparr);
-                this.childProfile.push({
+                this.childProfile.child(authenticatedUser.uid).push({
                   
                   Name: this.childfirstName,
                   Password: this.childPassword,
@@ -230,6 +234,32 @@ export class RegistrationPage {
 
   // Adds a teenager to an existing parent
   createTeen() {
+        var ref = firebase.database().ref();
+        
+        ref.child('users').orderByChild('email').equalTo(this.parentEmail).on("value", function(snapshot) {
+          console.log(snapshot.val());
+       });
+        
+        this.fireAuth.auth.signInWithEmailAndPassword(this.tparentEmail, this.tparentPassword).then((authenticatedUser) => {
+       
+          this.userService.getallusers().then((res: any)=>{
+          })
+
+                    this.teenProfile.child(authenticatedUser.uid).push({
+                      
+                      Name: this.teenfirstName,
+                      Password: this.teenPassword,
+                      Email: this.teenEmail,
+                      SubAccountType: 'Teen',
+                      Longitude: 12,
+                      Latitide: 12,
+                      ParentID: authenticatedUser.uid,
+                      
+                      
+
+                    })
+  
+                  })
     
       }
 
