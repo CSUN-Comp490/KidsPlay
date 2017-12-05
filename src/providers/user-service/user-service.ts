@@ -96,5 +96,30 @@ getallusers() {
     return promise;    
   }
 
+  getmyKids(x){
+
+  //   this.kidData.orderByChild('uid').equalTo(x).on("value", function(snapshot) {
+  //   console.log(snapshot.val());
+  // });
+
+
+    var promise = new Promise((resolve, reject) => {
+      this.kidData.child(x).orderByChild('uid').once('value', (snapshot) => {
+        let mykidvalues = snapshot.val();
+        let mykidarr = [];
+        for (var k in mykidvalues) {
+          mykidarr.push(mykidvalues[k]);
+        }
+        resolve(mykidarr);
+      }).catch((err) => {
+        reject(err);
+      })
+    })
+    
+    return promise;   
+  }
+  
+  
+
 
 } 

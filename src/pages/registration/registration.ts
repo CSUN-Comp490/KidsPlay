@@ -178,7 +178,7 @@ export class RegistrationPage {
                   Password: this.childPassword,
                   SubAccountType: 'Child',
                   Longitude: 12,
-                  Latitide: 12,
+                  Latitude: 12,
                   ParentID: authenticatedUser.uid,
                   //ParentfullName: authenticatedUser.fullName,
                   //familyName: authenticatedUser.familyName,
@@ -254,7 +254,7 @@ export class RegistrationPage {
                       Longitude: 12,
                       Latitide: 12,
                       ParentID: authenticatedUser.uid,
-                      
+
                       
 
                     })

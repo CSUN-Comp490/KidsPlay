@@ -24,6 +24,9 @@ declare var google: any;
 export class TrackerPage {
   childProfile: any = firebase.database().ref('kids');
 
+  kids = [];
+  kids2 = [];
+
 
 
 
@@ -40,26 +43,39 @@ export class TrackerPage {
 
   number: [1,2,3,4,5];
 
-  kids: [{
-  //   Name: 'Steve',
-  //   Password: 'John',
-  //   SubAccountType: 'Child',
-  //   Longitude: 12,
-  //   Latitude: 12,
-  // },
-  // {
-  //   Name: 'Jeff',
-  //   Password: 'John',
-  //   SubAccountType: 'Child',
-  //   Longitude: 12.1,
-  //   Latitude: 12.1,
-  }];
+  // kids: [{
+  // //   Name: 'Steve',
+  // //   Password: 'John',
+  // //   SubAccountType: 'Child',
+  // //   Longitude: 12,
+  // //   Latitude: 12,
+  // // },
+  // // {
+  // //   Name: 'Jeff',
+  // //   Password: 'John',
+  // //   SubAccountType: 'Child',
+  // //   Longitude: 12.1,
+  // //   Latitude: 12.1,
+  // }];
   
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public geo: Geolocation, public userService: UserServiceProvider /*private element: ElementRef*/) {
+    this.userService.getallKids().then((res: any)=>{
+      console.log(res);
+      this.kids = res; 
+      console.log(this.kids);
+    })
+
+  this.userService.getmyKids('WzcDU9BLmdMQ5LcBePvUXZVxENl2').then((res:any)=>{
+    this.kids2 = res;
+    console.log(this.kids2);
+
+    })
+  
   }
 
   ionViewDidLoad() {
+
     console.log('ionViewDidLoad TrackerPage');
 
     // document.getElementById("demo").innerHTML = "Paragraph changed!";
@@ -70,8 +86,12 @@ export class TrackerPage {
     // console.log(snapshot.val());
 
     // });
+
+  
     
     this.myName= 'Paul';
+
+    
 
     // this.kids = [{
     //   Name: 'Steve',
@@ -89,10 +109,8 @@ export class TrackerPage {
     // }];
    
 
-    this.userService.getallKids().then((res: any)=>{
-      this.kids = res; 
-    })
-    console.log(this.kids);
+
+
 
     this.geo.getCurrentPosition().then( pos => {
     this.lat = pos.coords.latitude;
@@ -138,6 +156,7 @@ export class TrackerPage {
 
   // }
 
+
 find(x,y,z){
 
   let data ={
@@ -174,8 +193,8 @@ find2(){
 find3(){
   
       let data ={
-        latitude: 34.1425,
-        longitude: -118.2551,
+        latitude: 12,
+        longitude: 12,
         name: 'Jonathan'
       };
       this.navCtrl.push(TrackmapPage, data);
