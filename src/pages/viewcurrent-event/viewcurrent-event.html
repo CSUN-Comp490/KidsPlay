@@ -1,23 +1,41 @@
 <ion-header>
     <ion-navbar color = "primary">
-           
+       
+        <!-- This is the taggle menu     -->
         <ion-buttons start>
-                    <button ion-button menuToggle>
-                      <ion-icon name="menu"></ion-icon>
-                    </button>
+             <button ion-button menuToggle>
+             <ion-icon name="menu"></ion-icon></button>
         </ion-buttons>
         
    <ion-title align = "center">
         ViewCurrentEvent
       </ion-title>
       
-    </ion-navbar> 
-  </ion-header>
+ </ion-navbar> 
+</ion-header>
 
+<!-- *************************************************************************************** -->
+<ion-content class="background">
+    <!-- <ion-card class="space style height: 5px;" ></ion-card> -->
+    <ion-card style = "margin-top: 5ch" >
 
-<ion-content>
-    <ion-card style = "margin-top: 5ch">
-        
+     <!-- This is for the event type output -->
+            <ion-item color = "">
+                    <ion-label color = "">Event Type</ion-label>
+                    <p></p>
+                </ion-item>
+
+                <ion-item >
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    this is for output
+                  </ion-item>
+
+     <!-- This is the event name output    -->
               <ion-item color = "listcolor">
                 <ion-label color = "primary" ><i>Event Name</i></ion-label>
                 <p> </p>
@@ -31,7 +49,8 @@
                   &nbsp;&nbsp;&nbsp;&nbsp;
                   &nbsp;&nbsp;&nbsp;&nbsp;this is for output
               </ion-item>
-              
+
+    <!-- This is the Date of the event output           -->
               <ion-item>
                   <ion-label>Date</ion-label>
                   <p></p>
@@ -47,6 +66,7 @@
                   this is for output
                 </ion-item>
 
+     <!-- This is the Location of the event output -->
               <ion-item color = "listcolor">
                   <ion-label color = "primary"><i>Location</i></ion-label>
                 </ion-item>
@@ -60,7 +80,8 @@
                     &nbsp;&nbsp;&nbsp;&nbsp;
                     this is for output
                   </ion-item>
-                
+    
+     <!-- This is the output of the event short Description -->
                 <ion-item color = "">
                     <ion-label color = "">Short Description</ion-label>
                     <p></p>
@@ -76,19 +97,30 @@
                     this is for output
                   </ion-item>
 
+         <!-- This is the output of the event capacity -->
                 <ion-item color = "listcolor">
                     <ion-label color = "primary" ><i>Capacity</i></ion-label>
                     <p></p>
                 </ion-item>
 
                 <ion-item color = "listcolor">
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;
                      this is for output
                   </ion-item>
+                  <ion-item>
+                  
+                  </ion-item>
+      <!-- This is the delet button -->
+                  <button class="btn_done" ion-button color="listcolor" (click)="goback()"> Done </button>
+                  
+                  <button class= "btn_info" (click)= "delet_event()" ion-button  color="listcolor">Delet</button>
+
+
 </ion-card>
+<!-- </ion-card> -->
 </ion-content>

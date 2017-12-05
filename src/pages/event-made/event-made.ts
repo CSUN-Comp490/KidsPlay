@@ -24,5 +24,6 @@ export class EventmadePage {
 
    this.navCtrl.setRoot (MyEventsPage);
 
-  }
+  
+}
 }

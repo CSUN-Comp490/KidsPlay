@@ -38,12 +38,16 @@
             <div class = "space style height: 10px;"></div>
             <ion-item color = "white" ng-init>
               <ion-label><h5><i> <ion-icon name="ice-cream"></ion-icon> &nbsp;Event Type </i></h5></ion-label>
-            <ion-select (ngModel)= "type">
+            <!-- <ion-input> -->
+              <ion-select [(ngModel)]= "type" name="type">
               <ion-option value= "Friend"> Friend</ion-option>
               <ion-option value= "Community"> Community</ion-option>
               <ion-option value= "Public"> Public</ion-option>
             </ion-select>
+            <!-- </ion-input> -->
             </ion-item>
+
+            <!-- <form> -->
 
               <!-- //descriptiopn of EventName -->
                 <div class = "space style height: 10px;"></div>
@@ -54,7 +58,7 @@
                     Event Name 
                   </i></h5>
                 </ion-label>
-                <ion-input type="text" ng-minlength= "4" ng-maxlength = "30" [(ngModel)]="eventName" name="eventName" autocorrect="off" value="" spellcheck="true" maxlength="30"></ion-input>
+                <ion-input type="text" ng-minlength= "4" ng-maxlength = "30" [(ngModel)]="eventName" name="eventName" autocorrect="off" value="" spellcheck="true" maxlength="30" required></ion-input>
               </ion-item>
               
               
@@ -64,7 +68,7 @@
                   <ion-label><h5><i><ion-icon name="calendar"></ion-icon>&nbsp;&nbsp;
                     Date </i></h5>
                   </ion-label>
-                  <ion-datetime displayFormat="YYYY-MM-DDTHH:mm" min="2017" max="2020-10-31" [(ngModel)]="myDate" name="myDate">
+                  <ion-datetime displayFormat="YYYY-MM-DDTHH:mm" min="2017" max="2020-10-31" [(ngModel)]="myDate" name="myDate" required>
                   </ion-datetime>
               </ion-item>
 
@@ -75,7 +79,7 @@
                       Location
                     </i></h5>
                   </ion-label>
-                  <ion-input type="location" [(ngModel)]="location" name="location" value=""></ion-input>
+                  <ion-input type="location" [(ngModel)]="location" name="location" value="" required></ion-input>
                 </ion-item>
                 
                 <!-- //descriptiopn of the EventDescription -->
@@ -86,7 +90,7 @@
                         Short Description
                       </i></h5>
                     </ion-label>
-                    <ion-input type="text" [(ngModel)]="description" name="description" value=""></ion-input>
+                    <ion-input type="text" [(ngModel)]="description" name="description" value="" required></ion-input>
                 </ion-item>
 
                   <!-- //descriptiopn of the EventCapacity -->
@@ -95,7 +99,7 @@
                       Capacity
                     </h5></i>
                   </ion-label>
-                    <ion-input type="number" [(ngModel)]="capacity" name="capacity" value=""></ion-input>
+                    <ion-input type="number" [(ngModel)]="capacity" name="capacity" value="" required></ion-input>
                 </ion-item>
 
           </ion-card-content>
@@ -107,7 +111,7 @@
       </div>
 
       <br>
-
+    <!-- </form> -->
     </ion-card>
     </form>
     </ion-content>
