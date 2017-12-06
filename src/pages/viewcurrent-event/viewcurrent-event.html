@@ -22,103 +22,71 @@
      <!-- This is for the event type output -->
             <ion-item color = "">
                     <ion-label color = "">Event Type</ion-label>
-                    <p></p>
                 </ion-item>
 
-                <ion-item >
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    this is for output
+                <ion-item [(ngModel)]= "outtype" name="outtype" ngDefaultControl>
+           
                   </ion-item>
 
      <!-- This is the event name output    -->
               <ion-item color = "listcolor">
                 <ion-label color = "primary" ><i>Event Name</i></ion-label>
-                <p> </p>
               </ion-item>
 
-              <ion-item color = "listcolor">
-                  &nbsp;&nbsp;&nbsp;&nbsp;
-                  &nbsp;&nbsp;&nbsp;&nbsp;
-                  &nbsp;&nbsp;&nbsp;&nbsp;
-                  &nbsp;&nbsp;&nbsp;&nbsp;
-                  &nbsp;&nbsp;&nbsp;&nbsp;
-                  &nbsp;&nbsp;&nbsp;&nbsp;this is for output
+              <ion-item color = "listcolor" [(ngModel)]="outname" name="outname" ngDefaultControl>
+               
               </ion-item>
 
-    <!-- This is the Date of the event output           -->
+     <!-- This is the Date of the event output-->
               <ion-item>
                   <ion-label>Date</ion-label>
                   <p></p>
               </ion-item>
 
-              <ion-item >
-                  &nbsp;&nbsp;&nbsp;&nbsp;
-                  &nbsp;&nbsp;&nbsp;&nbsp;
-                  &nbsp;&nbsp;&nbsp;&nbsp;
-                  &nbsp;&nbsp;&nbsp;&nbsp;
-                  &nbsp;&nbsp;&nbsp;&nbsp;
-                  &nbsp;&nbsp;&nbsp;&nbsp;
-                  this is for output
+              <ion-item [(ngModel)]="outdate" name="outdate" ngDefaultControl>
+                 
                 </ion-item>
+
 
      <!-- This is the Location of the event output -->
               <ion-item color = "listcolor">
                   <ion-label color = "primary"><i>Location</i></ion-label>
                 </ion-item>
 
-                <ion-item color = "listcolor">
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    this is for output
+                <ion-item color = "listcolor" [(ngModel)]="outlocation" name="outlocation" ngDefaultControl>
+                
                   </ion-item>
     
+
      <!-- This is the output of the event short Description -->
-                <ion-item color = "">
+                <ion-item color = "" >
                     <ion-label color = "">Short Description</ion-label>
-                    <p></p>
                 </ion-item>
 
-                <ion-item >
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    this is for output
+                <ion-item [(ngModel)]="outdescription" name="outdescription" ngDefaultControl>
+                   
                   </ion-item>
 
-         <!-- This is the output of the event capacity -->
+
+     <!-- This is the output of the event capacity -->
                 <ion-item color = "listcolor">
                     <ion-label color = "primary" ><i>Capacity</i></ion-label>
                     <p></p>
                 </ion-item>
 
-                <ion-item color = "listcolor">
-                        &nbsp;&nbsp;&nbsp;&nbsp;
-                        &nbsp;&nbsp;&nbsp;&nbsp;
-                        &nbsp;&nbsp;&nbsp;&nbsp;
-                        &nbsp;&nbsp;&nbsp;&nbsp;
-                        &nbsp;&nbsp;&nbsp;&nbsp;
-                        &nbsp;&nbsp;&nbsp;&nbsp;
-                     this is for output
+                <ion-item color = "listcolor" [(ngModel)]="outcapacity" name="outcapacity" ngDefaultControl>
+                    
                   </ion-item>
-                  <ion-item>
+                 
+                  <!-- just to give a padding place -->
+                  <ion-item></ion-item> 
+                  <!-- just to give a padding place -->
+
+
+      <!-- This is the delet and done button -->
+                  <button class="btn_done" ion-button color="primary" (click)="goback()"> Done </button>
                   
-                  </ion-item>
-      <!-- This is the delet button -->
-                  <button class="btn_done" ion-button color="listcolor" (click)="goback()"> Done </button>
-                  
-                  <button class= "btn_info" (click)= "delet_event()" ion-button  color="listcolor">Delet</button>
+                  <button class= "btn_info" (click)= "delet_event()" ion-button  color="primary">Delet</button>
 
 
 </ion-card>

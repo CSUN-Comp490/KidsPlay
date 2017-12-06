@@ -9,6 +9,7 @@ import * as firebase from 'firebase';
 import {AuthProvider} from '../../providers/auth/auth';
 import { UserServiceProvider } from './../../providers/user-service/user-service';
 import { LoginPage } from '../login/login';
+import {RequestsProvider} from '../../providers/requests/requests';
 
 /**
 * Generated class for the AddEventPage page.
@@ -27,7 +28,7 @@ import { LoginPage } from '../login/login';
 @Injectable()
 export class AddEventPage {
 
-  arrData = []
+ arrData = []
  type='';
  eventName = '';
  myDate = '';
@@ -37,13 +38,16 @@ export class AddEventPage {
 
  userID: String;
 
- constructor(public navCtrl: NavController, public navParams: NavParams, private fdb: AngularFireDatabase, private afAuth: AngularFireAuth) {
+ constructor(public navCtrl: NavController, public navParams: NavParams, private fdb: AngularFireDatabase, private afAuth: AngularFireAuth, public userservice: UserServiceProvider,
+  public requestservice: RequestsProvider) {
+
  this.afAuth.authState.subscribe(user => {
-   if(user) this.userID = user.uid
+   if(user) this.userID = user.uid  
  this.fdb.list("/events/").valueChanges().subscribe(data => {
      this.arrData = data;
        //if(users) this.userID = users.uid
      console.log(this.arrData);
+    //  return (user.uid);
    })
  })
 }
@@ -84,6 +88,25 @@ eventmade(){
  //  return this.items
 
 
+
+//  (function($) {
+//   var $fields = $('#name_input, #date_input, #location_input, #des_input, #capa_input');
+  
+//   $fields.on('keyup change', function() {
+//     if (allFilled($fields)) {
+//        $('#add_submit').removeAttr('disabled');
+//     }
+//   });
+
+//   function allFilled($fields) 
+//   {
+//     return $fields.filter(function() {
+//       return this.value === ''; 
+//     }).length == 0;
+//   }
+// });
+
+
  }
 
  ionViewDidLoad() {
@@ -96,6 +119,38 @@ eventmade(){
 
 }
 
+// ('#name_input, #date_input, #location_input, #des_input, #capa_input').keyup(function() {
+//   if(allFilled()){
+//        ('#add_submit').removeAttr('disabled');
+//   }
+// });
+
+// function allFilled() {
+//   var filled = true;
+//   ('#add_prod_form input, #add_prod_form textarea').each(function() {
+//       if((this).val() == '') filled = false;
+//   });
+//   return filled;
+// }
+
+
+
+// (function($) {
+//   var $fields = $('#name_input, #date_input, #location_input, #des_input, #capa_input');
+  
+//   $fields.on('keyup change', function() {
+//     if (allFilled($fields)) {
+//        $('#add_submit').removeAttr('disabled');
+//     }
+//   });
+
+//   function allFilled($fields) 
+//   {
+//     return $fields.filter(function() {
+//       return this.value === ''; 
+//     }).length == 0;
+//   }
+// });
 
 
 
