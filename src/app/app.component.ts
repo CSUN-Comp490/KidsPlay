@@ -19,6 +19,7 @@ import { MyProfilePage } from '../pages/my-profile/my-profile';
 
 import { TrackerPageModule } from "../pages/tracker/tracker.module";
 import { TrackmapPageModule } from "../pages/trackmap/trackmap.module";
+import { MessagingPageModule } from "../pages/messaging/messaging.module";
 
 @Component({
   templateUrl: 'app.html'

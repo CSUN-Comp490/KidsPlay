@@ -26,6 +26,7 @@ export class BuddiesPage {
     this.userservice.getallusers().then((res: any)=>{
       this.filteredusers = res;
       this.temparr = res;
+      console.log(this.temparr);
     })
   }
 
@@ -39,6 +40,7 @@ export class BuddiesPage {
     if (q.trim() == '') {
       return;
     }
+    
 
     this.filteredusers = this.filteredusers.filter((v) => {
       if (v.fullName.toLowerCase().indexOf(q.toLowerCase()) > -1) {
@@ -49,18 +51,22 @@ export class BuddiesPage {
   }
 
   sendreq(recipient){
+    console.log(firebase.auth().currentUser.uid);
+    
     this.newrequest.sender = firebase.auth().currentUser.uid;
+    console.log(this.newrequest.sender);
+
     this.newrequest.recipient = recipient.uid;
     if (this.newrequest.sender === this.newrequest.recipient)
       alert('You are your friend always');
     else {
       let successalert = this.alertCtrl.create({
         title: 'Request sent',
-        subTitle: 'Your request was sent to ' + recipient.displayName,
+        subTitle: 'Your request was sent to ' + recipient.fullName,
         buttons: ['ok']
       });
     
-      this.requestservice.sendrequest(this.newrequest).then((res: any) => {
+      this.requestservice.sendrequest(this.newrequest).then((res: any) => {//Complete Trash Line
         if (res.success) {
           successalert.present();
           let sentuser = this.filteredusers.indexOf(recipient);

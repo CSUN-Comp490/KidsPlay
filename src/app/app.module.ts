@@ -30,6 +30,7 @@ import { Geolocation } from '@ionic-native/geolocation';
 
 import { TrackerPageModule } from "../pages/tracker/tracker.module";
 import { TrackmapPageModule } from "../pages/trackmap/trackmap.module";
+import { ChatProvider } from '../providers/chat/chat';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { TrackmapPageModule } from "../pages/trackmap/trackmap.module";
     AngularFireModule.initializeApp(crank),
     TrackmapPageModule,
     TrackerPageModule,
+    MessagingPageModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -62,7 +64,8 @@ import { TrackmapPageModule } from "../pages/trackmap/trackmap.module";
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthProvider,
     UserServiceProvider,
-    RequestsProvider
+    RequestsProvider,
+    ChatProvider
     
   ]
 })
