@@ -1,3 +1,27 @@
 page-chats {
 
+    
+    // .background {        
+    //    }
+
+
+    .acceptButton{
+        background-color: rgb(44, 131, 63);
+        color: #ffffff;
+        width: 50px;
+        height: 50px;
+        border-radius: 12px;
+    }
+
+    .requestext{
+        margin-top: 30px;
+    }
+
+    .ignoreButton{
+        background-color: rgb(161, 55, 55);
+        color: #ffffff;
+        width: 50px;
+        height: 50px;
+        border-radius: 12px;
+    }
 }

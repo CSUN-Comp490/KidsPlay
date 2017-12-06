@@ -1,7 +1,9 @@
 import { UserServiceProvider } from './../../providers/user-service/user-service';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
-import {AngularFireAuth} from 'angularfire2/auth'
+import {AngularFireAuth} from 'angularfire2/auth';
+import { MessagingPage } from '../messaging/messaging';
+import { TrackerPage } from '../tracker/tracker';
 /**
  * Generated class for the HomePage page.
  *
@@ -55,6 +57,12 @@ export class HomePage {
       }).catch((err)=>{
         console.log(err);
       })
+    }
+
+    gotoMessaging(){
+      this.navCtrl.push(MessagingPage);
+      
+
     }
 
 }
