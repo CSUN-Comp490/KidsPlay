@@ -61,8 +61,9 @@ export class HomePage {
 
     gotoMessaging(){
       this.navCtrl.push(MessagingPage);
-      
-
+    }
+    gotoTracker(){
+      this.navCtrl.push(TrackerPage);
     }
 
 }

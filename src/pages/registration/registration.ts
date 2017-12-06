@@ -2,7 +2,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { UserServiceProvider } from './../../providers/user-service/user-service';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {AuthProvider} from '../../providers/auth/auth';
+import { AuthProvider } from '../../providers/auth/auth';
 import * as firebase from 'firebase';
 
 /**
@@ -24,29 +24,38 @@ export class RegistrationPage {
   famName = '';
   address = '';
 
-
-
-
   // Variables Used by Child Registration
   childfirstName = '';
   parentEmail = '';
   childPassword = '';
   parentPassword = '';
+  childLatitude = '';
+  childLongitude = '';
 
   // Variables Used by Teen Registration
   teenfirstName = '';
   tparentEmail = '';
-  tparentName = '';
+  tparentPassword = '';
   teenPassword = '';
   teenEmail = '';
 
+  account: string = "parent";//Defaults ngModel to parent, in other words, registration is set to parent tab when registration page is opened
 
-  kids: string[][];
 
+  // kid: [string,number];
+  // i = 0;
   
 
+  // temparr= [];
 
-  userProfile: any = firebase.database().ref('users');
+
+
+
+
+  userProfile: any = firebase.database().ref('users');//users aka parent branch reference, reference used to set new parent to database
+  childProfile: any = firebase.database().ref('kids');//child branch reference, reference used to set new child to database
+  teenProfile: any = firebase.database().ref('teens');//teen branch reference, reference used to set new teen to database
+
   constructor(public navCtrl: NavController, public navParams: NavParams, public userService: UserServiceProvider,
     public fireAuth: AngularFireAuth, public authservice: AuthProvider) {
   }
@@ -64,7 +73,9 @@ export class RegistrationPage {
             email: this.email,
             fullName: this.fullName,
             familyName: this.famName,
-            address: this.address
+            address: this.address,
+            password: this.password,
+            uid: authenticatedUser.uid,
           })
         })
       })
@@ -73,41 +84,49 @@ export class RegistrationPage {
 
   // Adds a child to an existing parent
   createChild() {
-    // let   cred={
-    //   email: this.parentEmail,
-    //   password: this.parentPassword,
-    // } 
 
-  
+    //   var ref = firebase.database().ref();
+    //   ref.child('users').orderByChild('email').equalTo(this.parentEmail).on("value", function(snapshot) {
+    //     console.log(snapshot.val());
+    //     //var kidsSnapshot = snapshot.child('kids');
+    //     //console.log(kidsSnapshot);
+    //     // this.kids = kidsSnapshot.val();
+    //     // console.log(this.kids);
 
-    //this.checkCredentials(cred);
+    // });
+    ////Commented Code above fetches all kids in the database. May possibly use this to check if kid already exists later on
 
-    this.fireAuth.auth.signInWithEmailAndPassword(this.parentEmail, this.parentPassword).then((authenticatedUser) => {
-      
-                this.userProfile.child(authenticatedUser.uid).update({
+    this.fireAuth.auth.signInWithEmailAndPassword(this.parentEmail, this.parentPassword).then((authenticatedUser) => {//Checks If Parent is Registered and Signs Them In
 
-                  kids: this.childfirstName,
-                })
-              })
+      this.childProfile.child(authenticatedUser.uid).push({//Adds a child to the child branch of the database, nested by parent's uid value
 
+        Name: this.childfirstName,
+        Password: this.childPassword,
+        SubAccountType: 'Child',
+        Longitude: this.childLongitude,
+        Latitude: this.childLatitude,
+        ParentID: authenticatedUser.uid,
+      })
+    })
+
+    //this.navCtrl.setRoot('HomePage');
   }
 
   // Adds a teenager to an existing parent
   createTeen() {
-    
-      }
+    this.fireAuth.auth.signInWithEmailAndPassword(this.tparentEmail, this.tparentPassword).then((authenticatedUser) => {//Checks If Parent is Registered and Signs Them In
 
+      this.teenProfile.child(authenticatedUser.uid).push({//Adds a teen to the teen branch of the database, nested by parent's uid value
 
+        Name: this.teenfirstName,
+        Password: this.teenPassword,
+        Email: this.teenEmail,
+        SubAccountType: 'Teen',
+        Longitude: 0,
+        Latitude: 0,
+        ParentID: authenticatedUser.uid,
+      })
+    })
 
-//   checkCredentials(credentials){
-
-//     this.authservice.login(credentials).then((res:any) =>{
-//        if(!res.code)
-//          return true;
-//        else 
-//        alert(res);
-//     })
-// }
-
-  
+  }
 }
