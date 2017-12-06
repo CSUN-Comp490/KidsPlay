@@ -1,3 +1,4 @@
+import { UserServiceProvider } from './../providers/user-service/user-service';
 import { RegistrationPage } from './../pages/registration/registration';
 import { LoginPageModule } from './../pages/login/login.module';
 import { BrowserModule } from '@angular/platform-browser';
@@ -23,22 +24,25 @@ import { TabsPageModule } from '../pages/tabs/tabs.module';
 import { EventmadePageModule } from '../pages/event-made/event-made.module';
 import { ViewcurrentEventPageModule } from '../pages/viewcurrent-event/viewcurrent-event.module'
 import { MyProfilePageModule } from '../pages/my-profile/my-profile.module';
+import {HttpModule} from '@angular/http';
+import { RequestsProvider } from '../providers/requests/requests';
 
 import { GoogleMaps } from '@ionic-native/google-maps';
+import { Geolocation } from '@ionic-native/geolocation';
+
 
 import { TrackerPageModule } from "../pages/tracker/tracker.module";
 import { TrackmapPageModule } from "../pages/trackmap/trackmap.module";
 
-
 @NgModule({
   declarations: [
     MyApp,
-    
-    
+   
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
+    HttpModule,
+    IonicModule.forRoot(MyApp,{tabsPlacement: 'top'}),
     AngularFireAuthModule,
     LoginPageModule,
     MyProfilePageModule,
@@ -66,8 +70,11 @@ import { TrackmapPageModule } from "../pages/trackmap/trackmap.module";
     StatusBar,
     SplashScreen,
     GoogleMaps,
+    Geolocation,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthProvider,
+    UserServiceProvider,
+    RequestsProvider
     
   ]
 })

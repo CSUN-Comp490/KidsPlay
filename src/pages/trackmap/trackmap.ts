@@ -10,6 +10,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
  */
 
 declare var google: any;
+var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
 
 
 @IonicPage()
@@ -22,6 +23,14 @@ export class TrackmapPage {
   map: any;
   marker: any;
 
+  kidLong = []; //Dynamic
+  kidLat = []; //Dynamic
+  kidName = []; //Dynamic
+
+
+
+
+
   constructor(public navCtrl: NavController, public navParams: NavParams, /*private _googleMaps: GoogleMaps*/) {
   }
 /*
@@ -29,6 +38,159 @@ export class TrackmapPage {
     this.initMap();
   }
 */
+
+  initMapAll2(a,b,c,x,y){//a is the kid latitude array, b is the kid longitude array, c is the kid name array, x is the parent lat, y is the parent long
+    let locations = [];
+    let labels = [];
+    for (var i in c) {
+      locations.push(new google.maps.LatLng(a[i],b[i]));
+      labels.push(c[i]);
+    }
+
+    const myLocation = new google.maps.LatLng(x,y);
+
+    const options = {
+      center: myLocation,
+    }
+    this.map = new google.maps.Map(this.mapRef.nativeElement, options)
+
+    let markers = [];
+
+    for (var j in labels) {
+    markers.push(
+      new google.maps.Marker({
+        position: locations[j],
+        title: labels[j],
+        icon: '../../assets/TrackerTinyClear2.png',
+        label: labels[j],
+      })
+    );
+    }
+
+    markers.push(
+      new google.maps.Marker({
+        position: myLocation,
+        title: 'You',
+        icon: '../../assets/TrackerTinyGreyClear2.png',
+        label: 'You',
+      })
+    );
+
+    var bounds = new google.maps.LatLngBounds();
+    for (var q = 0; q < markers.length; q++) {
+     bounds.extend(markers[q].getPosition());
+    }
+
+
+    for (var m in markers) {
+     markers[m].setMap(this.map);
+    }
+    
+    this.map.fitBounds(bounds);
+
+
+
+  }
+  initMapAll(a,b,c,d,e,f,g,h,i,j,k,l){  
+    const location1 = new google.maps.LatLng(a,b);
+    const location2 = new google.maps.LatLng(c,d);
+    const location3 = new google.maps.LatLng(e,f);
+    const location4 = new google.maps.LatLng(g,h);
+
+    // var calc1 = google.maps.geometry.spherical.computeDistanceBetween(location1,location2)/1000;
+    // var calc2 = google.maps.geometry.spherical.computeDistanceBetween(location1,location3)/1000;
+    // var calc3 = google.maps.geometry.spherical.computeDistanceBetween(location1,location4)/1000;
+
+    // if(calc1 >= calc2 && calc1 >= calc3){
+
+    // }
+    // else if(calc2 >= calc1 && calc2 >= calc3){
+
+    // }
+    // else if(calc2 >= calc1 && calc2 >= calc3){
+      
+    // }
+
+
+    // var zoom;
+
+    const options = {
+      center: location1,
+      //zoom: 2,
+      //mapTypeId: google.maps.MapTypeId.ROADMAP,
+    }
+    this.map = new google.maps.Map(this.mapRef.nativeElement, options)
+    
+      let marker1 = new google.maps.Marker({
+      position: location1,
+      //map: this.map,
+      title: i,
+      icon: '../../assets/TrackerTinyGreyClear2.png',
+      label: i,
+    });
+    let marker2 = new google.maps.Marker({
+      position: location2,
+      //map: this.map,
+      title: j,
+      icon: '../../assets/TrackerTinyClear2.png',
+      label: j,
+    });
+    let marker3 = new google.maps.Marker({
+      position: location3,
+      //map: this.map,
+      title: k,
+      icon: '../../assets/TrackerTinyClear2.png',
+      label: k,
+    });
+    let marker4 = new google.maps.Marker({
+      position: location4,
+      //map: this.map,
+      title: l,
+      icon: '../../assets/TrackerTinyClear2.png',
+      label: l,
+    });
+
+    var markers = [marker1, marker2, marker3, marker4];//some array
+    var bounds = new google.maps.LatLngBounds();
+    for (var q = 0; q < markers.length; q++) {
+     bounds.extend(markers[q].getPosition());
+    }
+    marker1.setMap(this.map);
+    marker2.setMap(this.map);
+    marker3.setMap(this.map);
+    marker4.setMap(this.map);
+    this.map.fitBounds(bounds);
+    
+
+
+
+
+
+    
+  }
+
+
+
+  // pickZoom(w,x,y,z){
+    // var calc1 = google.maps.geometry.spherical.computeDistanceBetween(w,x)/1000;
+    // var calc2 = google.maps.geometry.spherical.computeDistanceBetween(w,y)/1000;
+    // var calc3 = google.maps.geometry.spherical.computeDistanceBetween(w,z)/1000;
+
+    // if(calc1 >= calc2 && calc1 >= calc3){
+
+    // }
+    // else if(calc2 >= calc1 && calc2 >= calc3){
+
+    // }
+    // else if(calc2 >= calc1 && calc2 >= calc3){
+      
+    // }
+
+
+    // var zoom;
+  // }
+
+
   initMap(x,y,z){
     //Location - lat long
     const location = new google.maps.LatLng(x,y/*34.1490, -118.4514*/);
@@ -48,10 +210,15 @@ export class TrackmapPage {
     }
     this.map = new google.maps.Map(this.mapRef.nativeElement, options)
     
-    let marker = new google.maps.Marker({
+      let marker = new google.maps.Marker({
       position: location,
       map: this.map,
-      title: z
+      title: z,
+      icon: '../../assets/TrackerTiny.png',
+      label: {
+        //text: z,
+        color: 'white',
+      },
     });
 
     /*
@@ -60,10 +227,67 @@ export class TrackmapPage {
   }
 
    ionViewDidLoad() {
-     var lat = this.navParams.get('latitude');
-     var long = this.navParams.get('longitude');
-     var name = this.navParams.get('name');
-     this.initMap(lat,long, name);
+    
+
+
+    this.kidLong = this.navParams.get('kidLongitudes');
+    this.kidLat = this.navParams.get('kidLatitudes');
+    this.kidName = this.navParams.get('kidNames');
+    var myLat = this.navParams.get('myLat');
+    var myLong = this.navParams.get('myLong');
+    var setting = this.navParams.get('setting');
+
+    console.log(this.kidLong);
+    console.log(this.kidLat);
+    console.log(this.kidName);
+
+    // for (var i in this.kids2) {
+    //   kidLongitudes.push(this.kids2[i].Longitude);
+    //   kidLatitudes.push(this.kids2[i].Latitude);
+    //   kidNames.push(this.kids2[i].Name);
+    // }
+
+    
+
+  
+
+    // //if(this.navParams.get('name1') =null){
+    // var lat1 = this.navParams.get('lat1');
+    // var lat2 = this.navParams.get('lat2');
+    // var lat3 = this.navParams.get('lat3');
+    // var lat4 = this.navParams.get('lat4');
+    // var lng1 = this.navParams.get('lng1');
+    // var lng2 = this.navParams.get('lng2');
+    // var lng3 = this.navParams.get('lng3');
+    // var lng4 = this.navParams.get('lng4');
+    // var name1 = this.navParams.get('name1');
+    // var name2 = this.navParams.get('name2');
+    // var name3 = this.navParams.get('name3');
+    // var name4 = this.navParams.get('name4');
+    // var setting = this.navParams.get('setting');
+    
+
+    if(setting == "All"){
+      // this.initMapAll( lat1,lng1,lat2,lng2,lat3,lng3,lat4,lng4,name1,name2,name3,name4);
+
+      this.initMapAll2(this.kidLat,this.kidLong,this.kidName,myLat,myLong);
+
+
+
+    }
+    else{
+      var lat = this.navParams.get('latitude');
+      var long = this.navParams.get('longitude');
+      var name = this.navParams.get('name');
+      this.initMap(lat,long, name);
+    }
+    
+
+
+      
+
+
+   //}
      
     /*console.log(this.mapElement/*'ionViewDidLoad TrackmapPage');*/
    }

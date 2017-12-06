@@ -6,6 +6,9 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import {HomePage} from './../pages/home/home';
+import { ChatsPage } from '../pages/chats/chats';
+import { BuddiesPage } from '../pages/buddies/buddies';
+import { GroupChatPage } from '../pages/group-chat/group-chat';
 import { ListPage } from '../pages/list/list';
 import { NewsfeedPage } from '../pages/newsfeed/newsfeed';
 import { EventsAttendingPage } from '../pages/events-attending/events-attending';
@@ -13,12 +16,14 @@ import { MessagingPage } from '../pages/messaging/messaging';
 import { FriendsPage } from './../pages/friends/friends';
 import { MyEventsPage } from '../pages/my-events/my-events';
 import { MyProfilePage } from '../pages/my-profile/my-profile';
+
+import { TrackerPageModule } from "../pages/tracker/tracker.module";
+import { TrackmapPageModule } from "../pages/trackmap/trackmap.module";
 import { AddEventPage } from '../pages/add-event/add-event';
 import { EventmadePage } from '../pages/event-made/event-made';
 import { ViewcurrentEventPage } from '../pages/viewcurrent-event/viewcurrent-event';
 //import { TrackerPage } from "../pages/tracker/tracker";
 //import { TrackmapPage } from "../pages/trackmap/trackmap";
-
 
 @Component({
   templateUrl: 'app.html'
