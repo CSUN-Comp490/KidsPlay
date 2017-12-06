@@ -29,6 +29,8 @@ export class RegistrationPage {
   parentEmail = '';
   childPassword = '';
   parentPassword = '';
+  childLatitude = '';
+  childLongitude = '';
 
   // Variables Used by Teen Registration
   teenfirstName = '';
@@ -101,8 +103,8 @@ export class RegistrationPage {
         Name: this.childfirstName,
         Password: this.childPassword,
         SubAccountType: 'Child',
-        Longitude: 0,
-        Latitude: 0,
+        Longitude: this.childLongitude,
+        Latitude: this.childLatitude,
         ParentID: authenticatedUser.uid,
       })
     })
