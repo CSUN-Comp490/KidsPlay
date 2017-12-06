@@ -12,7 +12,7 @@ import { UserServiceProvider } from './../../providers/user-service/user-service
  * Ionic pages and navigation.
  */
 
-declare var google: any;
+//declare var google: any;
 
 
 
@@ -24,9 +24,8 @@ declare var google: any;
 export class TrackerPage {
   childProfile: any = firebase.database().ref('kids');
 
-  kids = [];
-  kids2 = [];
-
+  kids = [];//array of all kids in the database
+  kids2 = [];//array of YOUR kids in the database
 
 
 
@@ -59,14 +58,14 @@ export class TrackerPage {
   // }];
   
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public geo: Geolocation, public userService: UserServiceProvider /*private element: ElementRef*/) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public geo: Geolocation, public userService: UserServiceProvider/*private element: ElementRef*/) {
     this.userService.getallKids().then((res: any)=>{
       console.log(res);
       this.kids = res; 
       console.log(this.kids);
     })
 
-  this.userService.getmyKids('WzcDU9BLmdMQ5LcBePvUXZVxENl2').then((res:any)=>{
+  this.userService.getmyKids(firebase.auth().currentUser.uid).then((res:any)=>{//fetches all kids based on current uid
     this.kids2 = res;
     console.log(this.kids2);
 
@@ -75,6 +74,17 @@ export class TrackerPage {
   }
 
   ionViewDidLoad() {
+
+    
+
+
+
+
+
+
+
+
+
 
     console.log('ionViewDidLoad TrackerPage');
 
@@ -156,6 +166,12 @@ export class TrackerPage {
 
   // }
 
+myCurrentLocation(){
+
+
+}
+
+
 
 find(x,y,z){
 
@@ -228,6 +244,31 @@ find4(){
       }
       this.navCtrl.push(TrackmapPage, data);
 
+
+  }
+
+  findAll(){
+
+    let kidLongitudes= [];
+    let kidLatitudes= [];
+    let kidNames= [];
+    for (var i in this.kids2) {
+      kidLongitudes.push(this.kids2[i].Longitude);
+      kidLatitudes.push(this.kids2[i].Latitude);
+      kidNames.push(this.kids2[i].Name);
+    }
+    console.log(kidLongitudes);
+    console.log(kidLatitudes);
+    console.log(kidNames);
+
+    let data ={
+      kidLongitudes, kidLatitudes, kidNames, myLat: this.lat, myLong: this.lng, setting: 'All'
+    }
+
+    this.navCtrl.push(TrackmapPage, data)
+    
+
+ 
 
   }
 

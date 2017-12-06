@@ -46,6 +46,7 @@ import { TrackmapPageModule } from "../pages/trackmap/trackmap.module";
     AngularFireModule.initializeApp(crank),
     TrackmapPageModule,
     TrackerPageModule,
+    MessagingPageModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
