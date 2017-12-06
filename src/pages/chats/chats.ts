@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, Events, AlertController } from 'ionic-angular';
 import { BuddiesPage} from '../buddies/buddies';
 import {RequestsProvider} from '../../providers/requests/requests';
+import { ChatProvider } from '../../providers/chat/chat';
 /**
  * Generated class for the ChatsPage page.
  *
@@ -18,17 +19,10 @@ export class ChatsPage {
   myrequests;
   myfriends;
   constructor(public navCtrl: NavController, public navParams: NavParams, public requestservice: RequestsProvider,
-              public events: Events, public alertCtrl: AlertController) {
+              public events: Events, public alertCtrl: AlertController, public chatservice: ChatProvider ) {
   }
 
-  // ionViewWillEnter() {
-  //  this.requestservice.getmyrequests();
-  //  this.events.subscribe('gotrequests', ()=>{
-  //  this.myrequests =[];
-  //  this.myrequests = this.requestservice.userdetails;
-  //  })
-   
-  // }
+  
   ionViewWillEnter() {
     this.requestservice.getmyrequests();
     this.requestservice.getmyfriends();
@@ -80,5 +74,10 @@ export class ChatsPage {
     }).catch((err) =>{
       alert(err);
     })
+  }
+
+  buddychat(buddy) {
+    this.chatservice.initializebuddy(buddy);
+    this.navCtrl.push('BuddychatPage');
   }
 }
