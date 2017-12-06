@@ -17,9 +17,12 @@ import { NewsfeedPageModule } from '../pages/newsfeed/newsfeed.module';
 import { EventsAttendingPageModule } from '../pages/events-attending/events-attending.module';
 import { MessagingPageModule } from '../pages/messaging/messaging.module';
 import { FriendsPageModule } from '../pages/friends/friends.module';
-// import { MyEventsPageModule } from '../pages/my-events/my-events.module';
-//import {GroupChatPage} from '../pages/group-chat/group-chat';
-// import { AddEventPageModule } from '../pages/add-event/add-event.module';
+import { MyEventsPageModule } from '../pages/my-events/my-events.module';
+import { VieweventPageModule } from '../pages/viewevent/viewevent.module';
+import { AddEventPageModule } from '../pages/add-event/add-event.module';
+import { TabsPageModule } from '../pages/tabs/tabs.module';
+import { EventmadePageModule } from '../pages/event-made/event-made.module';
+import { ViewcurrentEventPageModule } from '../pages/viewcurrent-event/viewcurrent-event.module'
 import { MyProfilePageModule } from '../pages/my-profile/my-profile.module';
 import {HttpModule} from '@angular/http';
 import { RequestsProvider } from '../providers/requests/requests';
@@ -47,7 +50,15 @@ import { ChatProvider } from '../providers/chat/chat';
     AngularFireModule.initializeApp(crank),
     TrackmapPageModule,
     TrackerPageModule,
+    AddEventPageModule,
+    TabsPageModule,
+    EventmadePageModule,
+    ViewcurrentEventPageModule,
+    VieweventPageModule,
+    NewsfeedPageModule,
     MessagingPageModule,
+    FriendsPageModule,
+    MyEventsPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
