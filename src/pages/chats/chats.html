@@ -8,16 +8,53 @@
 
   <ion-navbar color = "primary">
     <ion-title>Chats</ion-title>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
     <ion-buttons end>
-      <button ion-button icon-only (click)= "addbuddy()">
-        <ion-icon name="person-add"></ion-icon>
-      </button>
-    </ion-buttons>
+        <button ion-button icon-only (click)= "addbuddy()">
+          <ion-icon name="person-add"></ion-icon>
+        </button>
+      </ion-buttons>
+    
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-
+<ion-list >
+  <ion-list-header class = "requestext">
+    Requests
+  </ion-list-header>
+  <ion-item-sliding *ngFor="let item of myrequests">
+    <ion-item>
+    <ion-avatar item-left>
+      <img src="{{item.photoURL}}">
+    </ion-avatar>
+    <h4>{{item.fullName}}</h4>
+    </ion-item>
+    <ion-item-options>
+      <button class = "acceptButton" (click)="accept(item)">
+        <ion-icon name="checkmark"></ion-icon>
+        <p></p>
+        ADD
+      </button>
+      <button class = "ignoreButton" (click)="ignore(item)">
+        <ion-icon name="trash"></ion-icon>
+        <p></p>
+        NOPE
+      </button>
+    </ion-item-options>
+  </ion-item-sliding>
+  <ion-list-header>
+    Friends
+  </ion-list-header>
+  <ion-item no-lines *ngFor="let item of myfriends" (click)="buddychat(item)">
+    <ion-avatar item-left>
+      <img src={{item.photoURL}}>
+    </ion-avatar>
+    <h3>{{item.fullName}}</h3>
+  </ion-item>
+</ion-list>
 </ion-content>

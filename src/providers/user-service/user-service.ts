@@ -16,12 +16,14 @@ export class UserServiceProvider {
 
     private data: any;
     //private fireAuth: any;
-    private userProfile: any;
+   // private userProfile: any;
+   firedata = firebase.database().ref('/users'); //parent
+   kidData = firebase.database().ref('/kids'); //kid
 
   constructor(public http: Http, public fireAuth: AngularFireAuth) {
 
     //this.fireAuth = firebase.auth();
-    this.userProfile = firebase.database().ref('users');
+    //this.userProfile = firebase.database().ref('users');
   }
 
   loadUser(number) {
@@ -58,9 +60,87 @@ signUpUser(email: string , password: string) {
                     })
                 })
             })*/
+        }
+
+//}
+getcurrentuid(){
+
+var promise = new Promise((resolve, reject)=> {
+this.firedata.equalTo('uid').once('value',(snapshot)=> {
+ let userdata= snapshot.val();
+ let temparr= [];
+ for (var key in userdata) {
+  temparr.push(userdata[key]);
+}
+resolve(temparr);
+})
+.catch((err)=>{
+  reject(err);
+})
+
+})
+return promise;
 
 }
 
+
+getallusers() {
+    var promise = new Promise((resolve, reject) => {
+      this.firedata.orderByChild('uid').once('value', (snapshot) => {
+        let userdata = snapshot.val();
+        let temparr = [];
+        for (var key in userdata) {
+          temparr.push(userdata[key]);
+        }
+        resolve(temparr);
+      }).catch((err) => {
+        reject(err);
+      })
+    })
+    return promise;
+  }
+
+  getallKids() {
+
+    var promise = new Promise((resolve, reject) => {
+      this.kidData.orderByChild('uid').once('value', (snapshot) => {
+        let kidvalues = snapshot.val();
+        let kidarr = [];
+        for (var k in kidvalues) {
+          kidarr.push(kidvalues[k]);
+        }
+        resolve(kidarr);
+      }).catch((err) => {
+        reject(err);
+      })
+    })
+    return promise;    
+  }
+
+  getmyKids(x){
+
+  //   this.kidData.orderByChild('uid').equalTo(x).on("value", function(snapshot) {
+  //   console.log(snapshot.val());
+  // });
+
+
+    var promise = new Promise((resolve, reject) => {
+      this.kidData.child(x).orderByChild('uid').once('value', (snapshot) => {
+        let mykidvalues = snapshot.val();
+        let mykidarr = [];
+        for (var k in mykidvalues) {
+          mykidarr.push(mykidvalues[k]);
+        }
+        resolve(mykidarr);
+      }).catch((err) => {
+        reject(err);
+      })
+    })
+    
+    return promise;   
+  }
+  
+  
 
 
 } 

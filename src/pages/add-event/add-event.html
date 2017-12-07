@@ -1,45 +1,155 @@
-<!--
-  Generated template for the AddEventPage page.
+<ion-header color = "primary">
+  <ion-navbar  color = "primary" hideBackButton>
+     <!-- <ion-navbar  class = "bar-positive" hide-back-button="true">  -->
+       
+    <ion-buttons start>
+          <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+          </button>
+        </ion-buttons>
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header>
+    <ion-title align = "center">
+      Add A Event
+    </ion-title>
+   
+  </ion-navbar> 
+</ion-header>
+ 
+<ion-content  class="background">
+
+  <form class= "form-disable" id="add_form" action="#">
+   
+    <div class = "info_collect" >
+     
+        <!-- <ion-item >
+            <ion-avatar style = "margin-left: 140px" class = "b_background">
+              <img src="">
+               {{key.photoURL}} 
+            </ion-avatar>
+        </ion-item> -->
+      <ion-fab >
+       <button img src="" style = "margin-left: 140px" ion-fab class = "b_background" (click)= "openProfilePage()">
+         <img src="">
+      </button>
+     </ion-fab>
+     <br>
+   <br>
+   <br>
+    </div> 
   
-    <ion-navbar>
-      <ion-title>Create An Event</ion-title>
-    </ion-navbar>
   
-  </ion-header>
-  
-  
-  <ion-content padding>
-    <ion-list>
-  
-      <ion-item>
-        <ion-label floating>Title</ion-label>
-        <ion-input type="text"></ion-input>
-      </ion-item>
-  
-      <ion-item>
-        <ion-label floating>Location</ion-label>
-        <ion-input type="text"></ion-input>
-      </ion-item>
-  
-      <ion-item>
-        <ion-label floating>Information</ion-label>
-        <ion-input type="text"></ion-input>
-      </ion-item>
-  
-  
-      <ion-item>
-        <ion-label floating>Date and Time</ion-label>
-        <ion-datetime displayFormat="MMM DD, YYYY hh:mm a" min="2016" max="2025-10-31" [(ngModel)]="myDate"></ion-datetime>
-      </ion-item>
-  
-      <button ion-button full>Confirm</button>
-  
-      <button ion-button full color="danger" (click)="openMyEventsPage()">Cancel</button>
-  
-    </ion-list>
-  </ion-content>
+ <ion-card style = "margin-top: 5ch">
+
+        <ion-card-content >
+
+            <div class = "space style height: 10px;"></div>
+            <ion-item color = "white" ng-init>
+              <ion-label><h5><i> <ion-icon name="ice-cream"></ion-icon> &nbsp;Event Type </i></h5></ion-label>
+            <!-- <ion-input> -->
+              <ion-select [(ngModel)]= "type" name="typez">
+              <ion-option name="typez" value= "Friend"> Friend</ion-option>
+              <ion-option name="typez" value= "Community"> Community</ion-option>
+              <ion-option name="typez" value= "Public"> Public</ion-option>
+            </ion-select>
+            <!-- </ion-input> -->
+            </ion-item>
+
+            <!-- <form> -->
+
+              <!-- //descriptiopn of EventName -->
+                <div class = "space style height: 10px;"></div>
+              <ion-item color = "listcolor" ng-init>
+                <ion-label floating color = "primary" >
+                  <h5><i> 
+                    <ion-icon name="finger-print"></ion-icon>&nbsp;&nbsp;
+                    Event Name 
+                  </i></h5>
+                </ion-label>
+                <ion-input name= "name_input" id="name_input" type="text" ng-minlength= "4" ng-maxlength = "30" [(ngModel)]="eventName" name="eventName" autocorrect="off" value="" spellcheck="true" maxlength="30" required></ion-input>
+              </ion-item>
+              
+              
+              <!-- //descriptiopn of EventDate -->
+              <ion-item>
+                
+                  <ion-label><h5><i><ion-icon name="calendar"></ion-icon>&nbsp;&nbsp;
+                    Date </i></h5>
+                  </ion-label>
+                  <ion-datetime id="date_input" displayFormat="YYYY-MM-DDTHH:mm" min="2017" max="2020-10-31" [(ngModel)]="myDate" name="myDate" required>
+                  </ion-datetime>
+              </ion-item>
+
+              <!-- //descriptiopn of the EventLocation -->
+              <ion-item color = "listcolor">
+                  <ion-label floating color = "primary">
+                    <h5><i><ion-icon name="pin"></ion-icon> &nbsp;&nbsp;
+                      Location
+                    </i></h5>
+                  </ion-label>
+                  <ion-input id="location_input" type="location" [(ngModel)]="location" name="location" value="" required></ion-input>
+                </ion-item>
+                
+                <!-- //descriptiopn of the EventDescription -->
+                <ion-item color = "">
+                    <ion-label floating color = "">
+                      <h5><i>
+                        <ion-icon name="clipboard"></ion-icon>&nbsp;&nbsp;
+                        Short Description
+                      </i></h5>
+                    </ion-label>
+                    <ion-input id="des_input" type="text" [(ngModel)]="description" name="description" value="" required></ion-input>
+                </ion-item>
+
+                  <!-- //descriptiopn of the EventCapacity -->
+                <ion-item color = "listcolor">
+                    <ion-label floating color = "primary" ><i><h5> <ion-icon name="people"></ion-icon>&nbsp;&nbsp;
+                      Capacity
+                    </h5></i>
+                  </ion-label>
+                    <ion-input id="capa_input" type="number" [(ngModel)]="capacity" name="capacity" value="" required></ion-input>
+                </ion-item>
+
+          </ion-card-content>
+
+     <!-- Reset and Submit button -->
+      <div>
+        <ion-input  id = "add_done" class="btn_reset" type= "reset" data-clear-btn="true" style="margin: auto"></ion-input><br/>
+        <ion-input  value="Send"  disabled="disable" id= "add_submit" class= "btn_submit" style="margin: auto" (click)= "eventmade()" type= "submit" name="add_submit"  ></ion-input>
+      </div>
+
+      <br>
+    <!-- </form> -->
+    </ion-card>
+    </form>
+    
+    
+<script >
+
+
+// $("input[type='text'], textarea").on("keyup", function(){
+//     if($(this).val() != "" && $("textarea").val() != "" && $("input[name='typez']").is(":checked") == true){
+//         $("input[type='submit']").removeAttr("disabled");
+//     } else {
+//         $("input[type='submit']").attr("disabled", "disabled");
+//     }
+// });
+
+$("input[name='name_input']").on("change", function(){
+    if($(this).val() != "" && $("input[name='typez']").is(":checked") == true
+   && $("input[id='date_input']").val() != "" && $("input[id='location_input']").val() != "" && $("input[id='capa_input']").val() != ""
+  && $("input[id='des_input']").val() != ""
+   ){
+        $("input[type='submit']").removeAttr("disabled");
+    } else {
+        $("input[type='submit']").attr("disabled", "disabled");
+    }
+});
+
+ 
+    </script>
+
+
+
+    </ion-content>
+ 
+ 

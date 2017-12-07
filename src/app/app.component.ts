@@ -8,7 +8,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import {HomePage} from './../pages/home/home';
 import { ChatsPage } from '../pages/chats/chats';
-import {GroupChatPage} from '../pages/group-chat/group-chat';
+import { BuddiesPage } from '../pages/buddies/buddies';
+import { GroupChatPage } from '../pages/group-chat/group-chat';
 import { ListPage } from '../pages/list/list';
 import { NewsfeedPage } from '../pages/newsfeed/newsfeed';
 import { EventsAttendingPage } from '../pages/events-attending/events-attending';
@@ -18,6 +19,14 @@ import { MyEventsPage } from '../pages/my-events/my-events';
 import { MyProfilePage } from '../pages/my-profile/my-profile';
 import { AddPicPage } from '../pages/add-pic/add-pic';
 
+import { TrackerPageModule } from "../pages/tracker/tracker.module";
+import { TrackmapPageModule } from "../pages/trackmap/trackmap.module";
+import { AddEventPage } from '../pages/add-event/add-event';
+import { EventmadePage } from '../pages/event-made/event-made';
+import { ViewcurrentEventPage } from '../pages/viewcurrent-event/viewcurrent-event';
+//import { TrackerPage } from "../pages/tracker/tracker";
+//import { TrackmapPage } from "../pages/trackmap/trackmap";
+import { MessagingPageModule } from "../pages/messaging/messaging.module";
 
 @Component({
   templateUrl: 'app.html'
@@ -44,6 +53,8 @@ export class MyApp {
         { title: 'My Events', component: MyEventsPage, icon: 'calendar' },
         { title: 'My Profile', component: MyProfilePage, icon: 'contact' },
         { title: 'Picture', component: AddPicPage, icon: 'ios-camera' }
+        { title: 'Add A Event', component: AddEventPage, icon: 'add-circle' },
+        { title: 'Registration', component: RegistrationPage, icon: 'heart' }
       ];
   
     }

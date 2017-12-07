@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { BuddiesPage} from '../buddies/buddies';
 
 /**
  * Generated class for the GroupChatPage page.
@@ -22,8 +23,8 @@ export class GroupChatPage {
     console.log('ionViewDidLoad GroupChatPage');
   }
 
-  addBuddy() {
-    this.navCtrl.push('group-chat');
+  addbuddy(){
+    this.navCtrl.push('BuddiesPage');
   }
 
 }

@@ -18,23 +18,25 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class MessagingPage {
 
   tab1: string = "ChatsPage";
-  tab2: string = "GroupsPage";
+  tab2: string = "GroupChatPage";
+  constructor(){
+
+  }
+ // constructor(public navCtrl: NavController, public navParams: NavParams) {
+  }
+
+  //ionViewDidLoad() {
+    //console.log('ionViewDidLoad MessagingPage');
+  //}
+
+
+  //goTO1(){
+  //      this.navCtrl.push('GroupChatPage');
+  // }
   
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad MessagingPage');
-  }
 
 
-  goTO1(){
-        this.navCtrl.push(GroupChatPage);
-   }
-  
-
-
-  goTO2(){
-    this.navCtrl.push(ChatsPage);
-  }
-}
+ // goTO2(){
+   // this.navCtrl.push('ChatsPage');
+ // }
+//}

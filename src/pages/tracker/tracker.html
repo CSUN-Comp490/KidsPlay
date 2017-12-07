@@ -17,17 +17,37 @@
 
 
 <ion-content class="background" class="no-scroll">
+
+    <!-- <ion-list>
+        <ion-item *ngFor="#item of product_categories">
+            {{item.name}}
+        </ion-item>
+    </ion-list> -->
+    
+    
     
     <p></p>
-    <button class="button" ion-button round outline color ="primary" (click) = "findALL()"> TRACK ALL</button>
+    <button class="button" ion-button round outline color ="primary" (click) = "findAll()"> TRACK ALL</button>
     <p></p>
-    <button class="button" ion-button round outline color ="primary" (click) = "find1()"> Jeffrey </button>
+
+
+    <div *ngFor= "let kid of this.kids2">
+    <p></p>
+    <button class="button" ion-button round outline color ="primary"(click) = "find(kid.Latitude,kid.Longitude,kid.Name)">{{kid.Name}}</button>
+    <p></p>
+    </div>
+    
+  
+
+
+<!--     
+    <button class="button" ion-button round outline color ="primary" (click) = "find(this.lat,this.lng,this.myName)">{{this.myName}}</button>
     <p></p>
     <button class="button" ion-button round outline transparent color ="primary" (click) = "find2()"> Steven</button>
     <p></p>
     <button class="button" ion-button round outline color ="primary" (click) = "find3()"> Jonathan</button>
     <p></p>
-    <button class="button" ion-button round outline transparent color ="primary" (click) = "find4()"> Samantha</button>
+    <button class="button" ion-button round outline transparent color ="primary" (click) = "find4()"> Samantha</button> -->
 
     
     

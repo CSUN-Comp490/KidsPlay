@@ -27,8 +27,16 @@ import {File } from '@ionic-native/file';
 // import { MyEventsPageModule } from '../pages/my-events/my-events.module';
 import {GroupChatPage} from '../pages/group-chat/group-chat';
 // import { AddEventPageModule } from '../pages/add-event/add-event.module';
+import { MyEventsPageModule } from '../pages/my-events/my-events.module';
+import { VieweventPageModule } from '../pages/viewevent/viewevent.module';
+import { AddEventPageModule } from '../pages/add-event/add-event.module';
+import { TabsPageModule } from '../pages/tabs/tabs.module';
+import { EventmadePageModule } from '../pages/event-made/event-made.module';
+import { ViewcurrentEventPageModule } from '../pages/viewcurrent-event/viewcurrent-event.module'
 import { MyProfilePageModule } from '../pages/my-profile/my-profile.module';
 import {HttpModule} from '@angular/http';
+import { RequestsProvider } from '../providers/requests/requests';
+
 import { GoogleMaps } from '@ionic-native/google-maps';
 import { Geolocation } from '@ionic-native/geolocation';
 import { TrackerPage } from '../pages/tracker/tracker';
@@ -37,12 +45,12 @@ import { AddPicPageModule } from '../pages/add-pic/add-pic.module';
 import { CameraProvider } from '../providers/camera/camera';
 import { NameDataProvider } from '../providers/name-data/name-data';
 
-
+import { ChatProvider } from '../providers/chat/chat';
+import { AngularFireDatabaseModule } from "angularfire2/database";
 @NgModule({
   declarations: [
     MyApp,
-    GroupChatPage,
-    
+   
   ],
   imports: [
     BrowserModule,
@@ -51,10 +59,21 @@ import { NameDataProvider } from '../providers/name-data/name-data';
     AngularFireAuthModule,
     LoginPageModule,
     MyProfilePageModule,
-    TrackerPageModule,
+    AngularFireModule.initializeApp(crank),
     TrackmapPageModule,
+    TrackerPageModule,
+    AddEventPageModule,
+    TabsPageModule,
+    EventmadePageModule,
+    ViewcurrentEventPageModule,
+    VieweventPageModule,
+    NewsfeedPageModule,
+    MessagingPageModule,
+    FriendsPageModule,
+    MyEventsPageModule,
+    AngularFireDatabaseModule,
+    HomePageModule,
     AddPicPageModule,
-    AngularFireModule.initializeApp(crank)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -76,11 +95,16 @@ import { NameDataProvider } from '../providers/name-data/name-data';
     File,
     AuthProvider,
     UserServiceProvider,
+    RequestsProvider,
+    ChatProvider,
     CameraProvider,
     Camera,
     NameDataProvider
-    // PhotoProvider
     
   ]
 })
 export class AppModule {}
+function newFunction() {
+    '../';
+}
+

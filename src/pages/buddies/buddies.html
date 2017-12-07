@@ -6,24 +6,33 @@
 -->
 <ion-header>
 
-<<<<<<< HEAD:src/pages/buddies/buddies.html
-  <ion-navbar>
-    <ion-title>buddies</ion-title>
-=======
   <ion-navbar color = "primary">
-    <ion-title>TrackMap</ion-title>
->>>>>>> TrackBranch:src/pages/trackmap/trackmap.html
-  </ion-navbar>
+    <ion-title>buddies</ion-title>
+    </ion-navbar>
+
 
 </ion-header>
 
 
-<<<<<<< HEAD:src/pages/buddies/buddies.html
-<ion-content padding>
-
-=======
-<ion-content class="map" class="no-scroll">
-  <div #map id="map" style= "width: 100%; height: 100%;"></div>
-  
->>>>>>> TrackBranch:src/pages/trackmap/trackmap.html
+<ion-content>
+  <ion-searchbar [(ngModel)]="searchstring" (input)="searchuser($event)" placeholder="Search"></ion-searchbar>
+<ion-list no-lines>
+  <ion-list>
+    <ion-item-sliding *ngFor="let key of filteredusers">
+      <ion-item >
+        <ion-avatar item-left>
+          <img src="{{key.photoURL}}">
+        </ion-avatar>
+        <h2>{{key.fullName}}</h2>
+      </ion-item>
+      <ion-item-options slide="left">
+        <button ion-button color="primary" (click)="sendreq(key)">
+          <ion-icon name="person-add"></ion-icon>
+          Add
+        </button>
+      </ion-item-options>
+      
+    </ion-item-sliding>
+  </ion-list>
+</ion-list>
 </ion-content>

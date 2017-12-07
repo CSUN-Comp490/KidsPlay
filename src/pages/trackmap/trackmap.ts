@@ -1,7 +1,7 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-//import {GoogleMaps, GoogleMap } from '@ionic-native/google-maps';
+import {GoogleMaps, GoogleMap } from '@ionic-native/google-maps';
 /**
  * Generated class for the TrackmapPage page.
  *
@@ -23,6 +23,14 @@ export class TrackmapPage {
   map: any;
   marker: any;
 
+  kidLong = []; //Dynamic
+  kidLat = []; //Dynamic
+  kidName = []; //Dynamic
+
+
+
+
+
   constructor(public navCtrl: NavController, public navParams: NavParams, /*private _googleMaps: GoogleMaps*/) {
   }
 /*
@@ -31,7 +39,58 @@ export class TrackmapPage {
   }
 */
 
+  initMapAll2(a,b,c,x,y){//a is the kid latitude array, b is the kid longitude array, c is the kid name array, x is the parent lat, y is the parent long
+    let locations = [];
+    let labels = [];
+    for (var i in c) {
+      locations.push(new google.maps.LatLng(a[i],b[i]));
+      labels.push(c[i]);
+    }
 
+    const myLocation = new google.maps.LatLng(x,y);
+
+    const options = {
+      center: myLocation,
+    }
+    this.map = new google.maps.Map(this.mapRef.nativeElement, options)
+
+    let markers = [];
+
+    for (var j in labels) {
+    markers.push(
+      new google.maps.Marker({
+        position: locations[j],
+        title: labels[j],
+        icon: '../../assets/TrackerTinyClear2.png',
+        label: labels[j],
+      })
+    );
+    }
+
+    markers.push(
+      new google.maps.Marker({
+        position: myLocation,
+        title: 'You',
+        icon: '../../assets/TrackerTinyGreyClear2.png',
+        label: 'You',
+      })
+    );
+
+    var bounds = new google.maps.LatLngBounds();
+    for (var q = 0; q < markers.length; q++) {
+     bounds.extend(markers[q].getPosition());
+    }
+
+
+    for (var m in markers) {
+     markers[m].setMap(this.map);
+    }
+    
+    this.map.fitBounds(bounds);
+
+
+
+  }
   initMapAll(a,b,c,d,e,f,g,h,i,j,k,l){  
     const location1 = new google.maps.LatLng(a,b);
     const location2 = new google.maps.LatLng(c,d);
@@ -66,28 +125,28 @@ export class TrackmapPage {
       position: location1,
       //map: this.map,
       title: i,
-      icon: '../../assets/TrackerTiny.png',
+      icon: '../../assets/TrackerTinyGreyClear2.png',
       label: i,
     });
     let marker2 = new google.maps.Marker({
       position: location2,
       //map: this.map,
       title: j,
-      icon: '../../assets/TrackerTiny.png',
+      icon: '../../assets/TrackerTinyClear2.png',
       label: j,
     });
     let marker3 = new google.maps.Marker({
       position: location3,
       //map: this.map,
       title: k,
-      icon: '../../assets/TrackerTiny.png',
+      icon: '../../assets/TrackerTinyClear2.png',
       label: k,
     });
     let marker4 = new google.maps.Marker({
       position: location4,
       //map: this.map,
       title: l,
-      icon: '../../assets/TrackerTiny.png',
+      icon: '../../assets/TrackerTinyClear2.png',
       label: l,
     });
 
@@ -142,12 +201,12 @@ export class TrackmapPage {
 
     })*/
     
-    // Map options
+    //Map options
 
     const options = {
       center: location,
       zoom: 15,
-      //mapTypeId: google.maps.MapTypeId.ROADMAP,
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
     }
     this.map = new google.maps.Map(this.mapRef.nativeElement, options)
     
@@ -168,27 +227,52 @@ export class TrackmapPage {
   }
 
    ionViewDidLoad() {
+    
+
+
+    this.kidLong = this.navParams.get('kidLongitudes');
+    this.kidLat = this.navParams.get('kidLatitudes');
+    this.kidName = this.navParams.get('kidNames');
+    var myLat = this.navParams.get('myLat');
+    var myLong = this.navParams.get('myLong');
+    var setting = this.navParams.get('setting');
+
+    console.log(this.kidLong);
+    console.log(this.kidLat);
+    console.log(this.kidName);
+
+    // for (var i in this.kids2) {
+    //   kidLongitudes.push(this.kids2[i].Longitude);
+    //   kidLatitudes.push(this.kids2[i].Latitude);
+    //   kidNames.push(this.kids2[i].Name);
+    // }
+
+    
 
   
 
-    //if(this.navParams.get('name1') =null){
-    var lat1 = this.navParams.get('lat1');
-    var lat2 = this.navParams.get('lat2');
-    var lat3 = this.navParams.get('lat3');
-    var lat4 = this.navParams.get('lat4');
-    var lng1 = this.navParams.get('lng1');
-    var lng2 = this.navParams.get('lng2');
-    var lng3 = this.navParams.get('lng3');
-    var lng4 = this.navParams.get('lng4');
-    var name1 = this.navParams.get('name1');
-    var name2 = this.navParams.get('name2');
-    var name3 = this.navParams.get('name3');
-    var name4 = this.navParams.get('name4');
-    var setting = this.navParams.get('setting');
+    // //if(this.navParams.get('name1') =null){
+    // var lat1 = this.navParams.get('lat1');
+    // var lat2 = this.navParams.get('lat2');
+    // var lat3 = this.navParams.get('lat3');
+    // var lat4 = this.navParams.get('lat4');
+    // var lng1 = this.navParams.get('lng1');
+    // var lng2 = this.navParams.get('lng2');
+    // var lng3 = this.navParams.get('lng3');
+    // var lng4 = this.navParams.get('lng4');
+    // var name1 = this.navParams.get('name1');
+    // var name2 = this.navParams.get('name2');
+    // var name3 = this.navParams.get('name3');
+    // var name4 = this.navParams.get('name4');
+    // var setting = this.navParams.get('setting');
     
 
     if(setting == "All"){
-      this.initMapAll( lat1,lng1,lat2,lng2,lat3,lng3,lat4,lng4,name1,name2,name3,name4);
+      // this.initMapAll( lat1,lng1,lat2,lng2,lat3,lng3,lat4,lng4,name1,name2,name3,name4);
+
+      this.initMapAll2(this.kidLat,this.kidLong,this.kidName,myLat,myLong);
+
+
 
     }
     else{
