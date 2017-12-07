@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {Camera} from '@ionic-native/camera';
+import {Camera, CameraOptions} from '@ionic-native/camera';
 import {HomePage} from '../home/home';
 import {ImagePicker}  from '@ionic-native/image-picker';
-import { PhotoProvider } from '../../providers/photo/photo';
+import * as firebase from 'firebase/app';
+import { Observable } from 'rxjs/Observable';
 
 /**
  * Generated class for the AddPicPage page.
@@ -18,41 +19,41 @@ import { PhotoProvider } from '../../providers/photo/photo';
   templateUrl: 'add-pic.html',
 })
 export class AddPicPage {
-
+user: firebase.User;
   Picture;
   base64Image;
 
-  constructor(public cameraPlugin: Camera, public navCtrl: NavController, public navParams: NavParams, public photoProvider: PhotoProvider) {}
-
-  createPost(photoName: string, Picture: string) {
-    this.photoProvider.createPost(photoName, this.Picture);
-    this.navCtrl.setRoot(HomePage);
+  constructor(public camera: Camera, public navCtrl: NavController, public navParams: NavParams) {
+    this.user = firebase.auth().currentUser
   }
 
-  takePicture(){
-    this.cameraPlugin.getPicture({
-    quality : 95,
-    destinationType : this.cameraPlugin.DestinationType.DATA_URL,
-    sourceType : this.cameraPlugin.PictureSourceType.CAMERA,
-    allowEdit : true,
-    encodingType : this.cameraPlugin.EncodingType.PNG,
-    targetWidth : 500,
-    targetHeight : 500,
-    saveToPhotoAlbum : true
-
-    }).then(imageData => {
-      //imageData is a base64 encoded string
-
-    this.base64Image = "data.image/jpeg;base64," + imageData;
-    // this.Picture is passing the string to our DB
-    this.Picture = imageData;
-
-    }, error => {
-
-      console.log("ERROR -> " + JSON.stringify(error));
-    })
+  takePhoto(){
+    console.log('Take photo clicked');
+  try {
+    const cameraOptions: CameraOptions ={
+        quality: 100,
+        destinationType: this.camera.DestinationType.DATA_URL,
+        encodingType: this.camera.EncodingType.JPEG,
+        mediaType: this.camera.MediaType.PICTURE,
+        correctOrientation: true,
+        saveToPhotoAlbum: true
+    }
+    this.camera.getPicture(cameraOptions).then((result)=>{
+        const image = `data:image/jpeg;base64,${result}`;
+        const pictures = firebase.storage().ref().child('pictures/'+this.user.uid);
+        pictures.putString(image, firebase.storage.StringFormat.DATA_URL).then((snapshot)=>{
+            console.log(snapshot);
+        });
+    });
+  
+  }
+  catch (e){
+    console.error(e);
+ 
+ }
 
   }
+  
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AddPicPage');

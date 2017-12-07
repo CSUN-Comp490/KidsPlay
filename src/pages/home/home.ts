@@ -1,8 +1,12 @@
+import { crank } from './../../app/app.firebaseconfig';
 import { RegistrationPage } from './../registration/registration';
 import { UserServiceProvider } from './../../providers/user-service/user-service';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
-import {AngularFireAuth} from 'angularfire2/auth'
+import {AngularFireAuth} from 'angularfire2/auth';
+import {storage,initializeApp} from 'firebase';
+import { Camera,CameraOptions } from '@ionic-native/camera';
+import { AddPicPage } from '../add-pic/add-pic';
 
 /**
  * Generated class for the HomePage page.
@@ -20,11 +24,22 @@ export class HomePage {
 
   user: any;
 
-  constructor(private afAuth: AngularFireAuth,private toast: ToastController,
-    public navCtrl: NavController, public navParams: NavParams, public userService:UserServiceProvider) {
-
+  constructor(private camera: Camera, private afAuth: AngularFireAuth, private toast: ToastController,public navCtrl: NavController, public navParams: NavParams, public userService:UserServiceProvider) {
+      //initializeApp(crank);
      
   }
+
+   
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad HomePage');
+  }
+
+  goToPicEdit(){
+    this.navCtrl.push(AddPicPage);
+  }
+
+
+
 
   getMessages() {
     this.navCtrl.push('Messaging');
@@ -55,23 +70,27 @@ export class HomePage {
   }
 
   
-    // signin(){
+    
+
+}
+
+
+// signin(){
     //   this.authservice.login(this.credentials).then((res:any) =>{
     //      if(!res.code)
     //        this.navCtrl.setRoot('HomePage');
     //      else 
     //      alert(res);
-
+    
     //   })
-
+   
+    // }
+  
+    // load(){
+    //   this.userService.loadUser(5).then((res)=>{
+    //     console.log(res);
+    //   }).catch((err)=>{
+    //     console.log(err);
+    //   })
     // }
 
-   load(){
-      this.userService.loadUser(5).then((res)=>{
-        console.log(res);
-      }).catch((err)=>{
-        console.log(err);
-      })
-    }
-
-}

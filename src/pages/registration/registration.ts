@@ -59,7 +59,7 @@ registerUser(){
                     })
                 })
             
-                this.navCtrl.setRoot('HomePage');
+                this.navCtrl.push('LoginPage');
 }
   
 }

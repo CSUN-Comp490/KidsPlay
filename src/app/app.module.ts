@@ -22,12 +22,13 @@ import { NewsfeedPageModule } from '../pages/newsfeed/newsfeed.module';
 import { EventsAttendingPageModule } from '../pages/events-attending/events-attending.module';
 import { MessagingPageModule } from '../pages/messaging/messaging.module';
 import { FriendsPageModule } from '../pages/friends/friends.module';
+import {FileTransfer,FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+import {File } from '@ionic-native/file';
 // import { MyEventsPageModule } from '../pages/my-events/my-events.module';
 import {GroupChatPage} from '../pages/group-chat/group-chat';
 // import { AddEventPageModule } from '../pages/add-event/add-event.module';
 import { MyProfilePageModule } from '../pages/my-profile/my-profile.module';
 import {HttpModule} from '@angular/http';
-
 import { GoogleMaps } from '@ionic-native/google-maps';
 import { Geolocation } from '@ionic-native/geolocation';
 import { TrackerPage } from '../pages/tracker/tracker';
@@ -70,6 +71,9 @@ import { NameDataProvider } from '../providers/name-data/name-data';
     GoogleMaps,
     Geolocation,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
+    FileTransfer,
+    FileTransferObject,
+    File,
     AuthProvider,
     UserServiceProvider,
     CameraProvider,
