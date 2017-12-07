@@ -35,11 +35,15 @@ export class AddEventPage {
  location = '';
  description = '';
  capacity = '';
+ currentid= [];
 
  userID: String;
 
  constructor(public navCtrl: NavController, public navParams: NavParams, private fdb: AngularFireDatabase, private afAuth: AngularFireAuth, public userservice: UserServiceProvider,
   public requestservice: RequestsProvider) {
+    this.userservice.getcurrentuid().then((res: any)=>{
+    this.currentid= res;
+    })
 
  this.afAuth.authState.subscribe(user => {
    if(user) this.userID = user.uid  
