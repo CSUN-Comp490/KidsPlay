@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ViewcurrentEventPage } from '../viewcurrent-event/viewcurrent-event';
-import { VieweventPage } from '../viewevent/viewevent';
 import { MyEventsPage } from '../my-events/my-events';
 
 @IonicPage()
@@ -19,11 +18,16 @@ export class EventmadePage {
   }
 
   viewit() {
-    this.navCtrl.push(ViewcurrentEventPage);
+    this.navCtrl.setRoot (ViewcurrentEventPage);
   }
   checkeventbook(){
 
-   this.navCtrl.push (MyEventsPage);
+   this.navCtrl.setRoot (MyEventsPage);
 
-  }
+  
+   
+}
+
+
+
 }

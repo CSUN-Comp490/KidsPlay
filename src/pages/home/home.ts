@@ -1,6 +1,7 @@
 import { UserServiceProvider } from './../../providers/user-service/user-service';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import {AddEventPage} from '../add-event/add-event';
 import {AngularFireAuth} from 'angularfire2/auth';
 import { MessagingPage } from '../messaging/messaging';
 import { TrackerPage } from '../tracker/tracker';
@@ -57,6 +58,15 @@ export class HomePage {
       }).catch((err)=>{
         console.log(err);
       })
+    }
+    
+    gotoaddeventpage(){
+      this.navCtrl.setRoot(AddEventPage);
+      
+    }
+
+    AddEventPageBitch(){
+      this.navCtrl.push(AddEventPage);
     }
 
     gotoMessaging(){

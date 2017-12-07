@@ -34,6 +34,7 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { TrackerPageModule } from "../pages/tracker/tracker.module";
 import { TrackmapPageModule } from "../pages/trackmap/trackmap.module";
 import { ChatProvider } from '../providers/chat/chat';
+import { AngularFireDatabaseModule } from "angularfire2/database";
 
 @NgModule({
   declarations: [
@@ -58,7 +59,9 @@ import { ChatProvider } from '../providers/chat/chat';
     NewsfeedPageModule,
     MessagingPageModule,
     FriendsPageModule,
-    MyEventsPageModule
+    MyEventsPageModule,
+    AngularFireDatabaseModule,
+    HomePageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -81,3 +84,7 @@ import { ChatProvider } from '../providers/chat/chat';
   ]
 })
 export class AppModule {}
+function newFunction() {
+    '../';
+}
+

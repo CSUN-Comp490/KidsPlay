@@ -47,7 +47,8 @@ export class MyApp {
         { title: 'Friends', component: FriendsPage, icon: 'contacts' },
         { title: 'My Events', component: MyEventsPage, icon: 'calendar' },
         { title: 'My Profile', component: MyProfilePage, icon: 'contact' },
-        { title: 'Add A Event', component: AddEventPage, icon: 'add-circle' }
+        { title: 'Add A Event', component: AddEventPage, icon: 'add-circle' },
+        { title: 'Registration', component: RegistrationPage, icon: 'heart' }
        // { title: 'KidTracker', component: TrackerPage, icon: 'contact' },
        // { title: 'KidMap', component: TrackmapPage, icon: 'contact' },
                 
