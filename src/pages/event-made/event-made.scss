@@ -1,0 +1,42 @@
+page-eventmade {
+    
+        .background {
+            height: 100%;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+            // background: #70bg32;
+            background-repeat:no-repeat;
+            background: -webkit-linear-gradient( to left top, rgb(247, 247, 247), red);
+            background: -moz-linear-gradient( to left top, #C7C6C6, #EEEDED);
+            background: -ms-linear-gradient( to left top, #F9F9F9, #FFFFFF);
+            background: -o-linear-gradient( to left top, #CBCBCB, #D5D5D5);
+            background: linear-gradient( to left top, #EEEDED, #2C2D2D);
+            position: fixed;
+                     
+              
+           }
+           .scroll-content {
+               align-content: center;
+               display: flex;
+               flex-direction: column;
+               justify-content: center;
+               text-align: center;
+           }
+          
+           .displayed{
+            position: relative;
+            left: 130px;
+            align-content: center;
+
+           }
+           .item {
+               margin-bottom: 10px;
+               background: rgba(255, 255, 255, 0.5);
+               border: medium none;
+           
+           }
+       
+        
+        }

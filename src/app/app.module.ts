@@ -1,3 +1,9 @@
+import { GroupChatPageModule } from './../pages/group-chat/group-chat.module';
+import { Camera } from '@ionic-native/camera';
+import { NavController } from 'ionic-angular';
+// import { PhotoProvider } from './../providers/photo/photo';
+import { TrackmapPageModule } from './../pages/trackmap/trackmap.module';
+import { TrackerPageModule } from './../pages/tracker/tracker.module';
 import { UserServiceProvider } from './../providers/user-service/user-service';
 import { RegistrationPage } from './../pages/registration/registration';
 import { LoginPageModule } from './../pages/login/login.module';
@@ -17,20 +23,31 @@ import { NewsfeedPageModule } from '../pages/newsfeed/newsfeed.module';
 import { EventsAttendingPageModule } from '../pages/events-attending/events-attending.module';
 import { MessagingPageModule } from '../pages/messaging/messaging.module';
 import { FriendsPageModule } from '../pages/friends/friends.module';
+import {FileTransfer,FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+import {File } from '@ionic-native/file';
 // import { MyEventsPageModule } from '../pages/my-events/my-events.module';
-//import {GroupChatPage} from '../pages/group-chat/group-chat';
+import {GroupChatPage} from '../pages/group-chat/group-chat';
 // import { AddEventPageModule } from '../pages/add-event/add-event.module';
+import { MyEventsPageModule } from '../pages/my-events/my-events.module';
+import { VieweventPageModule } from '../pages/viewevent/viewevent.module';
+import { AddEventPageModule } from '../pages/add-event/add-event.module';
+import { TabsPageModule } from '../pages/tabs/tabs.module';
+import { EventmadePageModule } from '../pages/event-made/event-made.module';
+import { ViewcurrentEventPageModule } from '../pages/viewcurrent-event/viewcurrent-event.module'
 import { MyProfilePageModule } from '../pages/my-profile/my-profile.module';
 import {HttpModule} from '@angular/http';
 import { RequestsProvider } from '../providers/requests/requests';
 
 import { GoogleMaps } from '@ionic-native/google-maps';
 import { Geolocation } from '@ionic-native/geolocation';
+import { TrackerPage } from '../pages/tracker/tracker';
+import { TrackmapPage } from '../pages/trackmap/trackmap';
+import { AddPicPageModule } from '../pages/add-pic/add-pic.module';
+import { CameraProvider } from '../providers/camera/camera';
+import { NameDataProvider } from '../providers/name-data/name-data';
 
-
-import { TrackerPageModule } from "../pages/tracker/tracker.module";
-import { TrackmapPageModule } from "../pages/trackmap/trackmap.module";
-
+import { ChatProvider } from '../providers/chat/chat';
+import { AngularFireDatabaseModule } from "angularfire2/database";
 @NgModule({
   declarations: [
     MyApp,
@@ -46,12 +63,25 @@ import { TrackmapPageModule } from "../pages/trackmap/trackmap.module";
     AngularFireModule.initializeApp(crank),
     TrackmapPageModule,
     TrackerPageModule,
+    AddEventPageModule,
+    TabsPageModule,
+    EventmadePageModule,
+    ViewcurrentEventPageModule,
+    VieweventPageModule,
+    NewsfeedPageModule,
     MessagingPageModule,
+    FriendsPageModule,
+    MyEventsPageModule,
+    AngularFireDatabaseModule,
+    HomePageModule,
+    AddPicPageModule,
+    GroupChatPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-   
+    TrackerPage,
+    TrackmapPage
     
     
   ],
@@ -61,10 +91,19 @@ import { TrackmapPageModule } from "../pages/trackmap/trackmap.module";
     GoogleMaps,
     Geolocation,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
+    FileTransfer,
+    FileTransferObject,
+    File,
     AuthProvider,
     UserServiceProvider,
-    RequestsProvider
+    RequestsProvider,
+    ChatProvider,
+    CameraProvider,
+    Camera,
+    NameDataProvider
     
   ]
 })
 export class AppModule {}
+
+
