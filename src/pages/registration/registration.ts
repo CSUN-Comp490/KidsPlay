@@ -1,10 +1,12 @@
+import { HomePage } from './../home/home';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { UserServiceProvider } from './../../providers/user-service/user-service';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AuthProvider } from '../../providers/auth/auth';
 import * as firebase from 'firebase';
-import { HomePage } from './../home/home';
+
+
 
 /**
  * Generated class for the RegistrationPage page.
