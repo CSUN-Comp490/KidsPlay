@@ -24,7 +24,7 @@ import { TrackmapPageModule } from "../pages/trackmap/trackmap.module";
 import { AddEventPage } from '../pages/add-event/add-event';
 import { EventmadePage } from '../pages/event-made/event-made';
 import { ViewcurrentEventPage } from '../pages/viewcurrent-event/viewcurrent-event';
-//import { TrackerPage } from "../pages/tracker/tracker";
+import { TrackerPage } from "../pages/tracker/tracker";
 //import { TrackmapPage } from "../pages/trackmap/trackmap";
 import { MessagingPageModule } from "../pages/messaging/messaging.module";
 
@@ -54,7 +54,8 @@ export class MyApp {
         { title: 'My Profile', component: MyProfilePage, icon: 'contact' },
         { title: 'Picture', component: AddPicPage, icon: 'ios-camera' },
         { title: 'Add A Event', component: AddEventPage, icon: 'add-circle' },
-        { title: 'Registration', component: RegistrationPage, icon: 'heart' }
+        { title: 'Registration', component: RegistrationPage, icon: 'heart' },
+        { title: 'KidTracker', component: TrackerPage, icon: 'pin' }
       ];
   
     }
