@@ -43,6 +43,15 @@ user: firebase.User;
         const pictures = firebase.storage().ref().child('pictures/'+this.user.uid);
         pictures.putString(image, firebase.storage.StringFormat.DATA_URL).then((snapshot)=>{
             console.log(snapshot);
+            
+            this.user.updateProfile({
+              displayName:this.user.displayName,
+              photoURL:snapshot.downloadURL
+            }).then(()=>{
+              console.log(this.user)
+
+              this.navCtrl.push(HomePage);
+            }).catch(err=>console.log(err));
         });
     });
   

@@ -1,3 +1,4 @@
+import { GroupChatPageModule } from './../pages/group-chat/group-chat.module';
 import { Camera } from '@ionic-native/camera';
 import { NavController } from 'ionic-angular';
 // import { PhotoProvider } from './../providers/photo/photo';
@@ -74,11 +75,11 @@ import { AngularFireDatabaseModule } from "angularfire2/database";
     AngularFireDatabaseModule,
     HomePageModule,
     AddPicPageModule,
+    GroupChatPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    GroupChatPage,
     TrackerPage,
     TrackmapPage
     
@@ -104,7 +105,5 @@ import { AngularFireDatabaseModule } from "angularfire2/database";
   ]
 })
 export class AppModule {}
-function newFunction() {
-    '../';
-}
+
 

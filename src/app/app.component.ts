@@ -52,7 +52,7 @@ export class MyApp {
         { title: 'Friends', component: FriendsPage, icon: 'contacts' },
         { title: 'My Events', component: MyEventsPage, icon: 'calendar' },
         { title: 'My Profile', component: MyProfilePage, icon: 'contact' },
-        { title: 'Picture', component: AddPicPage, icon: 'ios-camera' }
+        { title: 'Picture', component: AddPicPage, icon: 'ios-camera' },
         { title: 'Add A Event', component: AddEventPage, icon: 'add-circle' },
         { title: 'Registration', component: RegistrationPage, icon: 'heart' }
       ];
