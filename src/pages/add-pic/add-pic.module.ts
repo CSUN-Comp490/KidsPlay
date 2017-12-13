@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { TrackmapPage } from './trackmap';
+import { AddPicPage } from './add-pic';
 
 @NgModule({
   declarations: [
-    TrackmapPage,
+    AddPicPage,
   ],
   imports: [
-    IonicPageModule.forChild(TrackmapPage),
+    IonicPageModule.forChild(AddPicPage),
   ],
 })
-export class TrackmapPageModule {}
+export class AddPicPageModule {}
