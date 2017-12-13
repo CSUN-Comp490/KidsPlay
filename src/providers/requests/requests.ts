@@ -30,7 +30,18 @@ export class RequestsProvider {
    return promise;  
    }
 
-
+  // sendrequest(req: connreq) {
+  //   var promise = new Promise((resolve, reject) => {
+  //     this.firereq.child(req.recipient).push({
+  //     sender: req.sender
+  //     }).then(() => {
+  //       resolve({ success: true });
+  //       }).catch((err) => {
+  //         resolve(err);
+  //   })
+  //   })
+  //   return promise;  
+  // }
 
    getmyrequests(){
      let allmyrequests;
@@ -78,7 +89,6 @@ export class RequestsProvider {
     return promise;
   }
 
-
   deleterequest(buddy) {
     var promise = new Promise((resolve, reject) => {
      this.firereq.child(firebase.auth().currentUser.uid).orderByChild('sender').equalTo(buddy.uid).once('value', (snapshot) => {
@@ -97,7 +107,6 @@ export class RequestsProvider {
     })
     return promise; 
   }
-
   getmyfriends() {
     let friendsuid = [];
     this.firefriends.child(firebase.auth().currentUser.uid).on('value', (snapshot) => {
