@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { MyEventsPage } from '../my-events/my-events';
 
 /**
  * Generated class for the ViewcurrentEventPage page.
@@ -22,16 +21,5 @@ export class ViewcurrentEventPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad ViewcurrentEventPage');
   }
-  
-  goback(){
-   this.navCtrl.setRoot(MyEventsPage);
 
-  }
-
-  delet_event(){
-    
-
-  //  this is the function to delet the current event that the user just made
-
-    }
 }

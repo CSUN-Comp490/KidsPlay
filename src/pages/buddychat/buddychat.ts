@@ -37,7 +37,7 @@ export class BuddychatPage {
     })
   }
  
-  ionVireDidEnter(){
+  ionViewDidEnter(){
     this.chatservice.getbuddymessages();
 
   }
