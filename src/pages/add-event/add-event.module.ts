@@ -11,7 +11,5 @@ import { AddEventPage } from './add-event';
   ],
 })
 export class AddEventPageModule {
-
-  
     
 }

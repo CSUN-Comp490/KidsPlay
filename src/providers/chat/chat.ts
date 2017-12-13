@@ -21,22 +21,45 @@ export class ChatProvider {
     this.buddy = buddy;
   }
 
-  addnewmessage(msg){
-    if(this.buddy){
+  // addnewmessage(msg){
+  //   if(this.buddy){
+  //     var promise = new Promise((resolve, reject) => {
+  //       this.firebuddychats.child(firebase.auth().currentUser.uid).child(this.buddy.uid).push({
+  //         sentby: firebase.auth().currentUser.uid,
+  //         message: msg,
+  //         timestamp: firebase.database.ServerValue.TIMESTAMP
+  //       }).then(() =>{
+  //         this.firebuddychats.child(this.buddy.uid).child(firebase.auth().currentUser.uid).push().set ({   //added ().set
+  //           sentby: firebase.auth().currentUser.uid,
+  //           message: msg,
+  //           timestamp: firebase.database.ServerValue.TIMESTAMP
+  //         }).then(() =>{
+  //           resolve(true);
+  //         }).catch((err)=>{
+  //           reject(err);
+  //         })
+  //       })
+  //     })
+  //     return promise;
+  //   }
+  // }
+
+  addnewmessage(msg) {
+    if (this.buddy) {
       var promise = new Promise((resolve, reject) => {
         this.firebuddychats.child(firebase.auth().currentUser.uid).child(this.buddy.uid).push({
           sentby: firebase.auth().currentUser.uid,
           message: msg,
           timestamp: firebase.database.ServerValue.TIMESTAMP
-        }).then(() =>{
-          this.firebuddychats.child(this.buddy.uid).child(firebase.auth().currentUser.uid).push().set ({   //added ().set
+        }).then(() => {
+          this.firebuddychats.child(this.buddy.uid).child(firebase.auth().currentUser.uid).push().set({   //().set(
             sentby: firebase.auth().currentUser.uid,
             message: msg,
             timestamp: firebase.database.ServerValue.TIMESTAMP
-          }).then(() =>{
+          }).then(() => {
             resolve(true);
-          }).catch((err)=>{
-            reject(err);
+            }).catch((err) => {
+              reject(err);
           })
         })
       })
@@ -44,12 +67,25 @@ export class ChatProvider {
     }
   }
 
-  getbuddymessages(){
-    this.buddymessages = [];
+  // getbuddymessages(){
+   
+  //   let temp;
+  //   this.firebuddychats.child(firebase.auth().currentUser.uid).child(this.buddy.uid).on('value',(snapshot)=>{
+  //     this.buddymessages = [];
+  //     temp = snapshot.val();
+  //     for(var tempkey in temp){
+  //       this.buddymessages.push(temp[tempkey]);
+  //     }
+  //     this.events.publish('newmessage');
+  //   })
+  // }
+  getbuddymessages() {
+    
     let temp;
-    this.firebuddychats.child(firebase.auth().currentUser.uid).child(this.buddy.uid).on('value',(snapshot)=>{
+    this.firebuddychats.child(firebase.auth().currentUser.uid).child(this.buddy.uid).on('value', (snapshot) => {
+      this.buddymessages = [];
       temp = snapshot.val();
-      for(var tempkey in temp){
+      for (var tempkey in temp) {
         this.buddymessages.push(temp[tempkey]);
       }
       this.events.publish('newmessage');
