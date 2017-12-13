@@ -62,20 +62,27 @@ export class ChatsPage {
       
       let newalert = this.alertCtrl.create({
         title: 'Friend added',
-        subTitle: 'Tap on the friend to chat with him',
+        subTitle: 'Tap on the friend to chat with him/her',
         buttons: ['Okay']
       });
       newalert.present();
     })
   }
-  ignore(item) {
-    this.requestservice.deleterequest(item).then(() =>{
+  // ignore(item) {
+  //   this.requestservice.deleterequest(item).then(() =>{
 
-    }).catch((err) =>{
+  //   }).catch((err) =>{
+  //     alert(err);
+  //   })
+  // }
+
+  ignore(item) {
+    this.requestservice.deleterequest(item).then(() => {
+
+    }).catch((err) => {
       alert(err);
     })
   }
-
   buddychat(buddy) {
     this.chatservice.initializebuddy(buddy);
     this.navCtrl.push('BuddychatPage');

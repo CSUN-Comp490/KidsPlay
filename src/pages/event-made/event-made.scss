@@ -1,42 +1,18 @@
-page-eventmade {
-    
-        .background {
-            height: 100%;
-            -webkit-background-size: cover;
-            -moz-background-size: cover;
-            -o-background-size: cover;
-            background-size: cover;
-            // background: #70bg32;
-            background-repeat:no-repeat;
-            background: -webkit-linear-gradient( to left top, rgb(247, 247, 247), red);
-            background: -moz-linear-gradient( to left top, #C7C6C6, #EEEDED);
-            background: -ms-linear-gradient( to left top, #F9F9F9, #FFFFFF);
-            background: -o-linear-gradient( to left top, #CBCBCB, #D5D5D5);
-            background: linear-gradient( to left top, #EEEDED, #2C2D2D);
-            position: fixed;
-                     
-              
-           }
-           .scroll-content {
-               align-content: center;
-               display: flex;
-               flex-direction: column;
-               justify-content: center;
-               text-align: center;
-           }
-          
-           .displayed{
-            position: relative;
-            left: 130px;
-            align-content: center;
+page-event-made {
 
-           }
-           .item {
-               margin-bottom: 10px;
-               background: rgba(255, 255, 255, 0.5);
-               border: medium none;
-           
-           }
-       
-        
-        }
+.card {
+        box-shadow: none;
+        background: rgba(0, 0, 0, 0.8);
+        border-radius: 5px;
+        position: fixed;
+    }
+ .background {
+    background: red; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(red, yellow); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(red, yellow); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(red, yellow); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(red, yellow); /* Standard syntax */
+      
+}
+
+}
