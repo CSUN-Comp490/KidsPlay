@@ -1,16 +1,38 @@
 page-newsfeed {
-  
+  .background {
+    background-image: url('../../assets/kids.jpg');
+    background-repeat: no-repeat;
+    position: contain;
+    background-position: center;
+    background-size: cover;
+    background-position: 70% 10%;
+    
+  }
+  .AddEventButton{
+    background-color:  rgb(221, 221, 221);
+    position: contain;
+    font-size: 14px;
+    margin-top: 15px;
+
+  }
+  .eventHead{
+    outline-style: double;
+    outline-color: #137C69;
+    margin-bottom: 15px;
+  }
+  .event-title{
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .event-time{
+    font-size: 12px;
+  }
+  .event-body{
+    margin: auto;
+    font-size: 15px;
+  }
       page-newsfeed {
-        
-        
-          .background {
-            background-image: url('../../assets/newsFeedAssets/Background_image/flyingchild.jpg');
-            background-repeat: no-repeat;
-            position: contain;
-            background-position: center;
-            background-size: cover;
-            background-position: 70% 10%;
-          }
+          
           .item-avatar {
             width: 90% !important;
             height: 90% !important;
@@ -20,12 +42,12 @@ page-newsfeed {
           }
           .custom-icon {
             font-size: 64px;
-            color: rgb(45, 122, 211);
+            color: #137C69;
           }
   
         }
         .button{
-          background-color: #ff6f6f;
+          background-color: #137C69;
         }
         .button:hover{
           background-color: #8f8f8f;

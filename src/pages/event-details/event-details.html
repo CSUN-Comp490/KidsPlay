@@ -6,14 +6,14 @@
 -->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color = "light">
     <ion-title>Event Details</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding class="background">
     
         <!--<div style="position: relative">
           <ion-fab right top>
@@ -22,61 +22,55 @@
           </button>
           </ion-fab>
         </div>-->
+  <ion-card>
+      <div>
+          <ion-card-content class="no-bottom-padding">
 
-        <div>
-            <ion-card-content class="no-bottom-padding">
- 
-              <h1>Matthew's 6th Birthday Party</h1>
-              <ion-avatar item-start>
-                  <img src="../assets/pexels-photo-261895.jpeg">
-                </ion-avatar>
-            </ion-card-content>
-        </div>
-        
-        <div>
-            <ion-item>
-                <h2>Hosted by: Jones Family</h2>
-                <p>Date: April 20th, 2017</p>
-                <p>Time: 4:20 pm</p>
-              </ion-item>
-        </div>
-
-        <div>
+            <h1 class="event-title">{{eventTitle}}</h1>
+            <!--<ion-avatar item-start>
+                <img src="../assets/banner.jpeg">
+              </ion-avatar>-->
+          </ion-card-content>
+      </div>
+      
+      <div>
           <ion-card-content>
-              <h3>Chuck E. Cheese</h3>
-              <p>8425 Reseda Blvd, Northridge, CA 91324</p>
-        </ion-card-content>
-        </div>
-        
-        
-        <!--<div>
-            <ion-item>
-                <h2>Chuck E. Cheese</h2>
-                <p>8425 Reseda Blvd, Northridge, CA 91324</p>
-              </ion-item>
-        </div>-->
-        
-        <div>
-            <ion-card-content>
-                <h3>Description:</h3>
-                <p>Come join us in celebrating Matthew's 6th Birthday!!!</p>
+              <h2 class="details">Hosted by:</h2>
+              <p class="no-padding">{{eventHost}}</p>
             </ion-card-content>
-        </div>
-    
+      </div>
+      <div>
+        <ion-card-content>
+            <h2 class="details">Date & Time:</h2>
+            <p class="no-padding">{{eventDate}}</p>
+          </ion-card-content>
+    </div>
+
+      <div>
+        <ion-card-content>
+            <h2 class="details">Location:</h2>
+            <p class="no-padding">{{eventLocation}}</p>
+      </ion-card-content>
+      </div>
+      
+      <div>
+          <ion-card-content>
+              <h2 class="details">Description:</h2>
+              <p class="no-padding">{{eventDescription}}</p>
+          </ion-card-content>
+      </div>
+      <div>
+        <ion-card-content>
+            <h2 class="details">Capacity:</h2>
+            <p class="no-padding">{{eventCapacity}}</p>
+        </ion-card-content>
+    </div>
+      <!--<div >
+          <ion-item  class="AddEventButton">
+          <ion-label >Add to my events</ion-label>
+          <ion-checkbox item-right></ion-checkbox>
+          </ion-item>
+        </div>-->
+  </ion-card>
         
-    
-        <ion-row>
-          <ion-col>
-            <button ion-button icon-left clear small>
-              <ion-icon name="bookmark"></ion-icon>
-              <div>15 Attending</div>
-            </button>
-          </ion-col>
-          <ion-col>
-            <button ion-button icon-left clear small>
-              <ion-icon name="text"></ion-icon>
-              <div>7 Comments</div>
-            </button>
-          </ion-col>
-        </ion-row>
 </ion-content>

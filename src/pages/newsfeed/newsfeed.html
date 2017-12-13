@@ -6,7 +6,7 @@
 -->
 <ion-header>
   
-    <ion-navbar>
+    <ion-navbar color = "light">
       <button ion-button menuToggle>
         <ion-icon name="menu"></ion-icon>
       </button>
@@ -15,22 +15,27 @@
   
   </ion-header>
   <ion-content padding class="background">
-    <ion-card *ngFor="let card of events"  (click)="detailsNav();">
-      <ion-item>
+    <ion-card *ngFor="let event of events; let i=index"  (click)="detailsNav(i);">
+      <ion-item class="eventHead">
         <ion-avatar item-start>
-          <img src='../../assets/newsFeedAssets/familypics/familypic_2.jpg'>
+          <img src=''>
         </ion-avatar>
-        <h2>Jones Family</h2>
-        <p>April 20th, 2017</p>
-        <button ion-button (click)="addToMyEvents($index); $event.stopPropagation()" 
-          [style.background-color]="bColor"  icon-only item-end  >
-          <ion-icon [name]="visible? 'checkmark-circle' :'add-circle'"></ion-icon>
-        </button>
+        <h2 text-wrap class="event-title" >{{event.eventName}}</h2>
+        <p class="event-time">{{event.data}}</p>
       </ion-item>
   
       <ion-card-content>
-        <h2>Come join us in celebrating Matthew's 6th Birthday!!!</h2>
+        <h2 class="event-body">{{event.description}}</h2>
+        <div >
+            <ion-item  class="AddEventButton">
+            <ion-label>Add to my events</ion-label>
+            <ion-checkbox (click)="addToMyEvents(i); $event.stopPropagation(); " item-right></ion-checkbox>
+            </ion-item>
+          </div>
+          
+
       </ion-card-content>
+
     </ion-card>
 
   </ion-content>
