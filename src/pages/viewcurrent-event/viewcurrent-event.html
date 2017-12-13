@@ -24,7 +24,7 @@
                     <ion-label color = "">Event Type</ion-label>
                 </ion-item>
 
-                <ion-item [(ngModel)]= "outtype" name="outtype" ngDefaultControl>
+                <ion-item [(ngModel)]= "outtype" name="outtype" ngDefaultControl>{{this.type}}
            
                   </ion-item>
 
@@ -34,6 +34,7 @@
               </ion-item>
 
               <ion-item color = "listcolor" [(ngModel)]="outname" name="outname" ngDefaultControl>
+                    
                
               </ion-item>
 
@@ -86,7 +87,7 @@
       <!-- This is the delet and done button -->
                   <button class="btn_done" ion-button color="primary" (click)="goback()"> Done </button>
                   
-                  <button class= "btn_info" (click)= "delet_event()" ion-button  color="primary">Delet</button>
+                  <button class= "btn_info" (click)= "delet_event()" ion-button  color="primary">Delete</button>
 
 
 </ion-card>

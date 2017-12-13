@@ -16,6 +16,15 @@ import { MyEventsPage } from '../my-events/my-events';
 })
 export class ViewcurrentEventPage {
 
+  type = this.navParams.get('type');
+  eventName = this.navParams.get('eventName');
+  myDate = this.navParams.get('myDate');
+  location = this.navParams.get('location');
+  description = this.navParams.get('description');
+  capacity = this.navParams.get('capacity');
+  creator = this.navParams.get('creator');
+  
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
