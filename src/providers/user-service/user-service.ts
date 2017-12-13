@@ -19,6 +19,7 @@ export class UserServiceProvider {
    // private userProfile: any;
    firedata = firebase.database().ref('/users'); //parent
    kidData = firebase.database().ref('/kids'); //kid
+   eventData = firebase.database().ref('/events'); //kid
 
   constructor(public http: Http, public fireAuth: AngularFireAuth) {
 
@@ -139,6 +140,41 @@ getallusers() {
     
     return promise;   
   }
+
+  getallEvents(){
+    
+        var promise = new Promise((resolve, reject) => {
+          this.eventData.orderByChild('uid').once('value', (snapshot) => {
+            let eventvalues = snapshot.val();
+            let eventarr = [];
+            for (var k in eventvalues) {
+              eventarr.push(eventvalues[k]);
+            }
+            resolve(eventarr);
+          }).catch((err) => {
+            reject(err);
+          })
+        })
+        return promise;    
+      }
+
+
+  getmyEvents(y){
+        var promise = new Promise((resolve, reject) => {
+          this.eventData.child(y).orderByChild('uid').once('value', (snapshot) => {
+            let myeventvalues = snapshot.val();
+            let myeventarr = [];
+            for (var k in myeventvalues) {
+              myeventarr.push(myeventvalues[k]);
+            }
+            resolve(myeventarr);
+          }).catch((err) => {
+            reject(err);
+          })
+        })
+        
+        return promise;   
+      }
   
   
 
