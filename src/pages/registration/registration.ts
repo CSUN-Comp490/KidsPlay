@@ -1,9 +1,12 @@
+import { HomePage } from './../home/home';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { UserServiceProvider } from './../../providers/user-service/user-service';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AuthProvider } from '../../providers/auth/auth';
 import * as firebase from 'firebase';
+
+
 
 /**
  * Generated class for the RegistrationPage page.
@@ -17,7 +20,11 @@ import * as firebase from 'firebase';
   selector: 'page-registration',
   templateUrl: 'registration.html',
 })
-export class RegistrationPage {
+export class RegistrationPage{
+
+  homePage: any;
+
+
   email = '';
   password = '';
   fullName = '';
@@ -58,7 +65,15 @@ export class RegistrationPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public userService: UserServiceProvider,
     public fireAuth: AngularFireAuth, public authservice: AuthProvider) {
+      this.homePage = HomePage;
+      this.fullName = navParams.data.fullname;
   }
+
+  gotToHome(){
+    this.navCtrl.push(this.homePage,{
+      fullName: this.fullName
+    });
+  }//function that will push data from the registration page to the home when registered
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegistrationPage');
@@ -66,6 +81,10 @@ export class RegistrationPage {
   registerUser() {
     this.userService.signUpUser(this.email, this.password)
       .then((newUserCreated) => {
+
+        newUserCreated.updateProfile({
+          displayName: this.fullName
+        });
 
         this.fireAuth.auth.signInWithEmailAndPassword(this.email, this.password).then((authenticatedUser) => {
 
@@ -79,7 +98,7 @@ export class RegistrationPage {
           })
         })
       })
-    this.navCtrl.setRoot('HomePage');
+      this.navCtrl.push('LoginPage');
   }
 
   // Adds a child to an existing parent
