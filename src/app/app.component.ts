@@ -47,14 +47,14 @@ export class MyApp {
       this.pages = [
         { title: 'Home', component: HomePage, icon: 'home' },
         { title: 'Newsfeed', component: NewsfeedPage, icon: 'paper' },
-        { title: 'Events Attending', component: EventsAttendingPage, icon: 'bookmarks' },
+        //{ title: 'Events Attending', component: EventsAttendingPage, icon: 'bookmarks' },
         { title: 'Messaging', component: MessagingPage, icon: 'chatbubbles' },
-        { title: 'Friends', component: FriendsPage, icon: 'contacts' },
+        //{ title: 'Friends', component: FriendsPage, icon: 'contacts' },
         { title: 'My Events', component: MyEventsPage, icon: 'calendar' },
-        { title: 'My Profile', component: MyProfilePage, icon: 'contact' },
-        { title: 'Picture', component: AddPicPage, icon: 'ios-camera' },
+        //{ title: 'My Profile', component: MyProfilePage, icon: 'contact' },
+        //{ title: 'Picture', component: AddPicPage, icon: 'ios-camera' },
         { title: 'Add A Event', component: AddEventPage, icon: 'add-circle' },
-        { title: 'Registration', component: RegistrationPage, icon: 'heart' },
+        //{ title: 'Registration', component: RegistrationPage, icon: 'heart' },
         { title: 'KidTracker', component: TrackerPage, icon: 'pin' }
       ];
   

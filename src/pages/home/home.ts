@@ -7,6 +7,7 @@ import {AngularFireAuth} from 'angularfire2/auth';
 import {storage,initializeApp} from 'firebase';
 import { Camera,CameraOptions } from '@ionic-native/camera';
 import { AddPicPage } from '../add-pic/add-pic';
+import {MessagingPage} from '../messaging/messaging'
 
 /**
  * Generated class for the HomePage page.
@@ -42,7 +43,7 @@ export class HomePage {
 
 
   getMessages() {
-    this.navCtrl.push('Messaging');
+    this.navCtrl.push('MessagingPage');
   }
 
   viewevents() {

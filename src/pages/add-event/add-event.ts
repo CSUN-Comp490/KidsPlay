@@ -90,7 +90,17 @@ eventmade(){
  // this.fdb.list(eventPath).push(this.description);
  // this.fdb.list(eventPath).push(this.capacity);
  // this.fdb.list(eventPath).push(this.userID);
- this.navCtrl.push(EventmadePage);
+
+ let data = {
+  'type': this.type,
+  'eventName': this.eventName,
+  'data': this.myDate,
+  'location': this.location,
+  'description': this.description,
+  'capacity': this.capacity,
+  'creator' : this.creator,
+ }
+ this.navCtrl.push(EventmadePage, data);
 
  //  if (!this.userID) return;
  //  this.items = this.fdb.list('items/${this.userID}');
