@@ -36,6 +36,7 @@ export class AddEventPage {
  description = '';
  capacity = '';
  currentid= [];
+ creator='';
 
  userID: String;
 
@@ -54,6 +55,9 @@ export class AddEventPage {
     //  return (user.uid);
    })
  })
+
+ this.creator = firebase.auth().currentUser.displayName;
+ console.log(this.creator);
 }
 
 
@@ -77,6 +81,7 @@ eventmade(){
    'location': this.location,
    'description': this.description,
    'capacity': this.capacity,
+   'creator' : this.creator,
  });
  // this.fdb.list(eventPath).push(this.type);
  // this.fdb.list(eventPath).push(this.eventName);
