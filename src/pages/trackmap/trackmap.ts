@@ -190,6 +190,17 @@ export class TrackmapPage {
     // var zoom;
   // }
 
+  setProximity(x,y){
+    var cityCircle = new google.maps.Circle({
+      strokeColor: '#137C69',
+      strokeOpacity: 0.8,
+      strokeWeight: 2,
+      fillColor: '#137C69',
+      fillOpacity: 0.35,
+      map: this.map,
+      center: x,
+      radius: y}) 
+  }
 
   initMap(x,y,z){
     //Location - lat long
@@ -220,6 +231,8 @@ export class TrackmapPage {
         color: 'white',
       },
     });
+
+    this.setProximity(location,1000);
 
     /*
     let element = this.mapElement.nativeElement;
