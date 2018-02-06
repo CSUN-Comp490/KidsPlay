@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { BuddiesPage} from '../buddies/buddies';
+import { IonicPage, NavController, NavParams, Events, LoadingController } from 'ionic-angular';
+import {GroupsProvider} from '../../providers/groups/groups';
+
 
 /**
  * Generated class for the GroupChatPage page.
@@ -15,16 +16,33 @@ import { BuddiesPage} from '../buddies/buddies';
   templateUrl: 'group-chat.html',
 })
 export class GroupChatPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  allmygroups;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public events: Events,
+              public loadingCtrl: LoadingController, public groupservice: GroupsProvider) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad GroupChatPage');
+  ionViewWillEnter() {
+   let loader = this.loadingCtrl.create({
+     content: 'Getting your groups, please wait...'
+   });
+   loader.present();
+   this.groupservice.getmygroups();
+   this.events.subscribe('newgroup', () =>{
+     loader.dismiss();
+    this.allmygroups = this.groupservice.mygroups;
+   })
   }
 
-  addbuddy(){
-    this.navCtrl.push('BuddiesPage');
+  ionViewDidLeave() {
+    this.events.unsubscribe('newgroup');
+  }
+
+  addgroup(newGroup){
+    this.navCtrl.push('NewgroupPage');
+  }
+  openchat(group) {
+    this.groupservice.getintogroup(group.groupName);
+    this.navCtrl.push('GroupchattPage', { groupName: group.groupName });
   }
 
 }

@@ -18,6 +18,7 @@ import { FriendsPage } from './../pages/friends/friends';
 import { MyEventsPage } from '../pages/my-events/my-events';
 import { MyProfilePage } from '../pages/my-profile/my-profile';
 import { AddPicPage } from '../pages/add-pic/add-pic';
+import { NewgroupPage } from '../pages/newgroup/newgroup';
 
 import { TrackerPageModule } from "../pages/tracker/tracker.module";
 import { TrackmapPageModule } from "../pages/trackmap/trackmap.module";
