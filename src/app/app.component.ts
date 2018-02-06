@@ -1,10 +1,9 @@
 import { LoginPage } from './../pages/login/login';
 import { RegistrationPage } from './../pages/registration/registration';
-import { Component, ViewChild } from '@angular/core';
-import { Platform, Nav } from 'ionic-angular';
+import { Component } from '@angular/core';
+import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
 import {HomePage} from './../pages/home/home';
 import { ChatsPage } from '../pages/chats/chats';
 import { BuddiesPage } from '../pages/buddies/buddies';
@@ -16,21 +15,16 @@ import { MessagingPage } from '../pages/messaging/messaging';
 import { FriendsPage } from './../pages/friends/friends';
 import { MyEventsPage } from '../pages/my-events/my-events';
 import { MyProfilePage } from '../pages/my-profile/my-profile';
+import { NewgroupPage } from '../pages/newgroup/newgroup';
 
 import { TrackerPageModule } from "../pages/tracker/tracker.module";
 import { TrackmapPageModule } from "../pages/trackmap/trackmap.module";
-import { AddEventPage } from '../pages/add-event/add-event';
-import { EventmadePage } from '../pages/event-made/event-made';
-import { ViewcurrentEventPage } from '../pages/viewcurrent-event/viewcurrent-event';
-//import { TrackerPage } from "../pages/tracker/tracker";
-//import { TrackmapPage } from "../pages/trackmap/trackmap";
-import { MessagingPageModule } from "../pages/messaging/messaging.module";
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  @ViewChild(Nav) nav: Nav;
+  nav: any;
   rootPage:any = 'LoginPage';
 
   pages: Array<{title: string, component: any, icon: string}>;
@@ -46,11 +40,7 @@ export class MyApp {
         { title: 'Messaging', component: MessagingPage, icon: 'chatbubbles' },
         { title: 'Friends', component: FriendsPage, icon: 'contacts' },
         { title: 'My Events', component: MyEventsPage, icon: 'calendar' },
-        { title: 'My Profile', component: MyProfilePage, icon: 'contact' },
-        { title: 'Add A Event', component: AddEventPage, icon: 'add-circle' }
-       // { title: 'KidTracker', component: TrackerPage, icon: 'contact' },
-       // { title: 'KidMap', component: TrackmapPage, icon: 'contact' },
-                
+        { title: 'My Profile', component: MyProfilePage, icon: 'contact' }
       ];
   
     }

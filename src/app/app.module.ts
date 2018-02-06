@@ -26,7 +26,9 @@ import { ViewcurrentEventPageModule } from '../pages/viewcurrent-event/viewcurre
 import { MyProfilePageModule } from '../pages/my-profile/my-profile.module';
 import {HttpModule} from '@angular/http';
 import { RequestsProvider } from '../providers/requests/requests';
-
+import { NewgroupPageModule } from '../pages/newgroup/newgroup.module';
+import { GroupchattPageModule} from '../pages/groupchatt/groupchatt.module';
+import { GroupbuddiesPageModule} from '../pages/groupbuddies/groupbuddies.module';
 import { GoogleMaps } from '@ionic-native/google-maps';
 import { Geolocation } from '@ionic-native/geolocation';
 
@@ -34,6 +36,11 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { TrackerPageModule } from "../pages/tracker/tracker.module";
 import { TrackmapPageModule } from "../pages/trackmap/trackmap.module";
 import { ChatProvider } from '../providers/chat/chat';
+import { GroupsProvider } from '../providers/groups/groups';
+import { ImghandlerProvider } from '../providers/imghandler/imghandler';
+import { FilePath } from '@ionic-native/file-path';
+import { FileChooser } from '@ionic-native/file-chooser';
+import { File } from '@ionic-native/file';
 
 @NgModule({
   declarations: [
@@ -58,7 +65,9 @@ import { ChatProvider } from '../providers/chat/chat';
     NewsfeedPageModule,
     MessagingPageModule,
     FriendsPageModule,
-    MyEventsPageModule
+    MyEventsPageModule,
+    NewgroupPageModule,
+    GroupchattPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -71,12 +80,18 @@ import { ChatProvider } from '../providers/chat/chat';
     StatusBar,
     SplashScreen,
     GoogleMaps,
+    File,
+    FilePath,
+    FileChooser,
     Geolocation,
+    
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthProvider,
     UserServiceProvider,
     RequestsProvider,
-    ChatProvider
+    ChatProvider,
+    GroupsProvider,
+    ImghandlerProvider
     
   ]
 })

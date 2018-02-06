@@ -19,7 +19,7 @@ export class UserServiceProvider {
    // private userProfile: any;
    firedata = firebase.database().ref('/users'); //parent
    kidData = firebase.database().ref('/kids'); //kid
-
+   
   constructor(public http: Http, public fireAuth: AngularFireAuth) {
 
     //this.fireAuth = firebase.auth();
