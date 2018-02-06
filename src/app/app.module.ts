@@ -45,9 +45,11 @@ import { TrackmapPage } from '../pages/trackmap/trackmap';
 import { AddPicPageModule } from '../pages/add-pic/add-pic.module';
 import { CameraProvider } from '../providers/camera/camera';
 import { NameDataProvider } from '../providers/name-data/name-data';
+import { ChildtrackPageModule } from '../pages/childtrack/childtrack.module';
 
 import { ChatProvider } from '../providers/chat/chat';
 import { AngularFireDatabaseModule } from "angularfire2/database";
+import { SMS } from '@ionic-native/sms';
 @NgModule({
   declarations: [
     MyApp,
@@ -75,7 +77,8 @@ import { AngularFireDatabaseModule } from "angularfire2/database";
     AngularFireDatabaseModule,
     HomePageModule,
     AddPicPageModule,
-    GroupChatPageModule
+    GroupChatPageModule,
+    ChildtrackPageModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -100,8 +103,8 @@ import { AngularFireDatabaseModule } from "angularfire2/database";
     ChatProvider,
     CameraProvider,
     Camera,
-    NameDataProvider
-    
+    NameDataProvider,
+    SMS
   ]
 })
 export class AppModule {}

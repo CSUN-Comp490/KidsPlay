@@ -2,6 +2,9 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import {GoogleMaps, GoogleMap } from '@ionic-native/google-maps';
+import { SMS } from '@ionic-native/sms';
+import * as firebase from 'firebase';
+import { UserServiceProvider } from './../../providers/user-service/user-service';
 /**
  * Generated class for the TrackmapPage page.
  *
@@ -31,7 +34,7 @@ export class TrackmapPage {
 
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, /*private _googleMaps: GoogleMaps*/) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private sms: SMS /*private _googleMaps: GoogleMaps*/) {
   }
 /*
   ngAfterViewInit(){
@@ -202,6 +205,10 @@ export class TrackmapPage {
       radius: y}) 
   }
 
+  pushProximity(x,y,z){
+
+  }
+
   initMap(x,y,z){
     //Location - lat long
     const location = new google.maps.LatLng(x,y/*34.1490, -118.4514*/);
@@ -232,7 +239,7 @@ export class TrackmapPage {
       },
     });
 
-    this.setProximity(location,1000);
+    //this.setProximity(location,1000);
 
     /*
     let element = this.mapElement.nativeElement;
@@ -241,7 +248,7 @@ export class TrackmapPage {
 
    ionViewDidLoad() {
     
-
+    this.sms.send('18186440748', 'Hello world!');
 
     this.kidLong = this.navParams.get('kidLongitudes');
     this.kidLat = this.navParams.get('kidLatitudes');
@@ -293,6 +300,7 @@ export class TrackmapPage {
       var long = this.navParams.get('longitude');
       var name = this.navParams.get('name');
       this.initMap(lat,long, name);
+      //setInterval(function(){ this.initMap(lat,long, name) }, 10000);
     }
     
 

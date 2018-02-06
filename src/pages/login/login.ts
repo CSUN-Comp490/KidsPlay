@@ -6,6 +6,9 @@ import {AuthProvider} from '../../providers/auth/auth';
 import {usercreds} from '../../models/interfaces/usercreds';
 import { MyProfilePage } from '../my-profile/my-profile';
 
+import * as firebase from 'firebase';
+import { UserServiceProvider } from './../../providers/user-service/user-service';
+
 
 /**
  * Generated class for the LoginPage page.
@@ -62,6 +65,32 @@ export class LoginPage {
         register() {
           this.navCtrl.push('RegistrationPage');
       
+    }
+
+    childsignin(){
+      this.authservice.login(this.credentials).then((res:any) =>{
+        if(!res.code)
+
+
+// let data ={
+//     latitude: x,
+//     longitude: y,
+//     name: z,
+
+//   };
+//   this.navCtrl.push(TrackmapPage, data);
+
+
+        
+          this.navCtrl.setRoot('ChildtrackPage');
+
+
+
+
+        else 
+        alert(res);
+      })
+
     }
 
 

@@ -129,6 +129,7 @@ export class RegistrationPage{
     })
 
     //this.navCtrl.setRoot('HomePage');
+    this.navCtrl.push('LoginPage');
   }
 
   // Adds a teenager to an existing parent
