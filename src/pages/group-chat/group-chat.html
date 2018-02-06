@@ -12,8 +12,8 @@
           <ion-icon name="menu"></ion-icon>
         </button>
         <ion-buttons end>
-            <button ion-button icon-only (click)= "addgroup()">
-              <ion-icon name="contacts"></ion-icon>
+            <button ion-button icon-only (click)= "addbuddy()">
+              <ion-icon name="person-add"></ion-icon>
             </button>
           </ion-buttons>
       </ion-navbar>
@@ -21,16 +21,6 @@
     </ion-header>
 
 
-    <ion-content>
-        <ion-list class ="cheerios" no-lines>
-          <ion-list-header>
-            My Groups
-          </ion-list-header>
-          <ion-item *ngFor="let item of allmygroups">
-            <ion-avatar item-left>
-              <img src="{{item.groupimage}}">
-            </ion-avatar>
-            <h3 (click)="openchat(item)">{{item.groupName}}</h3>
-          </ion-item>
-        </ion-list>
-        </ion-content>
+<ion-content padding>
+
+</ion-content>
