@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+// import { Person } from './../../app/person/person';
+import { Component,OnInit} from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { EventDetailsPage} from '../event-details/event-details';
 import * as firebase from 'firebase';
@@ -18,6 +19,7 @@ import { AlertController } from 'ionic-angular';
   templateUrl: 'newsfeed.html',
 })
 export class NewsfeedPage {
+  // @Input() person: Person;
 
   events = [];
   allEvents = [];

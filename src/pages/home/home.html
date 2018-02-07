@@ -1,14 +1,13 @@
 <ion-header>
     <ion-navbar color = "primary">
-        <ion-buttons left>
-            <button ion-button menuToggle>
-              <ion-icon name="menu"></ion-icon>
+        <ion-buttons left >
+            <button ion-button menuToggle >
+              <ion-icon name= "menu"></ion-icon>
             </button>
           </ion-buttons>
       <ion-title>
       Home
       </ion-title>
-      
      
     </ion-navbar>
   </ion-header>
@@ -27,7 +26,8 @@
           </ion-card-header>
           <ion-card-content>
   
-            Thursday 2nd, 2017
+            {{mydate | date: 'fullDate'}}
+            {{mydate | date: 'shortTime'}}
             <ion-item color = "grayskin" >
                 <button ion-button round outline color="primary" (click)="goToPicEdit()">Add Pic </button>
                 <img [src] = "captureDataUrl" *ngIf= "captureDataUrl"/>
@@ -45,15 +45,15 @@
       <div class = "space style height: 10px;"></div>
     </ion-item>
     </ion-card>
-   <ion-card>
+   <ion-card (click) = "viewEvents()">
     <ion-item color = "grayskin">
       <ion-icon name="paper" item-start></ion-icon>
-      Events
+      My Events
       <ion-badge item-end>4</ion-badge>
     </ion-item>
     </ion-card>
   
-    <ion-card>
+    <ion-card (click) = "viewOffers()">
         <ion-item color = "grayskin">
           <ion-icon name="pricetags" item-start></ion-icon>
           Offers

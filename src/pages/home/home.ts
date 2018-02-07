@@ -1,13 +1,15 @@
+import { OffersPage } from './../offers/offers';
 import { crank } from './../../app/app.firebaseconfig';
 import { RegistrationPage } from './../registration/registration';
 import { UserServiceProvider } from './../../providers/user-service/user-service';
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import {AngularFireAuth} from 'angularfire2/auth';
 import {storage,initializeApp} from 'firebase';
 import { Camera,CameraOptions } from '@ionic-native/camera';
 import { AddPicPage } from '../add-pic/add-pic';
 import {MessagingPage} from '../messaging/messaging'
+
 
 /**
  * Generated class for the HomePage page.
@@ -22,11 +24,12 @@ import {MessagingPage} from '../messaging/messaging'
   templateUrl: 'home.html',
 })
 export class HomePage {
-
+mydate = Date.now();
   user: any;
 
   constructor(private camera: Camera, private afAuth: AngularFireAuth, private toast: ToastController,public navCtrl: NavController, public navParams: NavParams, public userService:UserServiceProvider) {
       //initializeApp(crank);
+      
      
   }
 
@@ -46,8 +49,15 @@ export class HomePage {
     this.navCtrl.push('MessagingPage');
   }
 
-  viewevents() {
-    this.navCtrl.push('My-Events');
+  viewOffers() {
+    this.navCtrl.push('OffersPage');
+  }
+
+  // logout() {
+  //  this.navCtrl.push()
+  // }
+  viewEvents() {
+    this.navCtrl.push('MyEventsPage');
   }
 
   ionViewWillLoad() {
@@ -61,7 +71,7 @@ export class HomePage {
         duration: 3000
       }).present();
       }
-      else {//determin log in
+      else {//determine log in
           this.toast.create({
             message: `Could not find authentication details`,
             duration: 3000

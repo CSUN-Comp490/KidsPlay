@@ -1,12 +1,14 @@
+import { OffersPage } from './../pages/offers/offers';
 import { Camera } from '@ionic-native/camera';
 import { CameraProvider } from './../providers/camera/camera';
 import { LoginPage } from './../pages/login/login';
 import { RegistrationPage } from './../pages/registration/registration';
 import { Component, ViewChild } from '@angular/core';
-import { Platform, NavController } from 'ionic-angular';
+import { Platform, NavController, AlertController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import {HomePage} from './../pages/home/home';
+import { HomePage } from './../pages/home/home';
+import { AngularFireAuth } from 'angularfire2/auth';
 import { ChatsPage } from '../pages/chats/chats';
 import { BuddiesPage } from '../pages/buddies/buddies';
 import { GroupChatPage } from '../pages/group-chat/group-chat';
@@ -18,7 +20,6 @@ import { FriendsPage } from './../pages/friends/friends';
 import { MyEventsPage } from '../pages/my-events/my-events';
 import { MyProfilePage } from '../pages/my-profile/my-profile';
 import { AddPicPage } from '../pages/add-pic/add-pic';
-
 import { TrackerPageModule } from "../pages/tracker/tracker.module";
 import { TrackmapPageModule } from "../pages/trackmap/trackmap.module";
 import { AddEventPage } from '../pages/add-event/add-event';
@@ -27,6 +28,8 @@ import { ViewcurrentEventPage } from '../pages/viewcurrent-event/viewcurrent-eve
 import { TrackerPage } from "../pages/tracker/tracker";
 //import { TrackmapPage } from "../pages/trackmap/trackmap";
 import { MessagingPageModule } from "../pages/messaging/messaging.module";
+import { AuthProvider } from '../providers/auth/auth';
+
 
 @Component({
   templateUrl: 'app.html'
@@ -34,31 +37,60 @@ import { MessagingPageModule } from "../pages/messaging/messaging.module";
 export class MyApp {
   @ViewChild('content') navCtrl: NavController
   //nav: any;
-  rootPage:any = 'LoginPage';
+  rootPage:any; //feb 5th changed to any from rootPage:any HomePage;
+                // this will keep us from sending the user to the homepage
+                // as soon as they open the app
 
   pages: Array<{title: string, component: any, icon: string}>;
   
     constructor(public platform: Platform, 
       public statusBar: StatusBar, 
-      public splashScreen: SplashScreen) {
+      private splashScreen: SplashScreen, public authprovider: AuthProvider,public afAuth: AngularFireAuth) {
       this.initializeApp();
+
+      
+      const authObserver = afAuth.authState.subscribe( user =>{
+
+        if (user)  {
+          this.rootPage = HomePage;
+          authObserver.unsubscribe();
+        } else {
+          this.rootPage = 'LoginPage';
+          authObserver.unsubscribe();
+        }
+      
+      
+      });
+      
+     
+      // feb 5 
+      platform.ready().then(()=>{
+        // can do higher level native execution we might need
+        statusBar.styleDefault();
+        splashScreen.hide();
+      });
   
       // used for an example of ngFor and navigation
       this.pages = [
-        { title: 'Home', component: HomePage, icon: 'home' },
+        { title: 'Home', component: HomePage, icon: 'home'},
         { title: 'Newsfeed', component: NewsfeedPage, icon: 'paper' },
         //{ title: 'Events Attending', component: EventsAttendingPage, icon: 'bookmarks' },
         { title: 'Messaging', component: MessagingPage, icon: 'chatbubbles' },
         //{ title: 'Friends', component: FriendsPage, icon: 'contacts' },
         { title: 'My Events', component: MyEventsPage, icon: 'calendar' },
-        //{ title: 'My Profile', component: MyProfilePage, icon: 'contact' },
-        //{ title: 'Picture', component: AddPicPage, icon: 'ios-camera' },
-        { title: 'Add A Event', component: AddEventPage, icon: 'add-circle' },
-        //{ title: 'Registration', component: RegistrationPage, icon: 'heart' },
-        { title: 'KidTracker', component: TrackerPage, icon: 'pin' }
+        { title: 'My Profile', component: MyProfilePage, icon: 'contact' },
+        { title: 'Picture', component: AddPicPage, icon: 'ios-camera' },
+        { title: 'Add An Event', component: AddEventPage, icon: 'add-circle' },
+        // { title: 'Registration', component: RegistrationPage, icon: 'heart' },
+        { title: 'KidTracker', component: TrackerPage, icon: 'pin' },
+        // { title: 'Logout', component: LogoutPage, icon: 'log-out' }
+
       ];
   
     }
+
+    
+    
   
     initializeApp() {
       this.platform.ready().then(() => {
@@ -74,4 +106,20 @@ export class MyApp {
       // we wouldn't want the back button to show in this scenario
       this.navCtrl.setRoot(page.component);
     }
+
+    logout() {
+        this.authprovider.logout().then(()=>{
+          this.navCtrl.setRoot('LoginPage');
+        })
+       }
+
+    // loadAll(){
+
+    //   return Promise.resolve(this.pages);
+    // }
+
+    
+
+
+
   }
