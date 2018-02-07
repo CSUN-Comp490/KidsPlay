@@ -67,9 +67,9 @@ export class ChildtrackPage {
 
          console.log(this.getDistance(this.CenterLat,this.CenterLng,this.lat,this.lng,this.unit));
 
-         setInterval(this.checkProximity(this.CenterLat,this.CenterLng,this.lat,this.lng,this.unit)
+         this.checkProximity(this.CenterLat,this.CenterLng,this.lat,this.lng,this.unit);
            
-           ,1000);
+         
 
 
 
@@ -145,7 +145,10 @@ export class ChildtrackPage {
   }
 
   checkProximity(a,b,c,d,e){
-
+    console.log(this.getDistance(a,b,c,d,e));
+    if (this.getDistance(a,b,c,d,e) > .02){
+      alert("Out of Range");
+    }
   }
 
   getDistance(lat1, lon1, lat2, lon2, unit) {
