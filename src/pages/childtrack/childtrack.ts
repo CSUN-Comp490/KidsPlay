@@ -16,12 +16,27 @@ import { UserServiceProvider } from './../../providers/user-service/user-service
   templateUrl: 'childtrack.html',
 })
 export class ChildtrackPage {
+  childuid='-L4_q1VY2046v_lXH-oq';
+
+  child = '';
+  childProfile: any = firebase.database().ref('kids');
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
+  
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ChildtrackPage');
+    this.child = this.navParams.get('child');
+    console.log(this.child);
+
+    this.childProfile.child(firebase.auth().currentUser.uid).child(this.childuid).update({
+      Latitude: 24,
+      Longitude: 24,
+    })
+
+
+
   }
 
 }

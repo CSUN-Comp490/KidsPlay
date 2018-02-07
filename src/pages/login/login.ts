@@ -6,8 +6,8 @@ import {AuthProvider} from '../../providers/auth/auth';
 import {usercreds} from '../../models/interfaces/usercreds';
 import { MyProfilePage } from '../my-profile/my-profile';
 
-import * as firebase from 'firebase';
-import { UserServiceProvider } from './../../providers/user-service/user-service';
+// import * as firebase from 'firebase';
+// import { UserServiceProvider } from './../../providers/user-service/user-service';
 
 
 /**
@@ -25,6 +25,9 @@ import { UserServiceProvider } from './../../providers/user-service/user-service
 
 
 export class LoginPage {
+
+  account: string = "parent";
+  childname = '';
 
 
  credentials={} as usercreds;
@@ -67,26 +70,20 @@ export class LoginPage {
       
     }
 
-    childsignin(){
+    childsignin(x){
       this.authservice.login(this.credentials).then((res:any) =>{
-        if(!res.code)
+        if(!res.code){
 
 
-// let data ={
-//     latitude: x,
-//     longitude: y,
-//     name: z,
+let data ={
+    child: x,
+      };
 
-//   };
-//   this.navCtrl.push(TrackmapPage, data);
-
-
-        
-          this.navCtrl.setRoot('ChildtrackPage');
+          this.navCtrl.setRoot('ChildtrackPage', data);
 
 
 
-
+    }
         else 
         alert(res);
       })
