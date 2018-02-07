@@ -30,11 +30,14 @@ export class TrackmapPage {
   kidLat = []; //Dynamic
   kidName = []; //Dynamic
 
+  childProfile: any = firebase.database().ref('kids');
+  childuid='-L4_q1VY2046v_lXH-oq';
 
 
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private sms: SMS /*private _googleMaps: GoogleMaps*/) {
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private sms: SMS, public userService: UserServiceProvider /*private _googleMaps: GoogleMaps*/) {
   }
 /*
   ngAfterViewInit(){
@@ -203,8 +206,17 @@ export class TrackmapPage {
       map: this.map,
       center: x,
       radius: y}) 
+
+      
+      this.childProfile.child(firebase.auth().currentUser.uid).child(this.childuid).update({
+        ProxDistance: 10,
+        ProxTime: 10,
+        CenterLat: this.navParams.get('latitude'),
+        CenterLng: this.navParams.get('longitude'),
+      });
   }
 
+ 
   pushProximity(x,y,z){
 
   }
@@ -227,7 +239,7 @@ export class TrackmapPage {
       mapTypeId: google.maps.MapTypeId.ROADMAP,
     }
     this.map = new google.maps.Map(this.mapRef.nativeElement, options)
-    
+    //setInterval(function(){
       let marker = new google.maps.Marker({
       position: location,
       map: this.map,
@@ -239,6 +251,15 @@ export class TrackmapPage {
       },
     });
 
+  //},1000);
+
+  // setInterval(function(){
+    
+    
+  //   marker.setPosition();
+  
+  // }, 1000);
+
     //this.setProximity(location,1000);
 
     /*
@@ -248,7 +269,7 @@ export class TrackmapPage {
 
    ionViewDidLoad() {
     
-    this.sms.send('18186440748', 'Hello world!');
+    //this.sms.send('18186440748', 'Hello world!');
 
     this.kidLong = this.navParams.get('kidLongitudes');
     this.kidLat = this.navParams.get('kidLatitudes');
@@ -260,6 +281,9 @@ export class TrackmapPage {
     console.log(this.kidLong);
     console.log(this.kidLat);
     console.log(this.kidName);
+
+
+   
 
     // for (var i in this.kids2) {
     //   kidLongitudes.push(this.kids2[i].Longitude);
@@ -311,6 +335,7 @@ export class TrackmapPage {
    //}
      
     /*console.log(this.mapElement/*'ionViewDidLoad TrackmapPage');*/
+    
    }
 
    

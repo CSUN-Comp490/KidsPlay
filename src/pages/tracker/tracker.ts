@@ -27,8 +27,6 @@ export class TrackerPage {
   kids = [];//array of all kids in the database
   kids2 = [];//array of YOUR kids in the database
 
-
-
   lat: any;
   lng: any;
 
@@ -127,6 +125,8 @@ export class TrackerPage {
     this.lng = pos.coords.longitude;
     }).catch( err => console.log(err));
 
+
+
     
     
   }
@@ -174,7 +174,6 @@ myCurrentLocation(){
 
 
 find(x,y,z){
-
   let data ={
     latitude: x,
     longitude: y,

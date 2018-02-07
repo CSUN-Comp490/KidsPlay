@@ -29,7 +29,6 @@ export class LoginPage {
   account: string = "parent";
   childname = '';
 
-
  credentials={} as usercreds;
 
 
