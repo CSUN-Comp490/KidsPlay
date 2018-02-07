@@ -38,7 +38,9 @@ import { ViewcurrentEventPageModule } from '../pages/viewcurrent-event/viewcurre
 import { MyProfilePageModule } from '../pages/my-profile/my-profile.module';
 import {HttpModule} from '@angular/http';
 import { RequestsProvider } from '../providers/requests/requests';
-
+import { NewgroupPageModule } from '../pages/newgroup/newgroup.module';
+import { GroupchattPageModule} from '../pages/groupchatt/groupchatt.module';
+import { GroupbuddiesPageModule} from '../pages/groupbuddies/groupbuddies.module';
 import { GoogleMaps } from '@ionic-native/google-maps';
 import { Geolocation } from '@ionic-native/geolocation';
 import { TrackerPage } from '../pages/tracker/tracker';
@@ -47,6 +49,11 @@ import { AddPicPageModule } from '../pages/add-pic/add-pic.module';
 import { CameraProvider } from '../providers/camera/camera';
 import { NameDataProvider } from '../providers/name-data/name-data'; 
 import { ChatProvider } from '../providers/chat/chat';
+import { GroupsProvider } from '../providers/groups/groups';
+import { ImghandlerProvider } from '../providers/imghandler/imghandler';
+import { FilePath } from '@ionic-native/file-path';
+import { FileChooser } from '@ionic-native/file-chooser';
+import { File } from '@ionic-native/file';
 import { AngularFireDatabaseModule } from "angularfire2/database";
 import { HomePage } from '../pages/home/home';
 
@@ -75,13 +82,14 @@ import { HomePage } from '../pages/home/home';
     NewsfeedPageModule,
     MessagingPageModule,
     FriendsPageModule,
+    NewgroupPageModule,
+    GroupchattPageModule
     MyEventsPageModule,
-    AngularFireDatabaseModule,
-    HomePageModule,
-    AddPicPageModule,
-    GroupChatPageModule,
     OffersPageModule
-   
+    GroupChatPageModule,
+    HomePageModule,
+    AngularFireDatabaseModule,
+    AddPicPageModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -96,7 +104,11 @@ import { HomePage } from '../pages/home/home';
     StatusBar,
     SplashScreen,
     GoogleMaps,
+    File,
+    FilePath,
+    FileChooser,
     Geolocation,
+    
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     FileTransfer,
     FileTransferObject,
@@ -104,10 +116,10 @@ import { HomePage } from '../pages/home/home';
     AuthProvider,
     UserServiceProvider,
     RequestsProvider,
-    ChatProvider,
+    GroupsProvider,
+    ImghandlerProvider
     CameraProvider,
     Camera,
-    NameDataProvider
     
   ]
 })

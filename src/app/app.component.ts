@@ -12,6 +12,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { ChatsPage } from '../pages/chats/chats';
 import { BuddiesPage } from '../pages/buddies/buddies';
 import { GroupChatPage } from '../pages/group-chat/group-chat';
+import { GroupchattPage} from '../pages/groupchatt/groupchatt';
 import { ListPage } from '../pages/list/list';
 import { NewsfeedPage } from '../pages/newsfeed/newsfeed';
 import { EventsAttendingPage } from '../pages/events-attending/events-attending';
@@ -19,6 +20,9 @@ import { MessagingPage } from '../pages/messaging/messaging';
 import { FriendsPage } from './../pages/friends/friends';
 import { MyEventsPage } from '../pages/my-events/my-events';
 import { MyProfilePage } from '../pages/my-profile/my-profile';
+import { NewgroupPage } from '../pages/newgroup/newgroup';
+import { GroupbuddiesPage} from '../pages/groupbuddies/groupbuddies';
+
 import { AddPicPage } from '../pages/add-pic/add-pic';
 import { TrackerPageModule } from "../pages/tracker/tracker.module";
 import { TrackmapPageModule } from "../pages/trackmap/trackmap.module";
