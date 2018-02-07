@@ -1,3 +1,4 @@
+import { OffersPageModule } from './../pages/offers/offers.module';
 import { GroupChatPageModule } from './../pages/group-chat/group-chat.module';
 import { Camera } from '@ionic-native/camera';
 import { NavController } from 'ionic-angular';
@@ -44,13 +45,16 @@ import { TrackerPage } from '../pages/tracker/tracker';
 import { TrackmapPage } from '../pages/trackmap/trackmap';
 import { AddPicPageModule } from '../pages/add-pic/add-pic.module';
 import { CameraProvider } from '../providers/camera/camera';
-import { NameDataProvider } from '../providers/name-data/name-data';
-
+import { NameDataProvider } from '../providers/name-data/name-data'; 
 import { ChatProvider } from '../providers/chat/chat';
 import { AngularFireDatabaseModule } from "angularfire2/database";
+import { HomePage } from '../pages/home/home';
+
 @NgModule({
   declarations: [
     MyApp,
+    // HomePage// added to initialize Feb 2nd 2018
+   
    
   ],
   imports: [
@@ -75,11 +79,14 @@ import { AngularFireDatabaseModule } from "angularfire2/database";
     AngularFireDatabaseModule,
     HomePageModule,
     AddPicPageModule,
-    GroupChatPageModule
+    GroupChatPageModule,
+    OffersPageModule
+   
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
+    HomePage,
     TrackerPage,
     TrackmapPage
     

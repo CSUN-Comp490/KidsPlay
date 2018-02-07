@@ -1,3 +1,4 @@
+import { ResetPasswordPage } from './../../pages/reset-password/reset-password';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
@@ -26,6 +27,15 @@ export class AuthProvider {
   })
 })
   return promise;
+  }
+
+  logout(){
+    return this.afireauth.auth.signOut();
+  }
+
+  resetPassword(email: string) : Promise<void> {
+    
+    return this.afireauth.auth.sendPasswordResetEmail(email);
   }
 
 }

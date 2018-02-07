@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+// import { Person } from './../../app/person/person';
+import { Component,OnInit} from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 /**
@@ -14,12 +15,14 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'newsfeed.html',
 })
 export class NewsfeedPage {
+  // @Input() person: Person;
 
-  public people = new Array();
+  // public people = new Array();
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
 
-    this.people.push({ name: "Smith " + "Family", id: 1 });
+  
+    // this.people.push({ name: "Smith " + "Family", id: 1 });
     // this.people.push({name:"Waller " + "Family", id:2});
     // this.people.push({name:"3", id:3});
   }
