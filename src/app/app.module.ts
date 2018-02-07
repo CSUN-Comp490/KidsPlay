@@ -53,7 +53,6 @@ import { GroupsProvider } from '../providers/groups/groups';
 import { ImghandlerProvider } from '../providers/imghandler/imghandler';
 import { FilePath } from '@ionic-native/file-path';
 import { FileChooser } from '@ionic-native/file-chooser';
-import { File } from '@ionic-native/file';
 import { AngularFireDatabaseModule } from "angularfire2/database";
 import { HomePage } from '../pages/home/home';
 
@@ -83,9 +82,9 @@ import { HomePage } from '../pages/home/home';
     MessagingPageModule,
     FriendsPageModule,
     NewgroupPageModule,
-    GroupchattPageModule
+    GroupchattPageModule,
     MyEventsPageModule,
-    OffersPageModule
+    OffersPageModule,
     GroupChatPageModule,
     HomePageModule,
     AngularFireDatabaseModule,
@@ -117,7 +116,9 @@ import { HomePage } from '../pages/home/home';
     UserServiceProvider,
     RequestsProvider,
     GroupsProvider,
-    ImghandlerProvider
+    ImghandlerProvider,
+    NameDataProvider,
+    ChatProvider,
     CameraProvider,
     Camera,
     
