@@ -1,0 +1,48 @@
+page-event-details {
+  .background {
+    background-image: url('../../assets/leaf.jpeg');
+    background-repeat: no-repeat;
+    position: contain;
+    background-position: center;
+    background-size: cover;
+    background-position: 70% 10%;
+    
+  }
+  /*.AddEventButton{
+    background-color:  rgb(221, 221, 221);
+    position: contain;
+    font-size: 14px;
+    margin-top: 15px;
+
+  }*/
+      .social-cards ion-col {
+        padding: 0;
+      }
+      .no-bottom-padding {
+        padding-bottom: 10;
+        text-align: center;
+        margin-bottom: 10px;
+        outline: double;
+        outline-color: #137C69;
+      }
+      .no-padding{
+        padding-bottom: 0;
+        margin: auto;
+      }
+      .details{
+        margin: auto;
+        font-size: 12pt;
+        padding-bottom: 5px;
+      }
+      .event-title{
+        margin: auto;
+        font-size: 18pt;
+        font-weight: bold;
+      }
+      h3{
+        margin: auto;
+        font-size: 10pt;
+      }
+
+ 
+}

@@ -1,0 +1,76 @@
+<!--
+  Generated template for the EventDetailsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color = "light">
+    <ion-title>Event Details</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="background">
+    
+        <!--<div style="position: relative">
+          <ion-fab right top>
+            <button ion-fab>
+            <ion-icon name="pin"></ion-icon>
+          </button>
+          </ion-fab>
+        </div>-->
+  <ion-card>
+      <div>
+          <ion-card-content class="no-bottom-padding">
+
+            <h1 class="event-title">{{eventTitle}}</h1>
+            <!--<ion-avatar item-start>
+                <img src="../assets/banner.jpeg">
+              </ion-avatar>-->
+          </ion-card-content>
+      </div>
+      
+      <div>
+          <ion-card-content>
+              <h2 class="details">Hosted by:</h2>
+              <p class="no-padding">{{eventHost}}</p>
+            </ion-card-content>
+      </div>
+      <div>
+        <ion-card-content>
+            <h2 class="details">Date & Time:</h2>
+            <p class="no-padding">{{eventDate}}</p>
+          </ion-card-content>
+    </div>
+
+      <div>
+        <ion-card-content>
+            <h2 class="details">Location:</h2>
+            <p class="no-padding">{{eventLocation}}</p>
+      </ion-card-content>
+      </div>
+      
+      <div>
+          <ion-card-content>
+              <h2 class="details">Description:</h2>
+              <p class="no-padding">{{eventDescription}}</p>
+          </ion-card-content>
+      </div>
+      <div>
+        <ion-card-content>
+            <h2 class="details">Capacity:</h2>
+            <p class="no-padding">{{eventCapacity}}</p>
+        </ion-card-content>
+    </div>
+      <!--<div >
+          <ion-item  class="AddEventButton">
+          <ion-label >Add to my events</ion-label>
+          <ion-checkbox item-right></ion-checkbox>
+          </ion-item>
+        </div>-->
+  </ion-card>
+        
+</ion-content>

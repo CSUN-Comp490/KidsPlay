@@ -1,9 +1,16 @@
+import { OffersPage } from './../offers/offers';
+import { crank } from './../../app/app.firebaseconfig';
+import { RegistrationPage } from './../registration/registration';
 import { UserServiceProvider } from './../../providers/user-service/user-service';
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import {AngularFireAuth} from 'angularfire2/auth';
-import { MessagingPage } from '../messaging/messaging';
-import { TrackerPage } from '../tracker/tracker';
+import {storage,initializeApp} from 'firebase';
+import { Camera,CameraOptions } from '@ionic-native/camera';
+import { AddPicPage } from '../add-pic/add-pic';
+import {MessagingPage} from '../messaging/messaging'
+
+
 /**
  * Generated class for the HomePage page.
  *
@@ -17,22 +24,54 @@ import { TrackerPage } from '../tracker/tracker';
   templateUrl: 'home.html',
 })
 export class HomePage {
+mydate = Date.now();
+  user: any;
 
-  constructor(private afAuth: AngularFireAuth,private toast: ToastController,
-    public navCtrl: NavController, public navParams: NavParams, public userService:UserServiceProvider) {
+  constructor(private camera: Camera, private afAuth: AngularFireAuth, private toast: ToastController,public navCtrl: NavController, public navParams: NavParams, public userService:UserServiceProvider) {
+      //initializeApp(crank);
+      
+     
+  }
+
+   
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad HomePage');
+  }
+
+  goToPicEdit(){
+    this.navCtrl.push(AddPicPage);
+  }
+
+
+
+
+  getMessages() {
+    this.navCtrl.push('MessagingPage');
+  }
+
+  viewOffers() {
+    this.navCtrl.push('OffersPage');
+  }
+
+  // logout() {
+  //  this.navCtrl.push()
+  // }
+  viewEvents() {
+    this.navCtrl.push('MyEventsPage');
   }
 
   ionViewWillLoad() {
     this.afAuth.authState.subscribe(data => {
-
+        console.log(data);
+        this.user = data.displayName;
       if (data && data.email && data.uid){
       this.toast.create({
 
-        message: `Welcome to KidsPlay, ${data.email}`,
+        message: `Welcome to KidsPlay, ${data.displayName}`,
         duration: 3000
       }).present();
       }
-      else {//determin log in
+      else {//determine log in
           this.toast.create({
             message: `Could not find authentication details`,
             duration: 3000
@@ -40,30 +79,29 @@ export class HomePage {
       }
     });
   }
-    // signin(){
+
+  
+    
+
+}
+
+
+// signin(){
     //   this.authservice.login(this.credentials).then((res:any) =>{
     //      if(!res.code)
     //        this.navCtrl.setRoot('HomePage');
     //      else 
     //      alert(res);
-
+    
     //   })
-
+   
+    // }
+  
+    // load(){
+    //   this.userService.loadUser(5).then((res)=>{
+    //     console.log(res);
+    //   }).catch((err)=>{
+    //     console.log(err);
+    //   })
     // }
 
-   load(){
-      this.userService.loadUser(5).then((res)=>{
-        console.log(res);
-      }).catch((err)=>{
-        console.log(err);
-      })
-    }
-
-    gotoMessaging(){
-      this.navCtrl.push(MessagingPage);
-    }
-    gotoTracker(){
-      this.navCtrl.push(TrackerPage);
-    }
-
-}

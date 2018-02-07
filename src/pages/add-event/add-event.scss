@@ -1,20 +1,85 @@
-page-contact {
+page-add-event {
+    
+    ng-pristine: {
+            background-color: #ffffff;
+    
+    }
+   
 
-.b_background {
-    background-image: url('../assets/imgs/test.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    flex-flow: column;
-            } 
+
+    ion-card.card {
+        box-shadow: none;
+        background: rgba(0, 0, 0, 0.8);
+        border-radius: 5px;
+       
+    }
+
+    .btn_reset {
+        color: white;
+        background-color:#137C69 ;
+        font-size: 1.0em;
+        border: 1px solid rgb(21, 131, 67);
+        height: 30px;
+        width: 320px;
+       margin-left: 15px;
+    }
+   
+    .btn_submit{
+        color: white;
+        background-color:#137C69 ;
+        font-size: 1.0em;
+        border: 1px solid rgb(21, 131, 67);
+        height: 30px;
+        width: 320px;
+        margin-left: 15px;   
+
+    
+}
+
+
+
+
+
+    .background {
+        height: 100%;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        background: red;
+        background-repeat:no-repeat;
+        background: -webkit-linear-gradient( to left top, rgb(247, 247, 247), red);
+        background: -moz-linear-gradient( to left top, #C7C6C6, #EEEDED);
+        background: -ms-linear-gradient( to left top, #F9F9F9, #FFFFFF);
+        background: -o-linear-gradient( to left top, #CBCBCB, #D5D5D5);
+        background: linear-gradient( to left top, #EEEDED, #2C2D2D);
+        position: fixed;
+                 
+          
+       }
             
 .info_collect{
    margin-top: 1ch;
 
+
 }
+
+
+
+.back-button.show-back-button {
+    display: none;
+  }
 .datefront{
     font-style: italic;
     
 
 }
+
+.color{
+  background-color: black;
+
+}
+
+
 
 }
