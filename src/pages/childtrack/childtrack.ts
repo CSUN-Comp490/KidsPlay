@@ -25,7 +25,7 @@ export class ChildtrackPage {
   lng: any;
   CenterLat: '';
   CenterLng: '';
-  unit: "M";
+  unit: "K";
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public geo: Geolocation, public userService: UserServiceProvider) {
   }
@@ -118,6 +118,13 @@ export class ChildtrackPage {
       
 
 
+
+    // this.childProfile.child(firebase.auth().currentUser.uid).child(this.childuid).onUpdate(event => {
+
+    //   alert("data updated");
+    // });
+
+
   }
 
   updateLocation(){
@@ -146,7 +153,7 @@ export class ChildtrackPage {
 
   checkProximity(a,b,c,d,e){
     console.log(this.getDistance(a,b,c,d,e));
-    if (this.getDistance(a,b,c,d,e) > .02){
+    if (this.getDistance(a,b,c,d,e) > .8){
       alert("Out of Range");
     }
   }

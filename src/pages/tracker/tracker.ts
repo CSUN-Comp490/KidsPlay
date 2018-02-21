@@ -65,7 +65,7 @@ export class TrackerPage {
 
   this.userService.getmyKids(firebase.auth().currentUser.uid).then((res:any)=>{//fetches all kids based on current uid
     this.kids2 = res;
-    console.log(this.kids2);
+    console.log(Object.keys(this.kids2));
 
     })
   
@@ -126,7 +126,8 @@ export class TrackerPage {
     }).catch( err => console.log(err));
 
 
-
+    console.log(this.kids2);
+    
     
     
   }
@@ -173,11 +174,12 @@ myCurrentLocation(){
 
 
 
-find(x,y,z){
+find(x,y,z,i){
   let data ={
     latitude: x,
     longitude: y,
     name: z,
+    id: i,
 
   };
   this.navCtrl.push(TrackmapPage, data);
@@ -251,10 +253,12 @@ find4(){
     let kidLongitudes= [];
     let kidLatitudes= [];
     let kidNames= [];
+    //let kidIDs= [];
     for (var i in this.kids2) {
       kidLongitudes.push(this.kids2[i].Longitude);
       kidLatitudes.push(this.kids2[i].Latitude);
       kidNames.push(this.kids2[i].Name);
+      //kidIDs.push(this.kids2[i].ChildID);
     }
     console.log(kidLongitudes);
     console.log(kidLatitudes);
@@ -262,9 +266,9 @@ find4(){
 
     let data ={
       kidLongitudes, kidLatitudes, kidNames, myLat: this.lat, myLong: this.lng, setting: 'All'
-    }
+    };
 
-    this.navCtrl.push(TrackmapPage, data)
+    this.navCtrl.push(TrackmapPage, data);
     
 
  

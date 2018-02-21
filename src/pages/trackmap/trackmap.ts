@@ -5,6 +5,8 @@ import {GoogleMaps, GoogleMap } from '@ionic-native/google-maps';
 import { SMS } from '@ionic-native/sms';
 import * as firebase from 'firebase';
 import { UserServiceProvider } from './../../providers/user-service/user-service';
+
+
 /**
  * Generated class for the TrackmapPage page.
  *
@@ -31,8 +33,13 @@ export class TrackmapPage {
   kidName = []; //Dynamic
 
   childProfile: any = firebase.database().ref('kids');
-  childuid='-L4_q1VY2046v_lXH-oq';
+  childuid='';
 
+  MLat: '';
+  MLng: '';
+  MName:'';
+
+  
 
 
 
@@ -205,7 +212,7 @@ export class TrackmapPage {
       fillOpacity: 0.35,
       map: this.map,
       center: x,
-      radius: y}) 
+      radius: 10}) 
 
       
       this.childProfile.child(firebase.auth().currentUser.uid).child(this.childuid).update({
@@ -213,7 +220,19 @@ export class TrackmapPage {
         ProxTime: 10,
         CenterLat: this.navParams.get('latitude'),
         CenterLng: this.navParams.get('longitude'),
+        Prox: 'On',
       });
+
+      // var proxCircle = new google.maps.Circle({
+      //   strokeColor: '#FF0000',
+      //   strokeOpacity: 0.8,
+      //   strokeWeight: 2,
+      //   fillColor: '#FF0000',
+      //   fillOpacity: 0.35,
+      //   center: 
+      // })
+    
+
   }
 
  
@@ -221,7 +240,131 @@ export class TrackmapPage {
 
   }
 
-  initMap(x,y,z){
+  setMarkers(){
+
+  }
+
+  initMapNew(i){
+        this.childProfile.child(firebase.auth().currentUser.uid).child(i).once('value', (snapshot) => {
+        let kidObject = snapshot.val();
+        console.log(kidObject);
+        this.MLat = kidObject.Latitude;
+        this.MLng = kidObject.Longitude;
+        this.MName= kidObject.Name;
+        console.log(this.MLat);
+        console.log(this.MLng);
+
+
+        let location = new google.maps.LatLng(this.MLat,this.MLng);
+        let options = {
+          center: location,
+          zoom: 15,
+          mapTypeId: google.maps.MapTypeId.ROADMAP,
+        }
+
+        this.map = new google.maps.Map(this.mapRef.nativeElement, options);
+
+        let marker = new google.maps.Marker({
+          position: location,
+          map: this.map,
+          title: this.MName,
+          icon: '../../assets/TrackerTiny.png',
+          label: {
+            //text: z,
+            color: 'white',
+          },
+        });
+
+        
+        
+        this.childProfile.child(firebase.auth().currentUser.uid).child(i).on("value", function(snapshot) {
+
+          var changed = snapshot.val();
+          let MLat2 = changed.Latitude;
+          let MLng2 = changed.Longitude;
+   
+          console.log(changed);
+     
+          location = new google.maps.LatLng(MLat2,MLng2);
+          marker.setPosition(location);
+          console.log("data has been changed ");
+        });
+     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // this.childProfile.child(firebase.auth().currentUser.uid).child(i).
+        // this.childProfile.child(firebase.auth().currentUser.uid).child(i).addChildEventListener(new ChildEventListener(){
+
+        // });
+       
+
+
+        // this.childProfile.child(firebase.auth().currentUser.uid).child(i).addChildEventListener(new ChildEventListener());
+        // this.childProfile.child(firebase.auth().currentUser.uid).child(i).onUpdate(event => {
+
+        //      alert("data updated");
+        //   });
+
+         // this.childProfile.child(firebase.auth().currentUser.uid).child(this.childuid).onUpdate(event => {
+
+    //   alert("data updated");
+    // });
+        
+
+        //this.childProfile.addChildEventListener(new ChildEventListener() {
+          // @Override
+          // public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {}
+      
+          // @Override
+          // public void onChildChanged(DataSnapshot dataSnapshot, String prevChildKey) {
+          //     Post changedPost = dataSnapshot.getValue(Post.class);
+          //     System.out.println("The updated post title is: " + changedPost.title);
+          // }
+      
+          // @Override
+          // public void onChildRemoved(DataSnapshot dataSnapshot) {}
+      
+          // @Override
+          // public void onChildMoved(DataSnapshot dataSnapshot, String prevChildKey) {}
+      
+          // @Override
+          // public void onCancelled(DatabaseError databaseError) {}
+      
+
+
+
+      });
+
+
+      // console.log(this.childProfile.child(firebase.auth().currentUser.uid).child(i));
+        // this.childProfile.child(firebase.auth().currentUser.uid).child(i).on("child_changed", function(snapshot) {
+        //   var changedPost = snapshot.val();
+        //   console.log("The updated post title is " + changedPost.Name);
+        // });
+
+        
+        
+
+        
+  }
+
+ 
+
+
+
+  initMap(x,y,z,i){
     //Location - lat long
     const location = new google.maps.LatLng(x,y/*34.1490, -118.4514*/);
     /*const marker = new google.maps.Marker({
@@ -250,6 +393,20 @@ export class TrackmapPage {
         color: 'white',
       },
     });
+
+    var cityCircle = new google.maps.Circle({
+      strokeColor: '#FF0000',
+      strokeOpacity: 0.8,
+      strokeWeight: 2,
+      fillColor: '#FF0000',
+      fillOpacity: 0.35,
+      map: this.map,
+      center: location,
+      radius: 100,
+    });
+
+
+    
 
   //},1000);
 
@@ -323,7 +480,38 @@ export class TrackmapPage {
       var lat = this.navParams.get('latitude');
       var long = this.navParams.get('longitude');
       var name = this.navParams.get('name');
-      this.initMap(lat,long, name);
+      var ID = this.navParams.get('id');
+      this.childuid = ID;
+
+
+      // this.childProfile.child(firebase.auth().currentUser.uid).child(this.childuid).once('value', (snapshot) => {
+      //   let kidObject = snapshot.val();
+      //   console.log(kidObject);
+      //   this.MLat = kidObject.Latitude;
+      //   this.MLng = kidObject.Longitude;
+      //   console.log(this.MLat);
+      //   console.log(this.MLng);
+
+
+
+      //   });
+
+
+
+
+      this.initMapNew(ID);
+
+
+
+
+
+
+
+
+
+      //this.initMap(lat,long,name,ID);
+
+
       //setInterval(function(){ this.initMap(lat,long, name) }, 10000);
     }
     
