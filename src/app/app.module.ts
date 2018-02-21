@@ -1,3 +1,4 @@
+import { ResetPasswordPageModule } from './../pages/reset-password/reset-password.module';
 import { OffersPageModule } from './../pages/offers/offers.module';
 import { GroupChatPageModule } from './../pages/group-chat/group-chat.module';
 import { Camera } from '@ionic-native/camera';
@@ -89,6 +90,7 @@ import { HomePage } from '../pages/home/home';
     HomePageModule,
     AngularFireDatabaseModule,
     AddPicPageModule,
+    ResetPasswordPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

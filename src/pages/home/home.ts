@@ -35,7 +35,23 @@ mydate = Date.now();
 
    
   ionViewDidLoad() {
-    console.log('ionViewDidLoad HomePage');
+    this.afAuth.authState.subscribe(data => {
+      console.log(data);
+      this.user = data.displayName;
+    if (data){
+      this.toast.create({
+  
+        message: `Welcome to KidsPlay, ${data.displayName}`,
+        duration: 3000
+      }).present();
+    }
+    else {//determine log in
+        this.toast.create({
+          message: `Could not find authentication details`,
+          duration: 3000
+        }).present();
+    }
+  });
   }
 
   goToPicEdit(){
@@ -61,23 +77,7 @@ mydate = Date.now();
   }
 
   ionViewWillLoad() {
-    this.afAuth.authState.subscribe(data => {
-        console.log(data);
-        this.user = data.displayName;
-      if (data && data.email && data.uid){
-      this.toast.create({
-
-        message: `Welcome to KidsPlay, ${data.displayName}`,
-        duration: 3000
-      }).present();
-      }
-      else {//determine log in
-          this.toast.create({
-            message: `Could not find authentication details`,
-            duration: 3000
-          }).present();
-      }
-    });
+    
   }
 
   

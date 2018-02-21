@@ -23,6 +23,7 @@ import * as firebase from 'firebase';
 export class RegistrationPage{
 
   homePage: any;
+  user:firebase.User;
 
 
   email = '';
@@ -67,6 +68,7 @@ export class RegistrationPage{
     public fireAuth: AngularFireAuth, public authservice: AuthProvider) {
       this.homePage = HomePage;
       this.fullName = navParams.data.fullname;
+     // this.user = firebase.auth().currentUser;
   }
 
   gotToHome(){
@@ -85,20 +87,20 @@ export class RegistrationPage{
         newUserCreated.updateProfile({
           displayName: this.fullName
         });
-
-        this.fireAuth.auth.signInWithEmailAndPassword(this.email, this.password).then((authenticatedUser) => {
-
-          this.userProfile.child(authenticatedUser.uid).set({
-            email: this.email,
-            fullName: this.fullName,
-            familyName: this.famName,
-            address: this.address,
-            password: this.password,
-            uid: authenticatedUser.uid,
-          })
+        this.userProfile.child(newUserCreated.uid).set({
+          email: this.email,
+          fullName: this.fullName,
+          familyName: this.famName,
+          address: this.address,
+          password: this.password
+          // uid: authenticatedUser.uid,
         })
+        // this.fireAuth.auth.signInWithEmailAndPassword(this.email, this.password).then((authenticatedUser) => {
+
+         this.navCtrl.push('HomePage');
+        // })
       })
-      this.navCtrl.push('LoginPage');
+      
   }
 
   // Adds a child to an existing parent
