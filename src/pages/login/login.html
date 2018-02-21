@@ -6,14 +6,53 @@
 -->
 
 <ion-header>
-  <ion-navbar color = "light">
+  <ion-navbar color = "primary">
     <ion-title>
       KidsPlay
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content class="background">
+<ion-content padding class ="background">
+   
+  <ion-card > 
+      <ion-card-header>
+          Login
+       </ion-card-header>
+
+  
+  <form [formGroup]="loginForm" (submit)="login()" novalidate>
+
+    
+    <ion-item>
+      <ion-label floating>Email</ion-label>
+      <ion-input #email formControlName="email" type="email" 
+        ></ion-input>
+    </ion-item>
+    
+
+    <ion-item>
+      <ion-label floating>Password</ion-label>
+      <ion-input #password formControlName="password" type="password"
+       ></ion-input>
+    </ion-item>
+    
+
+    <button ion-button round outline  = "submit">
+      Login
+   </button>
+
+</form>
+  <button ion-button block clear (click)="goToResetPassword()">
+    I forgot my password 
+  </button>
+  <button ion-button block clear (click)="register()">
+    Create a new account
+  </button>
+</ion-card>
+</ion-content>
+
+<!-- <ion-content class="background">
   <ion-card>
     <ion-card-header>
        Login
@@ -31,7 +70,7 @@
     <div class = "space style height: 10px;"></div>
     <a (click)= "goToResetPassword()"> Forgot Password? <b> Click Here</b></a>
     <div class = "space style height: 10px;"></div>
-    <button ion-button round outline color ="primary" (click) = "signin()"> Login</button>
+    <button ion-button round outline color ="primary" (click) = "login()"> Login</button>
     <div class = "space style height: 10px;"></div>
     <p>OR</p>
     <div class = "space style height: 10px;"></div>
@@ -40,4 +79,11 @@
    </ion-card-content> 
   </ion-card>
 
-</ion-content>
+</ion-content> -->
+
+
+
+
+
+
+

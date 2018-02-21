@@ -1,3 +1,5 @@
+import { ResetPasswordPage } from './../pages/reset-password/reset-password';
+import { EmailValidator } from './../validators/email';
 import { OffersPage } from './../pages/offers/offers';
 import { Camera } from '@ionic-native/camera';
 import { CameraProvider } from './../providers/camera/camera';
@@ -109,7 +111,7 @@ export class MyApp {
 
     logout() {
         this.authprovider.logout().then(()=>{
-          this.navCtrl.setRoot('LoginPage');
+          this.navCtrl.push('LoginPage');
         })
        }
 

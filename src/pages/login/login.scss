@@ -20,7 +20,7 @@ page-login {
         box-shadow: none;
         background: rgba(0, 0, 0, 0.8);
         border-radius: 5px;
-        position: fixed;
+        position: center;
     }
     a, p,
     ion-card-header.card-header {
@@ -33,29 +33,32 @@ page-login {
     
     .item {
         margin-bottom: 10px;
-        background: rgba(255, 255, 255, 0.5);
+        margin-left: 20px;
+        
+        background: rgba(213, 201, 201, 0.5);
         border: medium none;
-    
+        width:88%;
         .text-input, {
             color: #fff;
         }
+      
     
         
-        input::-moz-placeholder{
-            color: #fff!important;
-        }
-        input:-moz-placeholder {
-            color: #fff!important;
-        }
-        *:-moz-placeholder{
-            color: #fff!important;
-        }
-        *:-ms-input-placeholder{
-            color: #fff!important;
-        }
-        *::-webkit-input-placeholder{
-            color: #fff!important;
-        }
+        // input::-moz-placeholder{
+        //     color: #fff!important;
+        // }
+        // input:-moz-placeholder {
+        //     color: #fff!important;
+        // }
+        // *:-moz-placeholder{
+        //     color: #fff!important;
+        // }
+        // *:-ms-input-placeholder{
+        //     color: #fff!important;
+        // }
+        // *::-webkit-input-placeholder{
+        //     color: #fff!important;
+        // }
     
     }
     

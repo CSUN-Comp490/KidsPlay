@@ -1,3 +1,4 @@
+import { ResetPasswordPageModule } from './../pages/reset-password/reset-password.module';
 import { OffersPageModule } from './../pages/offers/offers.module';
 import { GroupChatPageModule } from './../pages/group-chat/group-chat.module';
 import { Camera } from '@ionic-native/camera';
@@ -38,7 +39,6 @@ import { ViewcurrentEventPageModule } from '../pages/viewcurrent-event/viewcurre
 import { MyProfilePageModule } from '../pages/my-profile/my-profile.module';
 import {HttpModule} from '@angular/http';
 import { RequestsProvider } from '../providers/requests/requests';
-
 import { GoogleMaps } from '@ionic-native/google-maps';
 import { Geolocation } from '@ionic-native/geolocation';
 import { TrackerPage } from '../pages/tracker/tracker';
@@ -80,8 +80,8 @@ import { HomePage } from '../pages/home/home';
     HomePageModule,
     AddPicPageModule,
     GroupChatPageModule,
-    OffersPageModule
-   
+    OffersPageModule,
+    ResetPasswordPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
