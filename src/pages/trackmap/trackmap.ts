@@ -39,6 +39,9 @@ export class TrackmapPage {
   MLng: '';
   MName:'';
 
+  Distance = '';
+  Duration = '';
+
   
 
 
@@ -287,6 +290,11 @@ export class TrackmapPage {
      
           location = new google.maps.LatLng(MLat2,MLng2);
           marker.setPosition(location);
+          this.map.setCenter(location);
+          // this.map.setOptions({
+            
+          //   center: location,
+          // });
           console.log("data has been changed ");
         });
      
