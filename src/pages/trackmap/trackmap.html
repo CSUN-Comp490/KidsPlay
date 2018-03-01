@@ -18,10 +18,10 @@
     <ion-fab class="fab1" left>
         <button class="fab" ion-fab mini>Proximity</button>
         <ion-fab-list>
-          <ion-card class="fab2"><ion-input class="input" placeholder="Meters"></ion-input></ion-card>
-        <ion-card><ion-input class="input" placeholder="Hours"></ion-input></ion-card>
-        <button ion-fab class="fab3" (click) = "setProximity()">Go</button>
-        <button ion-fab class="fab4" (click) = "setProximity()">Stop</button>
+          <ion-card class="fab2"><ion-input class="input" type="number" placeholder="Meters" [(ngModel)]="this.Distance"></ion-input></ion-card>
+        <ion-card><ion-input class="input" type="number" placeholder="Hours" [(ngModel)]="this.Duration"></ion-input></ion-card>
+        <button ion-fab class="fab3" (click) = "setProximity(this.Distance,this.Duration)">Go</button>
+        <button ion-fab class="fab4" (click) = "stopProximity()">Stop</button>
         </ion-fab-list>
       </ion-fab>
     <!-- <ion-fab bottom left>

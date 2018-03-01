@@ -153,7 +153,7 @@ export class ChildtrackPage {
 
   checkProximity(a,b,c,d,e){
     console.log(this.getDistance(a,b,c,d,e));
-    if (this.getDistance(a,b,c,d,e) > .8){
+    if (this.getDistance(a,b,c,d,e) > 100){
       alert("Out of Range");
     }
   }

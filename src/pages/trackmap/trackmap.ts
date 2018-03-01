@@ -39,8 +39,8 @@ export class TrackmapPage {
   MLng: '';
   MName:'';
 
-  Distance = '';
-  Duration = '';
+  Distance:number;
+  Duration:number;
 
   
 
@@ -206,23 +206,33 @@ export class TrackmapPage {
     // var zoom;
   // }
 
+  stopProximity(){
+
+    this.childProfile.child(firebase.auth().currentUser.uid).child(this.childuid).update({
+      Prox: 'Off',
+    });
+
+  }
+
   setProximity(x,y){
-    var cityCircle = new google.maps.Circle({
-      strokeColor: '#137C69',
-      strokeOpacity: 0.8,
-      strokeWeight: 2,
-      fillColor: '#137C69',
-      fillOpacity: 0.35,
-      map: this.map,
-      center: x,
-      radius: 10}) 
+    // var cityCircle = new google.maps.Circle({
+    //   strokeColor: '#137C69',
+    //   strokeOpacity: 0.8,
+    //   strokeWeight: 2,
+    //   fillColor: '#137C69',
+    //   fillOpacity: 0.35,
+    //   map: this.map,
+    //   center: x,
+    //   radius: 10}) 
+    let pdist = parseInt(x);
+    let ptime = parseInt(y);
 
       
       this.childProfile.child(firebase.auth().currentUser.uid).child(this.childuid).update({
-        ProxDistance: 10,
-        ProxTime: 10,
-        CenterLat: this.navParams.get('latitude'),
-        CenterLng: this.navParams.get('longitude'),
+        ProxDistance: pdist,
+        ProxTime: ptime,
+        CenterLat: this.MLat,
+        CenterLng: this.MLng,
         Prox: 'On',
       });
 
@@ -248,6 +258,12 @@ export class TrackmapPage {
   }
 
   initMapNew(i){
+
+        this.map = new google.maps.Map(this.mapRef.nativeElement);
+        var cityCircle = new google.maps.Circle({map: this.map});
+        //var cityCircle = new google.maps.Circle;
+
+
         this.childProfile.child(firebase.auth().currentUser.uid).child(i).once('value', (snapshot) => {
         let kidObject = snapshot.val();
         console.log(kidObject);
@@ -265,7 +281,8 @@ export class TrackmapPage {
           mapTypeId: google.maps.MapTypeId.ROADMAP,
         }
 
-        this.map = new google.maps.Map(this.mapRef.nativeElement, options);
+        //this.map = new google.maps.Map(this.mapRef.nativeElement, options);
+        this.map.setOptions(options);
 
         let marker = new google.maps.Marker({
           position: location,
@@ -278,6 +295,53 @@ export class TrackmapPage {
           },
         });
 
+        if(kidObject.Prox == 'On'){
+          let location2 = new google.maps.LatLng(kidObject.CenterLat,kidObject.CenterLng);
+
+          
+          
+          // var cityCircle = new google.maps.Circle({
+          //   strokeColor: '#137C69',
+          //   strokeOpacity: 0.8,
+          //   strokeWeight: 2,
+          //   fillColor: '#137C69',
+          //   fillOpacity: 0.35,
+          //   center: location2,
+          //    map: this.map,
+          //   radius: 100}) 
+
+
+          console.log(kidObject.ProxDistance);
+          cityCircle.setOptions({
+            strokeColor: '#137C69',
+            strokeOpacity: 0.8,
+            strokeWeight: 2,
+            fillColor: '#137C69',
+            fillOpacity: 0.35,
+            center: location2,
+            map: this.map,
+            //radius: kidObject.Distance,
+            radius: kidObject.ProxDistance,
+          });
+
+
+          }
+          else{
+            cityCircle.setOptions({
+              strokeColor: '#137C69',
+              strokeOpacity: 0.8,
+              strokeWeight: 2,
+              fillColor: '#137C69',
+              fillOpacity: 0.35,
+              center: null,
+              map: this.map,
+              //radius: kidObject.Distance,
+              radius: kidObject.ProxDistance,
+            });
+
+          }
+        
+
         
         
         this.childProfile.child(firebase.auth().currentUser.uid).child(i).on("value", function(snapshot) {
@@ -285,17 +349,54 @@ export class TrackmapPage {
           var changed = snapshot.val();
           let MLat2 = changed.Latitude;
           let MLng2 = changed.Longitude;
+          let Prox2 = changed.Prox;
+          console.log(Prox2);
+          //this.MLat = changed.Latitude;
+          //this.MLng = changed.Longitude;
    
           console.log(changed);
      
           location = new google.maps.LatLng(MLat2,MLng2);
           marker.setPosition(location);
-          this.map.setCenter(location);
+          //this.map.setCenter(location);
           // this.map.setOptions({
             
           //   center: location,
           // });
           console.log("data has been changed ");
+
+          //let location2 = new google.maps.LatLng(MLat2,MLng2);
+          //let location2 = new google.maps.LatLng(this.MLat,this.MLng);
+          if(Prox2 == 'On'){
+            console.log("condition met");
+
+            let location3 = new google.maps.LatLng(changed.CenterLat,changed.CenterLng);
+
+            // cityCircle.setOptions({
+            //   strokeColor: '#137C69',
+            //   strokeOpacity: 0.8,
+            //   strokeWeight: 2,
+            //   fillColor: '#137C69',
+            //   fillOpacity: 0.35,
+            //   center: location3,
+            //   //map: this.map,
+            //   radius: 100
+            // });
+
+            //cityCircle.setCenter(location3);
+            cityCircle.setOptions({
+              center: location3,
+              radius: changed.ProxDistance,
+            });
+
+          }
+          else{
+            //cityCircle.setMap(null);
+            cityCircle.setCenter(null);
+
+          }
+
+          
         });
      
 
