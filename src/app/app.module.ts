@@ -56,6 +56,7 @@ import { FileChooser } from '@ionic-native/file-chooser';
 import { AngularFireDatabaseModule } from "angularfire2/database";
 import { HomePage } from '../pages/home/home';
 
+
 @NgModule({
   declarations: [
     MyApp,

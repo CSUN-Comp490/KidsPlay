@@ -1,23 +1,22 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, ActionSheetController,LoadingController,Content,Events } from 'ionic-angular';
-import {GroupsProvider} from '../../providers/groups/groups';
-import {ImghandlerProvider} from '../../providers/imghandler/imghandler';
-import {GroupChatPage } from '../group-chat/group-chat';
+import { IonicPage, NavController, NavParams, ActionSheetController, LoadingController, Content, Events } from 'ionic-angular';
+import { GroupsProvider } from '../../providers/groups/groups';
+import { ImghandlerProvider } from '../../providers/imghandler/imghandler';
 import firebase from 'firebase';
-/**
- * Generated class for the GroupchattPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
+/**
+ * Generated class for the GroupchatPage page.
+ *
+ * See http://ionicframework.com/docs/components/#navigation for more info
+ * on Ionic pages and navigation.
+ */
 @IonicPage()
 @Component({
-  selector: 'page-groupchatt',
+  selector: 'page-groupchat',
   templateUrl: 'groupchatt.html',
 })
 export class GroupchattPage {
-  @ViewChild('content') content:Content;
+  @ViewChild('content') content: Content;
   owner: boolean = false;
   groupName;
   newmessage;
@@ -26,7 +25,7 @@ export class GroupchattPage {
   photoURL;
   imgornot;
   constructor(public navCtrl: NavController, public navParams: NavParams, public groupservice: GroupsProvider,
-              public actionSheet: ActionSheetController, public events: Events, public imgstore: ImghandlerProvider,public loadingCtrl:LoadingController) {
+    public actionSheet: ActionSheetController, public events: Events, public imgstore: ImghandlerProvider, public loadingCtrl: LoadingController) {
     this.alignuid = firebase.auth().currentUser.uid;
     this.photoURL = firebase.auth().currentUser.photoURL;
     this.groupName = this.navParams.get('groupName');
@@ -36,37 +35,38 @@ export class GroupchattPage {
     }).catch((err) => {
       alert(err);
       })
-      this.groupservice.getgroupmsgs(this.groupName);
-      this.events.subscribe('newgroupmsg', () => {
-        this.allgroupmsgs = [];
-        this.imgornot = [];
-        this.allgroupmsgs = this.groupservice.groupmsgs;
-        for (var key in this.allgroupmsgs) {
-          var d = new Date(this.allgroupmsgs[key].timestamp);
-          var hours = d.getHours();
-          var minutes = "0" + d.getMinutes();
-          var month = d.getMonth();
-          var da = d.getDate();
-  
-          var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
-            "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-          
-          var formattedTime = monthNames[month] + "-" + da + "-" + hours + ":" + minutes.substr(-2);
-  
-          this.allgroupmsgs[key].timestamp = formattedTime;
-          if (this.allgroupmsgs[key].message.substring(0, 4) === 'http') {
-            this.imgornot.push(true);
-          }
-          else {
-            this.imgornot.push(false);
-          }
+    this.groupservice.getgroupmsgs(this.groupName);
+    this.events.subscribe('newgroupmsg', () => {
+      this.allgroupmsgs = [];
+      this.imgornot = [];
+      this.allgroupmsgs = this.groupservice.groupmsgs;
+      for (var key in this.allgroupmsgs) {
+        var d = new Date(this.allgroupmsgs[key].timestamp);
+        var hours = d.getHours();
+        var minutes = "0" + d.getMinutes();
+        var month = d.getMonth();
+        var da = d.getDate();
+
+        var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+          "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        
+        var formattedTime = monthNames[month] + "-" + da + "-" + hours + ":" + minutes.substr(-2);
+
+        this.allgroupmsgs[key].timestamp = formattedTime;
+        if (this.allgroupmsgs[key].message.substring(0, 4) === 'http') {
+          this.imgornot.push(true);
         }
-        this.scrollto();
-      })
+        else {
+          this.imgornot.push(false);
+        }
+      }
+      this.scrollto();
+    })
+
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad GroupchattPage');
+    console.log('ionViewDidLoad GroupchatPage');
   }
 
   sendpicmsg() {
@@ -176,9 +176,11 @@ export class GroupchattPage {
       this.newmessage = '';
     })
   }
+
   scrollto() {
     setTimeout(() => {
       this.content.scrollToBottom();
     }, 1000);
   }
+
 }

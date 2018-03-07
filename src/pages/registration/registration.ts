@@ -4,7 +4,9 @@ import { UserServiceProvider } from './../../providers/user-service/user-service
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AuthProvider } from '../../providers/auth/auth';
+import {usercreds} from '../../models/interfaces/usercreds';
 import * as firebase from 'firebase';
+import {ProfilepicPage} from '../profilepic/profilepic';
 
 
 
@@ -97,8 +99,25 @@ export class RegistrationPage{
             uid: authenticatedUser.uid,
           })
         })
+
+        
+      let credentials={} as usercreds;
+      credentials.email=this.email;
+      credentials.password=this.password;
+   
+
+      this.authservice.login(credentials).then((res:any) =>{
+        if(!res.code)
+          this.navCtrl.setRoot('ProfilepicPage');
+        else 
+        alert(res);
+
+     })
       })
-      this.navCtrl.push('LoginPage');
+
+
+
+    //  this.navCtrl.push('LoginPage');
   }
 
   // Adds a child to an existing parent
