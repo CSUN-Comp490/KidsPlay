@@ -26,6 +26,8 @@ export class ChildtrackPage {
   CenterLat: '';
   CenterLng: '';
   unit: "K";
+  time:'';
+  //histArray = []; 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public geo: Geolocation, public userService: UserServiceProvider) {
   }
@@ -40,17 +42,56 @@ export class ChildtrackPage {
     
     //this.updateLocation();
     //this.geo.watchPosition();
+    //let myDate: String = new Date().toISOString();
+
+    let myDate = new Date();
+    //let myDate: new Date(month, day, year, hours, minutes);
+   
 
 
+    console.log(myDate);
 
-      this.geo.watchPosition().subscribe( pos => {
+
+      let dummyArray = [];
+      let counter = 7;
+
+
+      let myDate1 = new Date();
+      myDate1.setHours(myDate.getHours()+1);
+      let myDate2 = new Date();
+      myDate1.setHours(myDate.getHours()+2);
+      let myDate3 = new Date();
+      myDate1.setHours(myDate.getHours()+3);
+      let myDate4 = new Date();
+      myDate1.setHours(myDate.getHours()+4);
+      //for (var d in dummyArray) {
+let dummydata = [];
+
+//34.2410° N, 118.5277
+
+dummydata= [[34.2410, -118.5277, myDate1],[34.2421, -118.5283, myDate2],[34.2425, -118.5491, myDate3],[34.2465, -118.5391, myDate3],[34.2125, -118.5291, myDate3]];
+        //myDate.setHours(counter);
+        dummyArray.push(myDate);
+        counter++;
+        console.log(myDate1);
+      //}
+
+      console.log(myDate);
+
+      console.log(dummyArray);
+
+      this.geo.watchPosition({ enableHighAccuracy: true }).subscribe( pos => {
       this.lat = pos.coords.latitude;
       this.lng = pos.coords.longitude;
+      //this.time = null;
+      //this.DayHistory(this.lat,this.lng, this.time);
       console.log(this.lat);
+
 
       this.childProfile.child(firebase.auth().currentUser.uid).child(this.childuid).update({
         Latitude: this.lat,
         Longitude:this.lng,
+       // histArray: dummydata,
       });
 
        this.childProfile.child(firebase.auth().currentUser.uid).child(this.childuid).once('value', (snapshot) => {
@@ -58,6 +99,12 @@ export class ChildtrackPage {
          console.log(kidObject);
          this.CenterLat = kidObject.CenterLat;
          this.CenterLng = kidObject.CenterLng;
+         let dist = kidObject.ProxDistance /1000;
+// new
+         dummydata = kidObject.histArray;
+         console.log(dummydata);
+// new
+         console.log(dist);
 
          console.log(this.CenterLat);
          console.log(this.CenterLng);
@@ -67,7 +114,7 @@ export class ChildtrackPage {
 
          console.log(this.getDistance(this.CenterLat,this.CenterLng,this.lat,this.lng,this.unit));
 
-         this.checkProximity(this.CenterLat,this.CenterLng,this.lat,this.lng,this.unit);
+         this.checkProximity(this.CenterLat,this.CenterLng,this.lat,this.lng,this.unit,dist);
            
          
 
@@ -75,7 +122,17 @@ export class ChildtrackPage {
 
 
          });
+//new
+         let myDate5 = new Date();
+        //  let DateString = myDate5.toString;
 
+         dummydata.unshift([this.lat,this.lng, myDate5]);
+
+         this.childProfile.child(firebase.auth().currentUser.uid).child(this.childuid).update({
+          histArray: dummydata,
+        });
+
+//new
          
         
 
@@ -127,6 +184,45 @@ export class ChildtrackPage {
 
   }
 
+  DayHistory(x,y,z){
+
+
+    let histArray = []; 
+    
+    this.childProfile.child(firebase.auth().currentUser.uid).child(this.childuid).once('value', (snapshot) => {
+      let kidObject = snapshot.val();
+      console.log(kidObject);
+      histArray = kidObject.histArray;
+
+      
+      });
+
+
+
+if(this.getDistance(1,2,x,y,'K') > 10){
+
+  //histarray.push({x,y,z});
+
+
+}
+histArray.push({x,y,z});
+
+
+    this.childProfile.child(firebase.auth().currentUser.uid).child(this.childuid).update({
+      Latitude: this.lat,
+      Longitude:this.lng,
+      //HistoryArray: HistoryArray.push({x,y,z});
+    });
+
+
+
+
+  }
+  WeekHistory(){
+
+
+  }
+
   updateLocation(){
     this.geo.getCurrentPosition().then( pos => {
       this.lat = pos.coords.latitude;
@@ -151,10 +247,13 @@ export class ChildtrackPage {
 
   }
 
-  checkProximity(a,b,c,d,e){
+  checkProximity(a,b,c,d,e,f){
     console.log(this.getDistance(a,b,c,d,e));
-    if (this.getDistance(a,b,c,d,e) > 100){
-      alert("Out of Range");
+    if (this.getDistance(a,b,c,d,e) > f){
+      //alert("Out of Range");
+      this.childProfile.child(firebase.auth().currentUser.uid).child(this.childuid).update({
+        OutofRange: 'Yes',
+      });
     }
   }
 

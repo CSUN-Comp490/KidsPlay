@@ -32,12 +32,14 @@ export class TrackmapPage {
   kidLat = []; //Dynamic
   kidName = []; //Dynamic
 
+  kidHist = [];
+
   childProfile: any = firebase.database().ref('kids');
   childuid='';
 
   MLat: '';
   MLng: '';
-  MName:'';
+  MName: '';
 
   Distance:number;
   Duration:number;
@@ -253,6 +255,70 @@ export class TrackmapPage {
 
   }
 
+  history(){
+
+    this.childProfile.child(firebase.auth().currentUser.uid).child(this.childuid).once('value', (snapshot) => {
+      let kidObject = snapshot.val();
+      console.log(kidObject);
+      this.kidHist= kidObject.histArray;
+        console.log(this.kidHist);
+     
+   });
+
+  var  flightPlanCoordinates = [];
+   for (let i = 0; i < this.kidHist.length ; i++) {
+    flightPlanCoordinates[i] = {lat: this.kidHist[i][0], lng: this.kidHist[i][1]};
+
+      console.log(flightPlanCoordinates);
+
+
+
+   }
+
+
+
+
+    
+    // var flightPlanCoordinates = [
+    //   {lat: 34.14, lng: 118.45},
+    //   {lat: 34.152, lng: 118.48},
+    //   {lat: 38.142, lng: 178.431},
+    //   {lat: 27.467, lng: 153.027},
+    //   {lat: 36.152, lng: 118.38},
+    //   {lat: 37.142, lng: 118.18},
+    //   {lat: 39.112, lng: 118.68}
+      
+    // ];
+
+    var c = 1;
+    for (let i = 0; i < flightPlanCoordinates.length ; i++) {
+
+      
+
+      if(i < flightPlanCoordinates.length){
+        var pointAtoB = [flightPlanCoordinates[i], flightPlanCoordinates[i+1]
+        ];
+      }
+
+        var flightPath = new google.maps.Polyline({
+          path: pointAtoB,
+          geodesic: true,
+          strokeColor: '#FF0000',
+          strokeOpacity: c,
+          strokeWeight: 2
+        });
+
+        flightPath.setMap(this.map);
+        c = c-(1/flightPlanCoordinates.length);
+
+    }
+
+
+
+
+    
+  }
+
   setMarkers(){
 
   }
@@ -262,6 +328,68 @@ export class TrackmapPage {
         this.map = new google.maps.Map(this.mapRef.nativeElement);
         var cityCircle = new google.maps.Circle({map: this.map});
         //var cityCircle = new google.maps.Circle;
+
+      ////////////////////
+
+        // var flightPlanCoordinates = [
+        //   {lat: 34.14, lng: 118.45},
+        //   {lat: 34.152, lng: 118.48},
+        //   {lat: 38.142, lng: 178.431},
+        //   {lat: 27.467, lng: 153.027},
+        //   {lat: 36.152, lng: 118.38},
+        //   {lat: 37.142, lng: 118.18},
+        //   {lat: 39.112, lng: 118.68}
+          
+        // ];
+
+        // var c = 1;
+        // for (let i = 0; i < flightPlanCoordinates.length ; i++) {
+
+          
+
+        //   if(i < flightPlanCoordinates.length){
+        //     var pointAtoB = [flightPlanCoordinates[i], flightPlanCoordinates[i+1]
+        //     ];
+        //   }
+  
+        //     var flightPath = new google.maps.Polyline({
+        //       path: pointAtoB,
+        //       geodesic: true,
+        //       strokeColor: '#FF0000',
+        //       strokeOpacity: c,
+        //       strokeWeight: 2
+        //     });
+
+        //     flightPath.setMap(this.map);
+        //     c = c-(1/flightPlanCoordinates.length);
+
+        // }
+
+        //////////////////////////////////
+
+
+
+
+
+
+
+        // var flightPath = new google.maps.Polyline({
+        //   path: flightPlanCoordinates,
+        //   geodesic: true,
+        //   strokeColor: '#FF0000',
+        //   strokeOpacity: 1.0,
+        //   strokeWeight: 2
+        // });
+    
+        // flightPath.setMap(this.map);
+    
+
+
+
+
+
+
+
 
 
         this.childProfile.child(firebase.auth().currentUser.uid).child(i).once('value', (snapshot) => {
@@ -350,6 +478,7 @@ export class TrackmapPage {
           let MLat2 = changed.Latitude;
           let MLng2 = changed.Longitude;
           let Prox2 = changed.Prox;
+          let Range2 = changed.OutofRange;
           console.log(Prox2);
           //this.MLat = changed.Latitude;
           //this.MLng = changed.Longitude;
@@ -394,6 +523,16 @@ export class TrackmapPage {
             //cityCircle.setMap(null);
             cityCircle.setCenter(null);
 
+          }
+
+          if( Range2 == 'Yes'){
+            cityCircle.setOptions({
+              strokeColor: 'Red',
+              fillColor: 'Red',
+            });
+            marker.setOptions({
+              icon: '../../assets/TrackerTinyRed.png'
+            })
           }
 
           
@@ -573,7 +712,7 @@ export class TrackmapPage {
     // var name1 = this.navParams.get('name1');
     // var name2 = this.navParams.get('name2');
     // var name3 = this.navParams.get('name3');
-    // var name4 = this.navParams.get('name4');
+    // var name4 = this.navParams.get('name4'); 
     // var setting = this.navParams.get('setting');
     
 
