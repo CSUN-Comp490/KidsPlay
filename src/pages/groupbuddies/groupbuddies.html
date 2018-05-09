@@ -6,7 +6,7 @@
 -->
 <ion-header>
 
-  <ion-navbar color = "primary">
+  <ion-navbar color="hcolor">
     <ion-title>Group Buddies</ion-title>
   </ion-navbar>
 
@@ -14,6 +14,9 @@
 
 
 <ion-content>
+  <ion-searchbar [(ngModel)]="searchstring" (input)="searchuser($event)"
+                  placeholder="Search">
+  </ion-searchbar>
 <ion-list no-lines>
   <ion-item-sliding *ngFor="let key of myfriends">
     <ion-item>
@@ -29,5 +32,5 @@
       </button>
     </ion-item-options>
   </ion-item-sliding>
-</ion-list>  
+</ion-list>
 </ion-content>

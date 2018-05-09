@@ -9,5 +9,8 @@ import { GroupchattPage } from './groupchatt';
   imports: [
     IonicPageModule.forChild(GroupchattPage),
   ],
+  exports: [
+    GroupchattPage
+  ]
 })
 export class GroupchattPageModule {}

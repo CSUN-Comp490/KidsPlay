@@ -10,7 +10,7 @@ import {storage,initializeApp} from 'firebase';
 import { Camera,CameraOptions } from '@ionic-native/camera';
 import { AddPicPage } from '../add-pic/add-pic';
 import {MessagingPage} from '../messaging/messaging'
-
+import firebase from 'firebase';
 
 /**
  * Generated class for the HomePage page.
@@ -27,6 +27,7 @@ import {MessagingPage} from '../messaging/messaging'
 export class HomePage {
 mydate = Date.now();
   user: any;
+  photoURL;
 
   qrData = null;
   elementType : 'url' | 'canvas' | 'img' = 'url';
@@ -35,7 +36,7 @@ mydate = Date.now();
 
   constructor(private barcodeScanner: BarcodeScanner,private camera: Camera, private afAuth: AngularFireAuth, private toast: ToastController,public navCtrl: NavController, public navParams: NavParams, public userService:UserServiceProvider) {
       //initializeApp(crank);
-      
+      this.photoURL = firebase.auth().currentUser.photoURL;
      
   }
 

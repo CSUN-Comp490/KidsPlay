@@ -5,7 +5,7 @@
 -->
 <ion-header>
   
-    <ion-navbar color="hcolor">
+  <ion-navbar color = "primary">
       <ion-title>{{buddy.fullName}}</ion-title>
     </ion-navbar>
   
@@ -13,7 +13,7 @@
     
       
       
-    <ion-content>
+    <ion-content #content>
       <div class = "chatwindow">
         <ion-list no-lines>
           <ion-item *ngFor = "let item of allmessages; let i = index" text-wrap>
