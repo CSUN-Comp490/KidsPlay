@@ -6,7 +6,7 @@
 -->
 <ion-header>
 
-  <ion-navbar color="hcolor">
+  <ion-navbar color="primary">
     <ion-title>{{groupName}}</ion-title>
     <ion-buttons end>
       <button ion-button (click)="sendpicmsg()">
@@ -31,7 +31,7 @@
       <ion-avatar item-right *ngIf="item.sentby === alignuid">
         <img src="{{photoURL}}">
       </ion-avatar>
-      <div class="bubble me" *ngIf="item.sentby === alignuid">
+      <div align="right" *ngIf="item.sentby === alignuid">
         <h6 style="color: mediumpurple;">{{item.fullName}}</h6>
         <h3 *ngIf="!imgornot[i]">{{item.message}}</h3>
         <img src="{{item.message}}" *ngIf="imgornot[i]">

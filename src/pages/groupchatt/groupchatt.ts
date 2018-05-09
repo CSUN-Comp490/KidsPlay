@@ -179,8 +179,9 @@ export class GroupchattPage {
 
   scrollto() {
     setTimeout(() => {
-      this.content.scrollToBottom();
+      //this.content.scrollToBottom();
     }, 1000);
+    
   }
 
 }
