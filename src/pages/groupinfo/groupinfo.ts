@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
-import { GroupsProvider } from '../../providers/groups/groups';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
+
 /**
  * Generated class for the GroupinfoPage page.
  *
@@ -15,28 +15,11 @@ import { GroupsProvider } from '../../providers/groups/groups';
 })
 export class GroupinfoPage {
 
-  groupmembers;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public groupservice: GroupsProvider,
-              public events: Events) {
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    this.groupservice.getownership(this.groupservice.currentgroupname).then((res) => {
-      if (res)
-        this.groupmembers = this.groupservice.currentgroup;
-      else {
-        this.groupservice.getgroupmembers();
-      }
-        
-    })
-
-    this.events.subscribe('gotmembers', () => {
-      this.groupmembers = this.groupservice.currentgroup;
-    }) 
-  }
-
-  ionViewWillLeave() {
-    this.events.unsubscribe('gotmembers');
+    console.log('ionViewDidLoad GroupinfoPage');
   }
 
 }

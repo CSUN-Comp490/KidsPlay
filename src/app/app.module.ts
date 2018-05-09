@@ -60,7 +60,6 @@ import { HomePage } from '../pages/home/home';
 import {NgxQRCodeModule} from 'ngx-qrcode2';
 import {BarcodeScanner} from '@ionic-native/barcode-scanner'; 
 
-
 @NgModule({
   declarations: [
     MyApp,

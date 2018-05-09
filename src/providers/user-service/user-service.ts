@@ -84,27 +84,7 @@ return promise;
 
 }
 
-updateimage(imageurl) {
-  var promise = new Promise((resolve, reject) => {
-      this.fireAuth.auth.currentUser.updateProfile({
-          displayName: this.fireAuth.auth.currentUser.displayName,
-          photoURL: imageurl      
-      }).then(() => {
-          firebase.database().ref('/users/' + firebase.auth().currentUser.uid).update({
-          displayName: this.fireAuth.auth.currentUser.displayName,
-          photoURL: imageurl,
-          uid: firebase.auth().currentUser.uid
-          }).then(() => {
-              resolve({ success: true });
-              }).catch((err) => {
-                  reject(err);
-              })
-      }).catch((err) => {
-            reject(err);
-         })  
-  })
-  return promise;
-}
+
 getallusers() {
     var promise = new Promise((resolve, reject) => {
       this.firedata.orderByChild('uid').once('value', (snapshot) => {
