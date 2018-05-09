@@ -69,7 +69,8 @@ let dummydata = [];
 
 //34.2410° N, 118.5277
 
-dummydata= [[34.2410, -118.5277, myDate1],[34.2421, -118.5283, myDate2],[34.2425, -118.5491, myDate3],[34.2465, -118.5391, myDate3],[34.2125, -118.5291, myDate3]];
+dummydata= [[34.2410, -118.5277,1],[34.2421, -118.5283,1],[34.2425, -118.5491,1],[34.2465, -118.5391,2],[34.2125, -118.5291,2],[34.2410, -118.5277,2],[34.2421, -118.5283,2],[34.2425, -118.5491,2],[34.2465, -118.5391,2],[34.2125, -118.5291,2],[34.2410, -118.5277,2],[34.2421, -118.5283,2],[34.2425, -118.5491,2],[34.2465, -118.5391,2],[34.2125, -118.5291,2]];
+let dummydates = [myDate1,myDate2,myDate3,myDate3,myDate3];
         //myDate.setHours(counter);
         dummyArray.push(myDate);
         counter++;
@@ -91,7 +92,8 @@ dummydata= [[34.2410, -118.5277, myDate1],[34.2421, -118.5283, myDate2],[34.2425
       this.childProfile.child(firebase.auth().currentUser.uid).child(this.childuid).update({
         Latitude: this.lat,
         Longitude:this.lng,
-       // histArray: dummydata,
+        histArray: dummydata,
+        datesArray: dummydates
       });
 
        this.childProfile.child(firebase.auth().currentUser.uid).child(this.childuid).once('value', (snapshot) => {
@@ -101,7 +103,18 @@ dummydata= [[34.2410, -118.5277, myDate1],[34.2421, -118.5283, myDate2],[34.2425
          this.CenterLng = kidObject.CenterLng;
          let dist = kidObject.ProxDistance /1000;
 // new
-         dummydata = kidObject.histArray;
+// for (let i = 0; i < kidObject.histArray.length ; i++) {
+
+//   dummydata[i][0] = kidObject.histArray[i][0];
+//   dummydata[i][1] = kidObject.histArray[i][1];
+//   dummydata[i][2] = kidObject.histArray[i][2];
+// }
+
+
+        // dummydata = kidObject.histArray;
+        // dummydates = kidObject.datesArray;
+
+         //dummydata = Object.assign([], kidObject.histArray);
          console.log(dummydata);
 // new
          console.log(dist);
@@ -126,11 +139,13 @@ dummydata= [[34.2410, -118.5277, myDate1],[34.2421, -118.5283, myDate2],[34.2425
          let myDate5 = new Date();
         //  let DateString = myDate5.toString;
 
-         dummydata.unshift([this.lat,this.lng, myDate5]);
+        //  dummydata.unshift([this.lat,this.lng]);
+        //  dummydates.unshift(myDate5);
 
-         this.childProfile.child(firebase.auth().currentUser.uid).child(this.childuid).update({
-          histArray: dummydata,
-        });
+        //  this.childProfile.child(firebase.auth().currentUser.uid).child(this.childuid).update({
+        //   histArray: dummydata,
+        //   datesArray: dummydates,
+        // });
 
 //new
          

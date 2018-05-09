@@ -46,6 +46,8 @@ export class TrackmapPage {
 
   
 
+  
+
 
 
 
@@ -254,18 +256,34 @@ export class TrackmapPage {
   pushProximity(x,y,z){
 
   }
+  clearLines(){
+   // flightPath.setMap(null);
+   this.initMapNew(this.childuid);
 
+  }
   history(){
-
+    //flightPath.setMap(null);
+    this.initMapNew(this.childuid);
+    let kidHist2 = [];
     this.childProfile.child(firebase.auth().currentUser.uid).child(this.childuid).once('value', (snapshot) => {
       let kidObject = snapshot.val();
       console.log(kidObject);
-      this.kidHist= kidObject.histArray;
+      kidHist2= kidObject.histArray;
+
+      for (let i = 0; i < kidHist2.length ; i++) {
+        if(kidHist2[i][2] == 1){
+          this.kidHist.push(kidHist2[i]);
+
+        }
+      }
+      
+
         console.log(this.kidHist);
      
    });
 
   var  flightPlanCoordinates = [];
+  //flightPlanCoordinates = [];
    for (let i = 0; i < this.kidHist.length ; i++) {
     flightPlanCoordinates[i] = {lat: this.kidHist[i][0], lng: this.kidHist[i][1]};
 
@@ -303,9 +321,9 @@ export class TrackmapPage {
         var flightPath = new google.maps.Polyline({
           path: pointAtoB,
           geodesic: true,
-          strokeColor: '#FF0000',
+          strokeColor: '#3238DB',
           strokeOpacity: c,
-          strokeWeight: 2
+          strokeWeight: 4
         });
 
         flightPath.setMap(this.map);
@@ -313,11 +331,105 @@ export class TrackmapPage {
 
     }
 
+    var bounds = new google.maps.LatLngBounds();
+    for (var q = 0; q < flightPlanCoordinates.length; q++) {
+     bounds.extend(new google.maps.LatLng(flightPlanCoordinates[q].lat,flightPlanCoordinates[q].lng));
+    }
+    this.map.fitBounds(bounds);
+
 
 
 
     
   }
+
+  history2(){
+    this.initMapNew(this.childuid);
+    //let kidHist2 = [];
+    //flightPath.setMap(null);
+    this.childProfile.child(firebase.auth().currentUser.uid).child(this.childuid).once('value', (snapshot) => {
+      let kidObject = snapshot.val();
+      console.log(kidObject);
+      this.kidHist= kidObject.histArray;
+
+      // for (let i = 0; i < kidHist2.length ; i++) {
+      //   if(kidHist2[i][2] == 2){
+      //     this.kidHist.push(kidHist2[i]);
+
+      //   }
+      // }
+      
+
+        console.log(this.kidHist);
+     
+   });
+
+  var  flightPlanCoordinates = [];
+  //flightPlanCoordinates = [];
+   for (let i = 0; i < this.kidHist.length ; i++) {
+    flightPlanCoordinates[i] = {lat: this.kidHist[i][0], lng: this.kidHist[i][1]};
+
+      console.log(flightPlanCoordinates);
+
+
+
+   }
+
+
+
+
+    
+    // var flightPlanCoordinates = [
+    //   {lat: 34.14, lng: 118.45},
+    //   {lat: 34.152, lng: 118.48},
+    //   {lat: 38.142, lng: 178.431},
+    //   {lat: 27.467, lng: 153.027},
+    //   {lat: 36.152, lng: 118.38},
+    //   {lat: 37.142, lng: 118.18},
+    //   {lat: 39.112, lng: 118.68}
+      
+    // ];
+
+    var c = 1;
+    for (let i = 0; i < flightPlanCoordinates.length ; i++) {
+
+      
+
+      if(i < flightPlanCoordinates.length){
+        var pointAtoB = [flightPlanCoordinates[i], flightPlanCoordinates[i+1]
+        ];
+      }
+
+        var flightPath = new google.maps.Polyline({
+          path: pointAtoB,
+          geodesic: true,
+          strokeColor: '#3238DB',
+          strokeOpacity: c,
+          strokeWeight: 4
+        });
+
+        flightPath.setMap(this.map);
+        c = c-(1/flightPlanCoordinates.length);
+
+    }
+
+    var bounds = new google.maps.LatLngBounds();
+    for (var q = 0; q < flightPlanCoordinates.length; q++) {
+     bounds.extend(new google.maps.LatLng(flightPlanCoordinates[q].lat,flightPlanCoordinates[q].lng));
+    }
+    this.map.fitBounds(bounds);
+
+
+
+
+
+    
+  }
+
+
+
+
+
 
   setMarkers(){
 

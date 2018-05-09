@@ -26,10 +26,10 @@
       </ion-fab>
 
       <ion-fab class="fab5" left>
-        <button class="fab" ion-fab mini>History</button>
+        <button class="fab" (click) = "clearLines()" ion-fab mini>History</button>
         <ion-fab-list>
         <button ion-fab class="fab3" (click) = "history()" >24 Hours</button>
-        <button ion-fab class="fab3" >Weekly</button>
+        <button ion-fab class="fab3" (click) = "history2()">Weekly</button>
         </ion-fab-list>
       </ion-fab>
 
