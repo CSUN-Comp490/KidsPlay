@@ -49,9 +49,7 @@ import { TrackerPage } from '../pages/tracker/tracker';
 import { TrackmapPage } from '../pages/trackmap/trackmap';
 import { AddPicPageModule } from '../pages/add-pic/add-pic.module';
 import { CameraProvider } from '../providers/camera/camera';
-import { NameDataProvider } from '../providers/name-data/name-data';
-import { ChildtrackPageModule } from '../pages/childtrack/childtrack.module';
-
+import { NameDataProvider } from '../providers/name-data/name-data'; 
 import { ChatProvider } from '../providers/chat/chat';
 import { GroupsProvider } from '../providers/groups/groups';
 import { ImghandlerProvider } from '../providers/imghandler/imghandler';
@@ -96,7 +94,9 @@ import {BarcodeScanner} from '@ionic-native/barcode-scanner';
     HomePageModule,
     AngularFireDatabaseModule,
     AddPicPageModule,
-    GroupChatPageModule
+    ResetPasswordPageModule,
+    NgxQRCodeModule
+
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -128,7 +128,7 @@ import {BarcodeScanner} from '@ionic-native/barcode-scanner';
     ChatProvider,
     CameraProvider,
     Camera,
-    NameDataProvider
+    BarcodeScanner
     
   ]
 })

@@ -28,8 +28,6 @@ import {RequestsProvider} from '../../providers/requests/requests';
 @Injectable()
 export class AddEventPage {
 
-  eventPath: any = firebase.database().ref('events');
-
  arrData = []
  type='';
  eventName = '';
@@ -73,23 +71,16 @@ eventmade(){
    return;
  }
  //this.arrData = this.fdb.list('items/${this.userID}');
- 
- let childID = this.eventPath.child(this.userID).push().getKey();
 
-
-
- //let eventPath = "/events/" + this.userID;
+ let eventPath = "/events/" + this.userID;
  // json object; or a typescript class/interface
-
- this.eventPath.child(this.userID).child(childID).set({
- //this.fdb.list(eventPath).push({
+ this.fdb.list(eventPath).push({
    'type': this.type,
    'eventName': this.eventName,
    'data': this.myDate,
    'location': this.location,
    'description': this.description,
    'capacity': this.capacity,
-   'uid' : childID,
    'creator' : this.creator,
  });
  // this.fdb.list(eventPath).push(this.type);
