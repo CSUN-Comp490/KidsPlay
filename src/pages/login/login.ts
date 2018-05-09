@@ -10,6 +10,9 @@ import { MyProfilePage } from '../my-profile/my-profile';
 import {FormBuilder,FormGroup, Validators} from '@angular/forms';
 import{HomePage} from '../home/home';
 
+// import * as firebase from 'firebase';
+// import { UserServiceProvider } from './../../providers/user-service/user-service';
+
 
 /**
  * Generated class for the LoginPage page.
@@ -26,6 +29,10 @@ import{HomePage} from '../home/home';
 
 
 export class LoginPage {
+
+  account: string = "parent";
+  childname = '';
+
  credentials={} as usercreds;
  public loginForm: FormGroup;
  public loading: Loading;
@@ -87,5 +94,26 @@ export class LoginPage {
     }
     
  
+
+    childsignin(x){
+      this.authservice.login(this.credentials).then((res:any) =>{
+        if(!res.code){
+
+
+let data ={
+    child: x,
+      };
+
+          this.navCtrl.setRoot('ChildtrackPage', data);
+
+
+
+    }
+        else 
+        alert(res);
+      })
+
+    }
+
 
 }

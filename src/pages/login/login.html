@@ -57,8 +57,23 @@
     <ion-card-header>
        Login
     </ion-card-header>
-    <ion-card-content>
-      <ion-list no-lines>
+
+    <!-- tabs -->
+    <ion-segment [(ngModel)]="account">
+      <ion-segment-button value="parent">
+        Parent
+      </ion-segment-button>
+      <ion-segment-button value="teen">
+        Teen
+      </ion-segment-button>
+      <ion-segment-button value="child">
+        Child
+      </ion-segment-button>
+    </ion-segment>
+    <!-- end tabs -->
+
+    <ion-card-content [ngSwitch]="account">
+      <ion-list no-lines *ngSwitchCase="'parent'">
         <div class = "space style height: 10px;"></div>
       <ion-item>
           <ion-input type="email" placeholder="Email" [(ngModel)]="credentials.email"></ion-input>
@@ -76,6 +91,32 @@
     <div class = "space style height: 10px;"></div>
     <button ion-button clear full color ="primary"(click) = "register()">Don't have an account?</button>
      </ion-list>
+
+
+
+     <ion-list no-lines *ngSwitchCase="'child'">
+      <div class = "space style height: 10px;"></div>
+    <ion-item>
+        <ion-input type="email" placeholder="Parent's Email" [(ngModel)]="credentials.email"></ion-input>
+    </ion-item>
+    <div class = "space style height: 5px;"></div>
+  <ion-item>
+      <ion-input type="password" placeholder="Parent's Password" [(ngModel)]="credentials.password"></ion-input>
+  </ion-item>
+  <ion-item>
+  <ion-input type="text" placeholder="Name" [(ngModel)]="childname"></ion-input>
+  </ion-item>
+  <div class = "space style height: 10px;"></div>
+  <a (click)= "passwordreset()"> Forgot login details? <b> Click Here</b></a>
+  <div class = "space style height: 10px;"></div>
+  <button ion-button round outline color ="primary" (click) = "childsignin(this.childname)"> Login</button>
+  <div class = "space style height: 10px;"></div>
+  <p>OR</p>
+  <div class = "space style height: 10px;"></div>
+  <button ion-button clear full color ="primary"(click) = "register()">Don't have an account?</button>
+   </ion-list>
+
+
    </ion-card-content> 
   </ion-card>
 

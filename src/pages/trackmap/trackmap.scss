@@ -4,6 +4,36 @@ page-trackmap {
         
     }
 
+    .fab {
+        font-size: xx-small;
+        $fab-content-margin:1px;
+        $fab-list-margin:1px;
+    }
+
+    .fab1{
+        // font-size: xx-small;
+        // $fab-content-margin:1px;
+        // $fab-list-margin:1px;
+        margin-top: 30px;
+        margin-left: -15px;
+    }
+    .fab2{
+        margin-top: -20px;       
+    }
+    .fab3{   
+        margin-top: -5px;        
+    }
+
+    .fab5{
+        margin-top: 30px;
+        margin-left: 40px;
+    }
+    
+
+    .input{
+        font-size: xx-small;        
+    }
+
     .header{
         font-family: 'Baloo';
         text-align: center;

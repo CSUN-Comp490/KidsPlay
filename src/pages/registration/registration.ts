@@ -119,7 +119,10 @@ export class RegistrationPage{
 
     this.fireAuth.auth.signInWithEmailAndPassword(this.parentEmail, this.parentPassword).then((authenticatedUser) => {//Checks If Parent is Registered and Signs Them In
 
-      this.childProfile.child(authenticatedUser.uid).push({//Adds a child to the child branch of the database, nested by parent's uid value
+      let childID = this.childProfile.child(authenticatedUser.uid).push().getKey();
+     
+      //var newchildref =this.childProfile.child(authenticatedUser.uid).push();
+      this.childProfile.child(authenticatedUser.uid).child(childID).set({//Adds a child to the child branch of the database, nested by parent's uid value
 
         Name: this.childfirstName,
         Password: this.childPassword,
@@ -127,10 +130,12 @@ export class RegistrationPage{
         Longitude: this.childLongitude,
         Latitude: this.childLatitude,
         ParentID: authenticatedUser.uid,
+        ChildID: childID,
       })
     })
 
     //this.navCtrl.setRoot('HomePage');
+    this.navCtrl.push('LoginPage');
   }
 
   // Adds a teenager to an existing parent

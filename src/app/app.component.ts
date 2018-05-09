@@ -26,6 +26,8 @@ import { MyProfilePage } from '../pages/my-profile/my-profile';
 import { NewgroupPage } from '../pages/newgroup/newgroup';
 import { GroupbuddiesPage} from '../pages/groupbuddies/groupbuddies';
 import { AddPicPage } from '../pages/add-pic/add-pic';
+import { ChildtrackPage } from '../pages/childtrack/childtrack';
+
 import { TrackerPageModule } from "../pages/tracker/tracker.module";
 import { TrackmapPageModule } from "../pages/trackmap/trackmap.module";
 import { AddEventPage } from '../pages/add-event/add-event';
