@@ -1,3 +1,4 @@
+import { KidsaccountPage } from './../pages/kidsaccount/kidsaccount';
 import { ResetPasswordPage } from './../pages/reset-password/reset-password';
 import { EmailValidator } from './../validators/email';
 import { OffersPage } from './../pages/offers/offers';
@@ -24,7 +25,6 @@ import { MyEventsPage } from '../pages/my-events/my-events';
 import { MyProfilePage } from '../pages/my-profile/my-profile';
 import { NewgroupPage } from '../pages/newgroup/newgroup';
 import { GroupbuddiesPage} from '../pages/groupbuddies/groupbuddies';
-
 import { AddPicPage } from '../pages/add-pic/add-pic';
 import { TrackerPageModule } from "../pages/tracker/tracker.module";
 import { TrackmapPageModule } from "../pages/trackmap/trackmap.module";
@@ -88,7 +88,8 @@ export class MyApp {
         { title: 'Picture', component: AddPicPage, icon: 'ios-camera' },
         { title: 'Add An Event', component: AddEventPage, icon: 'add-circle' },
         // { title: 'Registration', component: RegistrationPage, icon: 'heart' },
-        { title: 'KidTracker', component: TrackerPage, icon: 'pin' },
+        { title: 'Kid Tracker', component: TrackerPage, icon: 'pin' },
+        { title: 'Kids Account', component: KidsaccountPage, icon: 'body' },
         // { title: 'Logout', component: LogoutPage, icon: 'log-out' }
 
       ];

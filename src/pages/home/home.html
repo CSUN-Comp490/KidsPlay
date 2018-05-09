@@ -53,24 +53,56 @@
     </ion-item>
     </ion-card>
   
-    <ion-card (click) = "viewOffers()">
+    <!-- <ion-card (click) = "viewOffers()">
         <ion-item color = "grayskin">
           <ion-icon name="pricetags" item-start></ion-icon>
           Offers
           <ion-badge item-end>2</ion-badge>
           <div class = "space style height: 10px;"></div>
         </ion-item>
-        </ion-card>
-  
-        <ion-footer>
+        </ion-card> -->
+
+      
+        
+            <ion-item>
+              <ion-input type="text" placeholder="Kids Play Authenticator" [(ngModel)]="qrData">
+
+              </ion-input>
+            </ion-item>
+
+            <button ion-button color="secondary" block icon-left (click) ="createCode()"><ion-icon name = "barcode"></ion-icon>Add Kid</button>
+            <button ion-button color="secondary" block icon-left (click) ="scanCode()"><ion-icon name = "qr-scanner"></ion-icon>Scan Code</button>
+            <ion-card *ngIf = "createdCode">
+
+              <ngx-qrcode [qrc-element-type]="elementType" [qrc-value]="createdCode"></ngx-qrcode>
+              <ion-card-content>
+                <p> Value: {{createdCode}}</p>
+              </ion-card-content>
+            </ion-card>
+
+            <ion-card *ngIf = "scannedCode">
+              <ion-card-content>
+                Result from Scan: {{scannedCode}}
+              </ion-card-content>
+            </ion-card>
+        
+   
+        <!-- <ion-footer>
         <ion-toolbar>
           <ion-title></ion-title>
         </ion-toolbar>
-      </ion-footer>
+      </ion-footer> -->
    
   </ion-content>
   
-  
+  <!-- <ion-card (click) = "addChild()">
+          <ion-item color = "secondary">
+            <ion-input type= "text" placeholder = "My QR data" [(ngModel)]= "qrData"> </ion-input>
+           <ion-icon ios="ios-contacts" md="md-contacts" item-start></ion-icon>
+            Add Child
+            <div class = "space style height: 10px;"></div>
+          </ion-item>
+          </ion-card> -->
   <!-- <ion-content class="background">
   <button ion-button (click)="load()">Load</button>
   </ion-content> -->

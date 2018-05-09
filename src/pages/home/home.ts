@@ -1,3 +1,4 @@
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { OffersPage } from './../offers/offers';
 import { crank } from './../../app/app.firebaseconfig';
 import { RegistrationPage } from './../registration/registration';
@@ -27,7 +28,12 @@ export class HomePage {
 mydate = Date.now();
   user: any;
 
-  constructor(private camera: Camera, private afAuth: AngularFireAuth, private toast: ToastController,public navCtrl: NavController, public navParams: NavParams, public userService:UserServiceProvider) {
+  qrData = null;
+  elementType : 'url' | 'canvas' | 'img' = 'url';
+  createdCode = '';
+  scannedCode = '';
+
+  constructor(private barcodeScanner: BarcodeScanner,private camera: Camera, private afAuth: AngularFireAuth, private toast: ToastController,public navCtrl: NavController, public navParams: NavParams, public userService:UserServiceProvider) {
       //initializeApp(crank);
       
      
@@ -58,8 +64,14 @@ mydate = Date.now();
     this.navCtrl.push(AddPicPage);
   }
 
-
-
+createCode(){
+this.createdCode = this.qrData;
+}
+scanCode(){
+this.barcodeScanner.scan().then(barcodeData=>{
+  this.scannedCode = barcodeData.text;
+})
+}
 
   getMessages() {
     this.navCtrl.push('MessagingPage');
@@ -69,6 +81,10 @@ mydate = Date.now();
     this.navCtrl.push('OffersPage');
   }
 
+  addChild() {
+
+    this.navCtrl.push("ChildLoginPage")
+  }
   // logout() {
   //  this.navCtrl.push()
   // }
@@ -103,5 +119,4 @@ mydate = Date.now();
     //   }).catch((err)=>{
     //     console.log(err);
     //   })
-    // }
-
+    // }//Let go back to the previous version of angular it looks likes  something have been removed from the rxjs library

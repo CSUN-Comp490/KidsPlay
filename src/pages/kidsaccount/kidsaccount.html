@@ -1,0 +1,108 @@
+<ion-header>
+  <ion-navbar color = "primary">
+      <ion-buttons left >
+          <button ion-button menuToggle >
+            <ion-icon name= "menu"></ion-icon>
+          </button>
+        </ion-buttons>
+    <ion-title>
+    Home
+    </ion-title>
+   
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="homeBackground" >
+
+    <ion-card color = "grayskin">
+        <ion-card-header color ="primary">
+            <ion-item color = "grayskin"> 
+                <ion-avatar item-right  >
+                  <img src="assets/smilepic.png">
+                </ion-avatar>      
+          </ion-item>    
+          Welcome, {{user}}!
+
+        </ion-card-header>
+        <ion-card-content>
+
+          {{mydate | date: 'fullDate'}}
+          {{mydate | date: 'shortTime'}}
+          <ion-item color = "grayskin" >
+              <button ion-button round outline color="primary" (click)="goToPicEdit()">Add Pic </button>
+              <img [src] = "captureDataUrl" *ngIf= "captureDataUrl"/>
+            </ion-item>
+
+
+        
+        </ion-card-content>
+      </ion-card>
+<ion-card (click) = "getMessages()">
+  <ion-item color = "grayskin">
+    <ion-icon name="mail" item-start></ion-icon>
+    Messages
+    <ion-badge item-end>12</ion-badge>
+    <div class = "space style height: 10px;"></div>
+  </ion-item>
+  </ion-card>
+ <ion-card (click) = "viewEvents()">
+  <ion-item color = "grayskin">
+    <ion-icon name="paper" item-start></ion-icon>
+    My Events
+    <ion-badge item-end>4</ion-badge>
+  </ion-item>
+  </ion-card>
+
+  <!-- <ion-card (click) = "viewOffers()">
+      <ion-item color = "grayskin">
+        <ion-icon name="pricetags" item-start></ion-icon>
+        Offers
+        <ion-badge item-end>2</ion-badge>
+        <div class = "space style height: 10px;"></div>
+      </ion-item>
+      </ion-card> -->
+
+    
+      
+          <ion-item>
+            <ion-input type="text" placeholder="Kids Play Authenticator" [(ngModel)]="qrData">
+
+            </ion-input>
+          </ion-item>
+
+          <button ion-button color="secondary" block icon-left (click) ="createCode()"><ion-icon name = "barcode"></ion-icon>Add Kid</button>
+          <button ion-button color="secondary" block icon-left (click) ="scanCode()"><ion-icon name = "qr-scanner"></ion-icon>Scan Code</button>
+          <ion-card *ngIf = "createdCode">
+
+            <ngx-qrcode [qrc-element-type]="elementType" [qrc-value]="createdCode"></ngx-qrcode>
+            <ion-card-content>
+              <p> Value: {{createdCode}}</p>
+            </ion-card-content>
+          </ion-card>
+
+          <ion-card *ngIf = "scannedCode">
+            <ion-card-content>
+              Result from Scan: {{scannedCode}}
+            </ion-card-content>
+          </ion-card>
+      
+ 
+      <!-- <ion-footer>
+      <ion-toolbar>
+        <ion-title></ion-title>
+      </ion-toolbar>
+    </ion-footer> -->
+ 
+</ion-content>
+
+<!-- <ion-card (click) = "addChild()">
+        <ion-item color = "secondary">
+          <ion-input type= "text" placeholder = "My QR data" [(ngModel)]= "qrData"> </ion-input>
+         <ion-icon ios="ios-contacts" md="md-contacts" item-start></ion-icon>
+          Add Child
+          <div class = "space style height: 10px;"></div>
+        </ion-item>
+        </ion-card> -->
+<!-- <ion-content class="background">
+<button ion-button (click)="load()">Load</button>
+</ion-content> -->

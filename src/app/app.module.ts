@@ -1,3 +1,4 @@
+import { KidsaccountPageModule } from './../pages/kidsaccount/kidsaccount.module';
 import { ResetPasswordPageModule } from './../pages/reset-password/reset-password.module';
 import { OffersPageModule } from './../pages/offers/offers.module';
 import { GroupChatPageModule } from './../pages/group-chat/group-chat.module';
@@ -56,6 +57,8 @@ import { FilePath } from '@ionic-native/file-path';
 import { FileChooser } from '@ionic-native/file-chooser';
 import { AngularFireDatabaseModule } from "angularfire2/database";
 import { HomePage } from '../pages/home/home';
+import {NgxQRCodeModule} from 'ngx-qrcode2';
+import {BarcodeScanner} from '@ionic-native/barcode-scanner'; 
 
 @NgModule({
   declarations: [
@@ -65,6 +68,7 @@ import { HomePage } from '../pages/home/home';
    
   ],
   imports: [
+    // KidsaccountPageModule,
     BrowserModule,
     HttpModule,
     IonicModule.forRoot(MyApp,{tabsPlacement: 'top'}),
@@ -90,7 +94,9 @@ import { HomePage } from '../pages/home/home';
     HomePageModule,
     AngularFireDatabaseModule,
     AddPicPageModule,
-    ResetPasswordPageModule
+    ResetPasswordPageModule,
+    NgxQRCodeModule
+
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -109,7 +115,6 @@ import { HomePage } from '../pages/home/home';
     FilePath,
     FileChooser,
     Geolocation,
-    
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     FileTransfer,
     FileTransferObject,
@@ -123,6 +128,7 @@ import { HomePage } from '../pages/home/home';
     ChatProvider,
     CameraProvider,
     Camera,
+    BarcodeScanner
     
   ]
 })
