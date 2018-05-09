@@ -2,6 +2,14 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import {GoogleMaps, GoogleMap } from '@ionic-native/google-maps';
+<<<<<<< Updated upstream
+=======
+//import { SMS } from '@ionic-native/sms';
+import * as firebase from 'firebase';
+import { UserServiceProvider } from './../../providers/user-service/user-service';
+
+
+>>>>>>> Stashed changes
 /**
  * Generated class for the TrackmapPage page.
  *
@@ -31,7 +39,13 @@ export class TrackmapPage {
 
 
 
+<<<<<<< Updated upstream
   constructor(public navCtrl: NavController, public navParams: NavParams, /*private _googleMaps: GoogleMaps*/) {
+=======
+
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public userService: UserServiceProvider /*private _googleMaps: GoogleMaps*/) {
+>>>>>>> Stashed changes
   }
 /*
   ngAfterViewInit(){
@@ -190,6 +204,253 @@ export class TrackmapPage {
     // var zoom;
   // }
 
+<<<<<<< Updated upstream
+=======
+  stopProximity(){
+
+    this.childProfile.child(firebase.auth().currentUser.uid).child(this.childuid).update({
+      Prox: 'Off',
+    });
+
+  }
+
+  setProximity(x,y){
+    // var cityCircle = new google.maps.Circle({
+    //   strokeColor: '#137C69',
+    //   strokeOpacity: 0.8,
+    //   strokeWeight: 2,
+    //   fillColor: '#137C69',
+    //   fillOpacity: 0.35,
+    //   map: this.map,
+    //   center: x,
+    //   radius: 10}) 
+    let pdist = parseInt(x);
+    let ptime = parseInt(y);
+
+      
+      this.childProfile.child(firebase.auth().currentUser.uid).child(this.childuid).update({
+        ProxDistance: pdist,
+        ProxTime: ptime,
+        CenterLat: this.MLat,
+        CenterLng: this.MLng,
+        Prox: 'On',
+      });
+
+      // var proxCircle = new google.maps.Circle({
+      //   strokeColor: '#FF0000',
+      //   strokeOpacity: 0.8,
+      //   strokeWeight: 2,
+      //   fillColor: '#FF0000',
+      //   fillOpacity: 0.35,
+      //   center: 
+      // })
+    
+
+  }
+
+ 
+  pushProximity(x,y,z){
+
+  }
+  clearLines(){
+   // flightPath.setMap(null);
+   this.initMapNew(this.childuid);
+
+  }
+  history(){
+    //flightPath.setMap(null);
+    
+    this.initMapNew(this.childuid);
+    let kidHist2 = [];
+    this.childProfile.child(firebase.auth().currentUser.uid).child(this.childuid).once('value', (snapshot) => {
+      let kidObject = snapshot.val();
+      console.log(kidObject);
+      kidHist2= kidObject.histArray;
+
+      for (let i = 0; i < kidHist2.length ; i++) {
+        if(kidHist2[i][2] == 1){
+          this.kidHist.push(kidHist2[i]);
+
+        }
+      }
+      
+
+        console.log(this.kidHist);
+     
+   });
+
+  var  flightPlanCoordinates = [];
+  //flightPlanCoordinates = [];
+   for (let i = 0; i < this.kidHist.length ; i++) {
+    flightPlanCoordinates[i] = {lat: this.kidHist[i][0], lng: this.kidHist[i][1]};
+
+      console.log(flightPlanCoordinates);
+
+
+
+   }
+
+
+
+
+    
+    // var flightPlanCoordinates = [
+    //   {lat: 34.14, lng: 118.45},
+    //   {lat: 34.152, lng: 118.48},
+    //   {lat: 38.142, lng: 178.431},
+    //   {lat: 27.467, lng: 153.027},
+    //   {lat: 36.152, lng: 118.38},
+    //   {lat: 37.142, lng: 118.18},
+    //   {lat: 39.112, lng: 118.68}
+      
+    // ];
+
+    var c = 1;
+    for (let i = 0; i < flightPlanCoordinates.length ; i++) {
+
+      
+
+      if(i < flightPlanCoordinates.length){
+        var pointAtoB = [flightPlanCoordinates[i], flightPlanCoordinates[i+1]
+        ];
+      }
+
+        var flightPath = new google.maps.Polyline({
+          path: pointAtoB,
+          geodesic: true,
+          strokeColor: '#3238DB',
+          strokeOpacity: c,
+          strokeWeight: 4
+        });
+
+        flightPath.setMap(this.map);
+        c = c-(1/flightPlanCoordinates.length);
+
+    }
+
+    var bounds = new google.maps.LatLngBounds();
+    for (var q = 0; q < flightPlanCoordinates.length; q++) {
+     bounds.extend(new google.maps.LatLng(flightPlanCoordinates[q].lat,flightPlanCoordinates[q].lng));
+    }
+    this.map.fitBounds(bounds);
+
+
+
+
+    
+  }
+
+  history2(){
+    this.initMapNew(this.childuid);
+    //let kidHist2 = [];
+    //flightPath.setMap(null);
+    this.childProfile.child(firebase.auth().currentUser.uid).child(this.childuid).once('value', (snapshot) => {
+      let kidObject = snapshot.val();
+      console.log(kidObject);
+      this.kidHist= kidObject.histArray;
+
+      // for (let i = 0; i < kidHist2.length ; i++) {
+      //   if(kidHist2[i][2] == 2){
+      //     this.kidHist.push(kidHist2[i]);
+
+      //   }
+      // }
+      
+
+        console.log(this.kidHist);
+     
+   });
+
+  var  flightPlanCoordinates = [];
+  //flightPlanCoordinates = [];
+   for (let i = 0; i < this.kidHist.length ; i++) {
+    flightPlanCoordinates[i] = {lat: this.kidHist[i][0], lng: this.kidHist[i][1]};
+
+      console.log(flightPlanCoordinates);
+
+
+
+   }
+
+
+
+
+    
+    // var flightPlanCoordinates = [
+    //   {lat: 34.14, lng: 118.45},
+    //   {lat: 34.152, lng: 118.48},
+    //   {lat: 38.142, lng: 178.431},
+    //   {lat: 27.467, lng: 153.027},
+    //   {lat: 36.152, lng: 118.38},
+    //   {lat: 37.142, lng: 118.18},
+    //   {lat: 39.112, lng: 118.68}
+      
+    // ];
+
+    var c = 1;
+    for (let i = 0; i < flightPlanCoordinates.length ; i++) {
+
+      
+
+      if(i < flightPlanCoordinates.length){
+        var pointAtoB = [flightPlanCoordinates[i], flightPlanCoordinates[i+1]
+        ];
+      }
+
+        var flightPath = new google.maps.Polyline({
+          path: pointAtoB,
+          geodesic: true,
+          strokeColor: '#3238DB',
+          strokeOpacity: c,
+          strokeWeight: 4
+        });
+
+        flightPath.setMap(this.map);
+        c = c-(1/flightPlanCoordinates.length);
+
+    }
+
+    var bounds = new google.maps.LatLngBounds();
+    for (var q = 0; q < flightPlanCoordinates.length; q++) {
+     bounds.extend(new google.maps.LatLng(flightPlanCoordinates[q].lat,flightPlanCoordinates[q].lng));
+    }
+    this.map.fitBounds(bounds);
+
+
+
+
+
+    
+  }
+
+
+
+
+
+
+  setMarkers(){
+
+  }
+
+  initMapNew(i){
+
+        this.map = new google.maps.Map(this.mapRef.nativeElement);
+        var cityCircle = new google.maps.Circle({map: this.map});
+        //var cityCircle = new google.maps.Circle;
+
+      ////////////////////
+
+        // var flightPlanCoordinates = [
+        //   {lat: 34.14, lng: 118.45},
+        //   {lat: 34.152, lng: 118.48},
+        //   {lat: 38.142, lng: 178.431},
+        //   {lat: 27.467, lng: 153.027},
+        //   {lat: 36.152, lng: 118.38},
+        //   {lat: 37.142, lng: 118.18},
+        //   {lat: 39.112, lng: 118.68}
+          
+        // ];
+>>>>>>> Stashed changes
 
   initMap(x,y,z){
     //Location - lat long
